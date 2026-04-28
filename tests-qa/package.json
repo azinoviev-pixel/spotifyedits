@@ -1,0 +1,29 @@
+{
+  "name": "qa-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Universal QA template \u2014 Playwright + Lighthouse + axe + GitHub Actions. Drop-in tests for any web project.",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test tests/smoke.spec.ts",
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+    "test:visual": "playwright test tests/visual.spec.ts",
+    "test:visual:update": "playwright test tests/visual.spec.ts --update-snapshots",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "lighthouse": "lhci autorun",
+    "install:browsers": "playwright install --with-deps",
+    "test:bs": "browserstack-node-sdk playwright test --config=./playwright.bs.config.js",
+    "test:bs:local": "BASE_URL=http://localhost:5173 browserstack-node-sdk playwright test --config=./playwright.bs.config.js"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@lhci/cli": "^0.14.0",
+    "@playwright/test": "1.58.2",
+    "browserstack-node-sdk": "latest",
+    "playwright": "1.58.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

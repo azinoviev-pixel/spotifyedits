@@ -1,0 +1,5 @@
+node_modules/
+tests-qa/node_modules/
+tests-qa/test-results/
+tests-qa/playwright-report/
+tests-qa/.lighthouseci/

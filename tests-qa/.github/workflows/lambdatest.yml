@@ -1,0 +1,36 @@
+name: LambdaTest Real Devices
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1"  # Monday 08:00 UTC
+
+jobs:
+  real-devices:
+    name: LambdaTest smoke on real devices
+    if: vars.BASE_URL != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        run: pnpm install --no-frozen-lockfile
+      - name: Run LambdaTest tests
+        env:
+          LT_USERNAME: ${{ secrets.LT_USERNAME }}
+          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+          BASE_URL: ${{ vars.BASE_URL }}
+        run: pnpm exec playwright test --config=./playwright.lt.config.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lt-results
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: ignore
