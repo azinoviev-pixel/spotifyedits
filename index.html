@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Primary SEO — primary keyword: "spotify canvas" (1.5K/mo, KD 12) + cluster -->
 <title>Spotify Canvas Maker — Free 9:16 MP4 Generator, No Signup | spotifyedits.com</title>
@@ -296,7 +296,7 @@
 :root{
   --bg:#FAFAF8;--card:#fff;--card2:#F5F4F0;
   --border:#E6E3DC;--border2:#D4D0C8;
-  --text:#1C1B18;--text2:#5C5A52;--text3:#9C9A92;--text4:#C4C2BA;
+  --text:#1C1B18;--text2:#4A4842;--text3:#6E6C66;--text4:#9C9A92;
   --green:#1DB954;--green2:#1AA64B;--green-bg:#EEFBF2;--green-border:#C8F0D4;
   --red:#D94040;--red-bg:#FFF5F5;
   --shadow-sm:0 1px 2px rgba(0,0,0,.04);
@@ -355,7 +355,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .drop:hover .drop-ring{background:var(--green-bg);border-color:var(--green-border)}
 .drop-ring svg{width:24px;height:24px;stroke:var(--text3);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
 .drop:hover .drop-ring svg{stroke:var(--green)}
-.drop h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.drop .drop-h{font-size:15px;font-weight:600;margin-bottom:4px;display:block;color:var(--text)}
 .drop p{font-size:12px;color:var(--text3)}
 
 /* Stock browser */
@@ -470,6 +470,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .seo-inner{display:flex;flex-direction:column;gap:32px}
 .seo h2{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.15;letter-spacing:-.015em;color:var(--text);margin-bottom:12px}
 .seo p{font-size:15px;line-height:1.65;color:var(--text2);margin-bottom:0}
+.seo a{color:var(--green2);text-decoration:underline;text-underline-offset:2px}
+.seo a:hover{color:var(--text)}
 .seo b{color:var(--text);font-weight:600}
 .spec-list{display:grid;grid-template-columns:120px 1fr;gap:8px 24px;font-size:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px}
 .spec-list>div{display:contents}
@@ -504,7 +506,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .features{max-width:700px;margin:0 auto;padding:0 24px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .feat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;transition:all .2s}
 .feat:hover{border-color:var(--border2);box-shadow:var(--shadow)}
-.feat h4{font-size:13px;font-weight:600;margin-bottom:4px}
+.feat strong{font-size:13px;font-weight:600;margin-bottom:4px}
 .feat p{font-size:11px;color:var(--text3);line-height:1.4}
 
 @media(max-width:500px){
@@ -517,6 +519,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 </style>
 </head>
 <body>
+<main>
 
 <!-- HERO -->
 <div class="hero">
@@ -546,7 +549,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     <div class="drop-ring">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     </div>
-    <h3>Drop your file here</h3>
+    <strong class="drop-h">Drop your file here</strong>
     <p>JPG · PNG · WEBP · MP4 · MOV · WEBM</p>
   </div>
   <div class="stock-or" id="stockOr">
@@ -656,10 +659,10 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 
 <!-- FEATURES -->
 <div class="features">
-  <div class="feat"><h4>All Spotify formats</h4><p>Canvas, Header Banner, Avatar, Cover Art — exact pixel dimensions.</p></div>
-  <div class="feat"><h4>Canvas MP4 with effects</h4><p>Turn any photo into a looping video with zoom, pan, or breathe effects.</p></div>
-  <div class="feat"><h4>Video crop & trim</h4><p>Drop a video, crop to 9:16, trim to 3-8 seconds, export ready MP4.</p></div>
-  <div class="feat"><h4>100% in your browser</h4><p>Nothing uploaded. No server. No account. No watermark. Free forever.</p></div>
+  <div class="feat"><strong>All Spotify formats</strong><p>Canvas, Header Banner, Avatar, Cover Art — exact pixel dimensions.</p></div>
+  <div class="feat"><strong>Canvas MP4 with effects</strong><p>Turn any photo into a looping video with zoom, pan, or breathe effects.</p></div>
+  <div class="feat"><strong>Video crop & trim</strong><p>Drop a video, crop to 9:16, trim to 3-8 seconds, export ready MP4.</p></div>
+  <div class="feat"><strong>100% in your browser</strong><p>Nothing uploaded. No server. No account. No watermark. Free forever.</p></div>
 </div>
 
 <!-- SEO CONTENT: long-form, keyword-rich, schema-matched -->
@@ -752,6 +755,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <div class="footer">
