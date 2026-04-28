@@ -409,6 +409,10 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 .ws-badge{display:inline-flex;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--green-text);background:var(--green-bg);border:1px solid var(--green-border);padding:3px 12px;border-radius:16px;margin-bottom:12px}
+.ws-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--card);border:1px solid var(--border);padding:3px 4px 3px 10px;border-radius:16px;margin:0 0 12px 6px;vertical-align:top}
+.ws-source svg{color:var(--green-text)}
+.ws-source-x{width:18px;height:18px;border:none;background:var(--card2);color:var(--text2);border-radius:50%;font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;padding:0}
+.ws-source-x:hover{background:var(--red-bg);color:var(--red)}
 
 .crop-container{display:flex;justify-content:center;margin-bottom:16px}
 .crop-wrap{position:relative;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow-lg);touch-action:none;cursor:grab;background:#000}
@@ -597,7 +601,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 
 <!-- WORKSPACE -->
 <div class="ws" id="ws">
-  <div style="text-align:center"><span class="ws-badge" id="badge">IMAGE → CANVAS</span></div>
+  <div style="text-align:center">
+    <span class="ws-badge" id="badge">IMAGE → CANVAS</span>
+    <span class="ws-source hidden" id="wsSource">
+      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      <span id="wsSourceText">Pexels</span>
+      <button class="ws-source-x" id="wsSourceX" type="button" title="Remove and pick another">×</button>
+    </span>
+  </div>
   <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas></div></div>
 
   <div class="panel">
@@ -821,6 +832,8 @@ fi.onchange=e=>{if(e.target.files[0])handle(e.target.files[0])};
 
 function handle(f){
   if(!f)return;
+  // hide stock chip — this is a real file load
+  const ws=$('#wsSource');if(ws)ws.classList.add('hidden');
   if(f.type.startsWith('image/'))initImage(f);
   else if(FMTS[curFmt].mp4)initVideo(f);
   else{setStatus('This format only supports images','err')}
@@ -1093,6 +1106,7 @@ $('#rst').onclick=()=>{
   ws.classList.remove('on');$('#dropArea').style.display='';fi.value='';
   img=null;mode=null;srcVid.src='';
   if(vidAnim)cancelAnimationFrame(vidAnim);
+  const sc=$('#wsSource');if(sc)sc.classList.add('hidden');
   setStatus('','');hideProg();
 };
 
@@ -1184,10 +1198,23 @@ async function selectStock(url,photog,purl,dur){
     closeStock();
     initVideo(blob);
     setStatus(`Stock: ${photog} (Pexels${dur?' · '+dur+'s':''})`,'ok');
+    // Show source chip with photog name + reset/replace button
+    const ws=$('#wsSource'),wt=$('#wsSourceText');
+    if(ws&&wt){wt.textContent=`Pexels: ${photog}`;ws.classList.remove('hidden')}
   }catch(e){
     stockStatus.textContent='Error: '+e.message;stockStatus.className='stock-status err';
   }
 }
+
+// Hide source chip when not from stock (called on file drop / reset)
+function hideStockChip(){const ws=$('#wsSource');if(ws)ws.classList.add('hidden')}
+
+// X button: reset workspace and reopen stock modal
+$('#wsSourceX').onclick=(e)=>{
+  e.stopPropagation();
+  $('#rst').click(); // run reset
+  setTimeout(openStock,50); // reopen modal
+};
 </script>
 </body>
 </html>
