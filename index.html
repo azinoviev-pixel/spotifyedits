@@ -337,18 +337,26 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .fmt.on small{color:var(--green-text)}
 
 /* Specs strip */
-.specs-strip{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.specs-strip{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.fmt-rule{font-size:13px;line-height:1.5;color:var(--text2);max-width:560px;margin:0 auto 24px;text-align:center}
 
-/* Creator card with Spotify embed */
-.creator-card{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:center;max-width:680px;margin:0 auto 32px;padding:18px;background:linear-gradient(135deg,var(--card) 0%,var(--green-bg) 100%);border:1px solid var(--green-border);border-radius:var(--r-lg);text-align:left;box-shadow:var(--shadow-sm)}
-.creator-text{display:flex;flex-direction:column;gap:8px}
-.creator-eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--green-text);letter-spacing:.08em}
-.creator-line{font-size:13px;line-height:1.55;color:var(--text2);margin:0}
+/* Creator card with compact Spotify mini-bar */
+.creator-card{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:center;max-width:640px;margin:0 auto 28px;padding:14px 16px;background:linear-gradient(135deg,var(--card) 0%,var(--green-bg) 100%);border:1px solid var(--green-border);border-radius:var(--r);text-align:left;box-shadow:var(--shadow-sm)}
+.creator-text{display:flex;flex-direction:column;gap:6px}
+.creator-eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;font-weight:600;color:var(--green-text);letter-spacing:.08em}
+.creator-line{font-size:12px;line-height:1.5;color:var(--text2);margin:0}
 .creator-line b{color:var(--text);font-weight:600}
-.creator-embed{width:100%;height:152px;border:0;border-radius:12px;display:block;background:#191414}
+.creator-name{color:var(--green-text);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+.creator-name:hover{border-bottom-color:var(--green-text)}
+.creator-name b{color:var(--green-text)}
+.creator-embed-slot{width:100%;height:80px;display:block}
+.creator-embed{width:100%;height:80px;border:0;border-radius:10px;display:block;background:#191414}
+.creator-embed-ph{width:100%;height:80px;border:1px solid var(--green-border);background:#191414;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.creator-embed-ph svg{color:var(--green)}
+.creator-embed-ph:hover{background:#262420;border-color:var(--green)}
 @media(max-width:640px){
-  .creator-card{grid-template-columns:1fr;gap:12px;padding:16px}
-  .creator-embed{height:80px}
+  .creator-card{grid-template-columns:1fr;gap:10px;padding:12px}
+  .creator-embed,.creator-embed-slot,.creator-embed-ph{height:64px}
 }
 .ss{font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
 .ss::before{content:'';width:4px;height:4px;background:var(--border2);border-radius:50%}
@@ -396,6 +404,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .stock-tags button.on{background:var(--green-bg);border-color:var(--green-border);color:var(--green-text)}
 .stock-grid{flex:1;overflow-y:auto;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;background:var(--bg)}
 .stock-card{position:relative;aspect-ratio:9/16;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border);transition:all .15s}
+.stock-grid[data-orient="landscape"] .stock-card{aspect-ratio:2660/1140}
+.stock-grid[data-orient="square"] .stock-card{aspect-ratio:1/1}
 .stock-card:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:var(--shadow)}
 .stock-card img{width:100%;height:100%;object-fit:cover;display:block}
 .stock-card .dur{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.65);color:#fff;font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px)}
@@ -403,6 +413,36 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .stock-card .pick{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(29,185,84,.2);opacity:0;transition:opacity .15s}
 .stock-card:hover .pick{opacity:1}
 .stock-card .pick-btn{background:var(--green);color:#fff;font-size:11px;font-weight:600;padding:6px 12px;border-radius:14px;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase}
+/* Pexels full preview */
+.stock-preview{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:2;animation:bodyFade .2s ease}
+.stock-preview[hidden]{display:none}
+.stock-preview-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 0}
+.stock-preview-back{padding:8px 14px;background:transparent;border:1px solid var(--border);border-radius:14px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s}
+.stock-preview-back:hover{border-color:var(--text2);color:var(--text)}
+.stock-preview-counter{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.05em}
+.stock-preview-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:14px 60px;overflow:hidden;background:#0a0a0a;margin-top:12px}
+.stock-preview-media{flex:1;display:flex;align-items:center;justify-content:center;max-height:100%}
+.stock-preview-media video,.stock-preview-media img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;display:block}
+.stock-preview-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#fff;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:all .15s;font-family:var(--sans);padding:0 0 4px;z-index:3}
+.stock-preview-nav:hover:not(:disabled){background:rgba(255,255,255,.18);transform:translateY(-50%) scale(1.05)}
+.stock-preview-nav:disabled{opacity:.25;cursor:not-allowed}
+.stock-preview-prev{left:10px}
+.stock-preview-next{right:10px}
+.stock-preview-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--border);background:var(--card);gap:12px}
+.stock-preview-credit{font-size:12px;color:var(--text2);text-decoration:none}
+.stock-preview-credit:hover{color:var(--green-text);text-decoration:underline}
+.stock-preview-actions{display:flex;align-items:center;gap:8px}
+.stock-preview-use{padding:10px 18px;background:var(--green);color:#fff;border:0;border-radius:14px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+.stock-preview-use:hover{background:var(--green2)}
+.stock-preview-use:disabled{opacity:.6;cursor:wait}
+.stock-preview-dl{padding:10px 14px;background:var(--card);color:var(--text2);border:1px solid var(--border);border-radius:14px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.stock-preview-dl:hover:not(:disabled){border-color:var(--green-text);color:var(--green-text);background:var(--green-bg)}
+.stock-preview-dl:disabled{opacity:.6;cursor:wait}
+.stock-pager{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 12px 8px}
+.stock-pg-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);color:var(--text2);font-family:var(--sans);font-size:12px;font-weight:600;border-radius:14px;cursor:pointer;transition:all .15s}
+.stock-pg-btn:hover:not(:disabled){border-color:var(--green);color:var(--green-text);background:var(--green-bg)}
+.stock-pg-btn:disabled{opacity:.4;cursor:not-allowed}
+.stock-pg-info{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:60px;text-align:center}
 .stock-status{padding:0 20px 8px;font-size:12px;color:var(--text3);text-align:center;min-height:18px}
 .stock-status.err{color:var(--red)}
 .stock-foot{padding:10px 20px;border-top:1px solid var(--border);background:var(--card);font-size:11px;color:var(--text3);text-align:center}
@@ -421,8 +461,12 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 .ws-badge{display:inline-flex;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--green-text);background:var(--green-bg);border:1px solid var(--green-border);padding:3px 12px;border-radius:16px;margin-bottom:12px}
-.ws-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--card);border:1px solid var(--border);padding:3px 4px 3px 10px;border-radius:16px;margin:0 0 12px 6px;vertical-align:top}
-.ws-source svg{color:var(--green-text)}
+.ws-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--card);border:1px solid var(--border);padding:3px 4px 3px 10px;border-radius:16px;margin:0 0 12px 6px;vertical-align:top;cursor:pointer;transition:all .15s}
+.ws-source:hover{border-color:var(--green);background:var(--green-bg);color:var(--green-text)}
+.ws-source:hover svg{color:var(--green)}
+.ws-source svg{color:var(--green-text);transition:color .15s}
+.ws-source-arrow{font-size:11px;color:var(--text3);transition:color .15s,transform .25s}
+.ws-source:hover .ws-source-arrow{color:var(--green-text);transform:rotate(90deg)}
 .ws-source-x{width:18px;height:18px;border:none;background:var(--card2);color:var(--text2);border-radius:50%;font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;padding:0}
 .ws-source-x:hover{background:var(--red-bg);color:var(--red)}
 
@@ -430,6 +474,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .crop-wrap{position:relative;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow-lg);touch-action:none;cursor:grab;background:#000}
 .crop-wrap:active{cursor:grabbing}
 .crop-wrap canvas{display:block}
+.crop-x{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s,transform .15s;z-index:5;font-family:var(--sans);padding:0}
+.crop-x:hover{background:rgba(217,64,64,.85);transform:scale(1.05)}
 
 /* Controls */
 .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
@@ -445,6 +491,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .cv{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--green)}
 .cv.bad{color:var(--red)}
 
+.cf-note{font-size:10px;color:var(--text3);font-style:italic;line-height:1.4;padding-left:54px}
 .size-row{display:flex;gap:6px;flex:1}
 .sb{flex:1;padding:7px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--card);color:var(--text3);font-family:var(--mono);font-size:10px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s}
 .sb:hover{border-color:var(--border2)}
@@ -481,33 +528,54 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .footer p{font-size:11px;color:var(--text3);line-height:1.6}
 .footer a{color:var(--text2);text-decoration:underline;transition:color .15s}
 
-/* ============ SEO CONTENT ============ */
-.seo{max-width:760px;margin:32px auto 0;padding:40px 24px}
-.seo-inner{display:flex;flex-direction:column;gap:32px}
-.seo h2{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.15;letter-spacing:-.015em;color:var(--text);margin-bottom:12px}
+/* ============ SEO CONTENT — single consistent style ============ */
+.seo{max-width:680px;margin:48px auto 0;padding:32px 24px 24px;font-family:var(--sans)}
+.seo-inner{display:flex;flex-direction:column;gap:24px}
+.seo h2,.seo h3{font-family:var(--sans);font-weight:600;color:var(--text);margin:0;letter-spacing:-.005em}
+.seo h2{font-size:15px;line-height:1.4}
+.seo h3{font-size:14px;margin-top:18px}
+.seo p{font-size:14px;line-height:1.65;color:var(--text2);margin:0}
+.seo a{color:var(--green-text);text-decoration:underline;text-underline-offset:2px}
+.seo a:hover{color:var(--text)}
+.seo b{color:var(--text);font-weight:600}
+.seo ol,.seo ul{padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.seo li{font-size:14px;line-height:1.6;color:var(--text2)}
+.seo-block{border-top:1px solid var(--border);padding-top:20px}
+.seo-block:first-child{border-top:none;padding-top:0}
+.seo-more{display:block;border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden}
+.seo-more[open]{border-color:var(--border2)}
+.seo-more summary{list-style:none;padding:14px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;color:var(--text);gap:12px;transition:background .15s}
+.seo-more summary::-webkit-details-marker{display:none}
+.seo-more summary:hover{background:var(--card2)}
+.seo-more summary::after{content:"";flex:0 0 12px;width:12px;height:12px;background:var(--text3);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") center/contain no-repeat;transition:transform .2s ease}
+.seo-more[open] summary::after{transform:rotate(180deg)}
+.seo-more-body{padding:0 18px 20px;display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--border)}
+.seo-more-body>*:first-child{margin-top:18px}
 .seo p{font-size:15px;line-height:1.65;color:var(--text2);margin-bottom:0}
 .seo a{color:var(--green-text);text-decoration:underline;text-underline-offset:2px}
 .seo a:hover{color:var(--text)}
 .seo b{color:var(--text);font-weight:600}
-.spec-list{display:grid;grid-template-columns:120px 1fr;gap:8px 24px;font-size:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px}
+.spec-list{display:grid;grid-template-columns:110px 1fr;gap:0;font-size:13px;margin-top:14px}
 .spec-list>div{display:contents}
-.spec-list dt{font-family:var(--mono);font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;padding:6px 0}
-.spec-list dd{color:var(--text);line-height:1.5;padding:6px 0;border-bottom:1px solid var(--border)}
-.spec-list>div:last-child dd{border-bottom:none}
+.spec-list dt{font-size:12px;font-weight:600;color:var(--text);padding:8px 0;border-top:1px solid var(--border)}
+.spec-list dd{color:var(--text2);line-height:1.55;padding:8px 0;border-top:1px solid var(--border)}
+.spec-list>div:first-child dt,.spec-list>div:first-child dd{border-top:none}
 .guide{list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:14px}
 .guide li{counter-increment:step;display:flex;gap:16px;font-size:15px;line-height:1.55;color:var(--text2)}
 .guide li::before{content:counter(step);flex:0 0 28px;width:28px;height:28px;background:var(--green-bg);color:var(--green2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;margin-top:1px}
 .diff{list-style:none;display:flex;flex-direction:column;gap:12px;padding:0}
 .diff li{font-size:15px;line-height:1.6;color:var(--text2);padding-left:22px;position:relative}
 .diff li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green2);font-weight:700}
-.faq{display:flex;flex-direction:column;gap:8px}
-.faq details{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:0 20px;transition:border-color .15s}
-.faq details[open]{border-color:var(--border2)}
-.faq summary{padding:16px 0;font-size:15px;font-weight:500;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+/* FAQ list inside seo-more — same minimal style as everything else */
+.faq{display:flex;flex-direction:column;gap:0}
+.faq details{border-top:1px solid var(--border);background:transparent}
+.faq details:first-child{border-top:none}
+.faq summary{padding:12px 0;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:20px;color:var(--text3);font-weight:400;transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 0 16px;font-size:14px;line-height:1.65;color:var(--text2)}
+.faq summary::after{content:"+";flex:0 0 auto;font-family:var(--sans);font-size:18px;font-weight:300;color:var(--text3);transition:transform .2s ease;line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg);color:var(--text2)}
+.faq summary:hover{color:var(--green-text)}
+.faq details p{padding:0 0 14px;font-size:13.5px;line-height:1.65;color:var(--text2)}
 @media (max-width:640px){
   .seo h2{font-size:22px}
   .spec-list{grid-template-columns:1fr;gap:4px}
@@ -555,18 +623,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     <span class="ss">JPEG or MP4</span>
     <span class="ss">3-8 seconds</span>
   </div>
+  <p class="fmt-rule" id="fmtRule">A 3–8 second vertical loop that replaces cover art in the Now Playing view on the Spotify mobile app.</p>
 
-  <!-- Creator card with Spotify embed -->
-  <aside class="creator-card" aria-label="About the creator">
-    <div class="creator-text">
-      <div class="creator-eyebrow">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
-        <span>BUILT BY AN ARTIST, FOR ARTISTS</span>
-      </div>
-      <p class="creator-line">I made this tool because every existing Canvas maker wanted my email and slapped a watermark on my exports. <b>Made by Anton Zinoviev</b> — give my tracks a spin while you're here:</p>
-    </div>
-    <iframe class="creator-embed" src="https://open.spotify.com/embed/artist/22Y35XRBlb4LwoI3QrJQBt?utm_source=spotifyedits&amp;theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" title="Anton Zinoviev on Spotify"></iframe>
-  </aside>
 </div>
 
 <!-- DROP ZONE -->
@@ -575,8 +633,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     <div class="drop-ring">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     </div>
-    <strong class="drop-h">Drop your file here</strong>
-    <p>JPG · PNG · WEBP · MP4 · MOV · WEBM</p>
+    <strong class="drop-h" id="dropHint">Photo or video — any size, we crop & encode</strong>
+    <p id="dropExt">JPG · PNG · WEBP · MP4 · MOV · WEBM</p>
   </div>
   <div class="stock-or" id="stockOr">
     <span class="stock-or-line"></span>
@@ -584,8 +642,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     <span class="stock-or-line"></span>
   </div>
   <button class="stock-btn" id="stockBtn">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-    <span>Browse free stock videos</span>
+    <svg id="stockIconVideo" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+    <svg id="stockIconPhoto" class="hidden" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span id="stockBtnLabel">Browse free stock videos</span>
     <span class="stock-btn-tag">Pexels</span>
   </button>
 </div>
@@ -615,6 +674,24 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     </div>
     <div class="stock-grid" id="stockGrid"></div>
     <div class="stock-status" id="stockStatus"></div>
+    <div class="stock-preview" id="stockPreview" hidden>
+      <div class="stock-preview-top">
+        <button class="stock-preview-back" id="stockPreviewBack" type="button">← Back to results</button>
+        <span class="stock-preview-counter" id="stockPreviewCounter"></span>
+      </div>
+      <div class="stock-preview-stage">
+        <button class="stock-preview-nav stock-preview-prev" id="stockPreviewPrev" type="button" aria-label="Previous">‹</button>
+        <div class="stock-preview-media" id="stockPreviewMedia"></div>
+        <button class="stock-preview-nav stock-preview-next" id="stockPreviewNext" type="button" aria-label="Next">›</button>
+      </div>
+      <div class="stock-preview-foot">
+        <a class="stock-preview-credit" id="stockPreviewCredit" target="_blank" rel="noopener"></a>
+        <div class="stock-preview-actions">
+          <button class="stock-preview-dl" id="stockPreviewDl" type="button" title="Download original from Pexels">↓ Download original</button>
+          <button class="stock-preview-use" id="stockPreviewUse" type="button">Use this →</button>
+        </div>
+      </div>
+    </div>
     <div class="stock-foot">
       Free for any use — no attribution required. <a href="https://www.pexels.com" target="_blank" rel="noopener">Powered by Pexels</a>.
     </div>
@@ -625,13 +702,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 <div class="ws" id="ws">
   <div style="text-align:center">
     <span class="ws-badge" id="badge">IMAGE → CANVAS</span>
-    <span class="ws-source hidden" id="wsSource">
+    <span class="ws-source hidden" id="wsSource" role="button" tabindex="0" title="Pick another from Pexels">
       <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
       <span id="wsSourceText">Pexels</span>
-      <button class="ws-source-x" id="wsSourceX" type="button" title="Remove and pick another">×</button>
+      <span class="ws-source-arrow" aria-hidden="true">↻</span>
+      <button class="ws-source-x" id="wsSourceX" type="button" title="Remove file">×</button>
     </span>
   </div>
-  <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas></div></div>
+  <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas><button class="crop-x" id="cropX" type="button" aria-label="Remove file and start over" title="Remove file">×</button></div></div>
 
   <div class="panel">
     <div class="cr"><span class="cl">Zoom</span><input type="range" id="zm" min="10" max="500" value="100"></div>
@@ -670,6 +748,13 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
         <option value="0.8">0.8s</option>
       </select>
     </div>
+    <div class="cr" id="sloCtl">
+      <span class="cl">Slow-mo</span>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px">
+        <input type="checkbox" id="slo" style="width:16px;height:16px;cursor:pointer">
+        <span>Play 0.5× with motion blur</span>
+      </label>
+    </div>
     <div class="sep"></div>
     <div class="cr"><span class="cl">Size</span><div class="size-row" id="sizeRow">
       <button class="sb" data-w="720" data-h="1280">720×1280</button>
@@ -678,7 +763,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
     <div class="sep"></div>
 
     <div class="btn-row">
-      <button class="btn btn-ghost" id="rst" title="Reset">↺</button>
+      <button class="btn btn-ghost" id="rst" type="button" title="Start over">↺</button>
+      <button class="btn btn-ghost" id="rep" type="button" title="Replace file">⇆</button>
       <button class="btn btn-dark hidden" id="ej">Save JPEG</button>
       <button class="btn btn-green" id="exp">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -690,101 +776,122 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
   </div>
 </div>
 
-<!-- FEATURES -->
-<div class="features">
-  <div class="feat"><strong>All Spotify formats</strong><p>Canvas, Header Banner, Avatar, Cover Art — exact pixel dimensions.</p></div>
-  <div class="feat"><strong>Canvas MP4 with effects</strong><p>Turn any photo into a looping video with zoom, pan, or breathe effects.</p></div>
-  <div class="feat"><strong>Video crop & trim</strong><p>Drop a video, crop to 9:16, trim to 3-8 seconds, export ready MP4.</p></div>
-  <div class="feat"><strong>100% in your browser</strong><p>Nothing uploaded. No server. No account. No watermark. Free forever.</p></div>
-</div>
+<!-- Creator card -->
+<aside class="creator-card" aria-label="About the creator">
+  <div class="creator-text">
+    <div class="creator-eyebrow">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
+      <span>BUILT BY AN ARTIST, FOR ARTISTS</span>
+    </div>
+    <p class="creator-line">I made this tool because every existing Canvas maker wanted my email and added a watermark on my exports. Made by <a class="creator-name" href="https://open.spotify.com/artist/22Y35XRBlb4LwoI3QrJQBt" target="_blank" rel="noopener"><b>Anton Zinoviev</b> ↗</a> — listen to my music while you are here</p>
+  </div>
+  <div class="creator-embed-slot">
+    <button class="creator-embed-ph" id="creatorEmbedPh" type="button" aria-label="Load Spotify player">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
+      <span>▶ Load Spotify player</span>
+    </button>
+  </div>
+</aside>
 
-<!-- SEO CONTENT: long-form, keyword-rich, schema-matched -->
+<!-- SEO CONTENT: clean, single-style -->
 <section class="seo">
   <div class="seo-inner">
 
-    <h2 id="what-is">What is a Spotify Canvas?</h2>
-    <p>A <b>Spotify Canvas</b> is a 3–8 second vertical looping video that replaces a track's cover art in the Now Playing view on the Spotify mobile app. Spotify launched Canvas in 2019 and made it free for every artist. According to Spotify's own data, tracks with a Canvas see a measurable lift in shares, saves, playlist adds and time spent. Canvas only plays on iOS and Android — not on desktop, web player, or smart speakers — so the format is optimised for the phone-screen Now Playing experience.</p>
-    <p>Canvas is uploaded through <a href="https://artists.spotify.com/canvas" target="_blank" rel="noopener">Spotify for Artists</a>, not through your distributor. You don't need <b>DistroKid</b>, Tunecore, Amuse or CD Baby to add it — only access to the Spotify for Artists team for the track. <b>spotifyedits.com</b> generates the MP4; you upload it.</p>
-
-    <h2 id="specs">Spotify Canvas dimensions and specs (verified)</h2>
-    <p>Most upload failures come from the wrong file spec. The tool above locks every export to Spotify's official requirements — you can't accidentally produce a non-compliant file.</p>
-    <dl class="spec-list">
-      <div><dt>Canvas</dt><dd>9:16 vertical MP4 (H.264), <b>3–8 seconds</b>, minimum <b>720×1280</b>, recommended <b>1080×1920</b>, sRGB.</dd></div>
-      <div><dt>Header</dt><dd><b>2660×1140</b> minimum (also 3990×1710 retina), JPEG or PNG, sRGB. Artist name overlays the lower-left.</dd></div>
-      <div><dt>Avatar</dt><dd><b>750×750</b> minimum (1500×1500 retina), JPEG or PNG, square. Spotify crops to a circle in the UI.</dd></div>
-      <div><dt>Cover Art</dt><dd><b>3000×3000</b> ideal (1600×1600 minimum), 1:1 square JPEG, sRGB, under 10 MB.</dd></div>
-      <div><dt>Aspect ratio</dt><dd>Canvas: 9:16 — same as TikTok / Reels / YouTube Shorts.</dd></div>
-      <div><dt>File format</dt><dd>Canvas: MP4 only (H.264 in this tool). Spotify rejects MOV, WEBM, GIF.</dd></div>
-      <div><dt>File size</dt><dd>Keep Canvas MP4 under ~10 MB for fastest upload. This tool encodes at ~5 Mbps, typical output is 3–6 MB.</dd></div>
-      <div><dt>Audio</dt><dd>Canvas is muted on Spotify. Audio in your file is ignored — this tool exports video-only MP4.</dd></div>
-    </dl>
-
-    <h2 id="how-to">How to make a Spotify Canvas (step by step)</h2>
-    <ol class="guide">
-      <li>Pick the <b>Canvas</b> format tab at the top of this page (selected by default).</li>
-      <li>Drop a photo (JPG / PNG / WEBP) or short video (MP4 / MOV / WEBM). For a still photo, pick an effect — <b>Slow zoom in</b>, <b>Slow zoom out</b>, <b>Pan up</b>, <b>Pan down</b>, <b>Breathe</b>, or <b>Static</b>.</li>
-      <li>Adjust the 9:16 crop with zoom and drag. For video, set <b>Start</b> and <b>End</b> — the clip must be between 3 and 8 seconds.</li>
-      <li>Tick <b>Seamless loop</b> and pick a crossfade length (0.3s, 0.5s, or 0.8s). The tool blends the last frames into the first frames using cosine easing, producing a mathematically seamless transition.</li>
-      <li>Click <b>Export MP4</b>. The file encodes locally in your browser using the WebCodecs H.264 encoder. Save the MP4 and upload it to Spotify for Artists → your track → Canvas.</li>
-    </ol>
-
-    <h2 id="upload">How to upload your Canvas to Spotify</h2>
-    <ol class="guide">
-      <li>Sign in at <a href="https://artists.spotify.com" target="_blank" rel="noopener">artists.spotify.com</a> with the team account that owns the track.</li>
-      <li>Open <b>Music → Releases</b> and select the song.</li>
-      <li>Click the <b>Canvas</b> tab on the track page.</li>
-      <li>Upload the 9:16 MP4 you exported from spotifyedits.com.</li>
-      <li>Save and publish. The Canvas typically goes live within minutes for most listeners.</li>
-    </ol>
-
-    <h2 id="loop">Loop styles: Continuous, Hard Cut, Rebound</h2>
-    <p>Spotify's official Canvas guidelines describe three loop types and they look very different on a phone screen:</p>
-    <ul class="diff">
-      <li><b>Continuous Loop</b> — end blends into start. Looks premium, you don't notice the restart. This is what spotifyedits.com produces with the seamless-loop crossfade.</li>
-      <li><b>Hard Cut</b> — video just restarts at the first frame. Cheap-looking jitter every cycle.</li>
-      <li><b>Rebound</b> (ping-pong) — plays forward, then reverses. Works for some abstract motion but reads as obvious on anything with directional movement.</li>
-    </ul>
-
-    <h2 id="every-format">Every Spotify image format, in one tool</h2>
-    <h3 style="font-family:var(--serif);font-size:20px;margin:8px 0 6px">Spotify Header / Banner — 2660×1140</h3>
-    <p>The <b>Spotify Header</b> (sometimes called the <i>Spotify banner</i>) sits at the top of your artist page on mobile and desktop. Minimum 2660×1140 (we also export 3990×1710 for retina). Spotify overlays your artist name and avatar on the lower-left, so keep important visual detail away from that corner.</p>
-    <h3 style="font-family:var(--serif);font-size:20px;margin:14px 0 6px">Spotify Avatar / Profile picture — 750×750</h3>
-    <p>The <b>Spotify avatar</b> is the round profile picture in the header, search results, and listener following lists. Minimum 750×750, recommended 1500×1500. Spotify crops to a circle, so center your subject — anything in the corners gets cut.</p>
-    <h3 style="font-family:var(--serif);font-size:20px;margin:14px 0 6px">Spotify Cover Art — 3000×3000</h3>
-    <p>Album / single <b>Cover Art</b> is enforced at the distributor level (DistroKid, Tunecore, Amuse, CD Baby): 1:1 square, 3000×3000 ideal, sRGB JPEG. spotifyedits.com gives you a clean crop tool when your source isn't square.</p>
-
-    <h2 id="why-different">Why spotifyedits.com is different</h2>
-    <ul class="diff">
-      <li><b>Truly free, no signup.</b> No email, no DistroKid account, no Pro paywall to remove watermarks.</li>
-      <li><b>Files never leave your device.</b> Encoding runs in the browser via the WebCodecs H.264 encoder — verifiable: turn off Wi-Fi after the page loads, the export still works.</li>
-      <li><b>All four formats in one place</b> — Canvas, Header, Avatar, Cover Art — at Spotify's exact specs.</li>
-      <li><b>Real seamless-loop crossfade.</b> 0.3s / 0.5s / 0.8s, cosine easing, mathematically blended in the encoded MP4 — not just a CSS preview trick.</li>
-      <li><b>Image-to-video effects.</b> Static photos become living Canvases via slow zoom, pan, breathe, or static.</li>
-      <li><b>No watermark, ever.</b> No corner logo, no "made with X", nothing.</li>
-    </ul>
-
-    <h2 id="downloader">Note on Spotify Canvas downloaders</h2>
-    <p>Some users search for a "Spotify Canvas downloader" hoping to grab another artist's Canvas video. <b>spotifyedits.com is a Canvas <i>maker</i>, not a downloader.</b> Other artists' Canvases are their own copyrighted material; downloading and re-using them without permission is a copyright issue. If you want to <i>re-download your own Canvas</i> after uploading it, you can do that anytime from Spotify for Artists.</p>
-
-    <h2 id="faq">Frequently asked questions</h2>
-    <div class="faq">
-      <details><summary>What are the exact Spotify Canvas dimensions?</summary><p>Spotify Canvas is a vertical 9:16 MP4. Minimum 720×1280, recommended 1080×1920. Duration 3–8 seconds. The tool above exports at exactly these sizes.</p></details>
-      <details><summary>How long does a Spotify Canvas have to be?</summary><p>3 to 8 seconds. Anything outside that range is rejected at upload. The trim slider in this tool prevents you from going over.</p></details>
-      <details><summary>What is the aspect ratio for Spotify Canvas?</summary><p>9:16, the same vertical ratio as TikTok or Instagram Reels. The crop frame is locked to 9:16 so you can't accidentally export the wrong shape.</p></details>
-      <details><summary>Is spotifyedits.com really free, with no watermark?</summary><p>Yes. No signup, no account, no email, no watermark. The tool runs entirely in your browser using WebCodecs — your files never leave your device. You can verify this by going offline after the page loads; the tool still works.</p></details>
-      <details><summary>How do I make a seamless looping Canvas?</summary><p>Tick the "Seamless loop" checkbox before export and pick a crossfade length (0.3s, 0.5s, or 0.8s). The tool blends the last frames into the first frames using cosine easing — you get the "Continuous Loop" style described in Spotify's own Canvas guidelines.</p></details>
-      <details><summary>What Spotify formats does this tool support?</summary><p>Canvas (9:16 MP4 at 720×1280 or 1080×1920, or a still JPEG), Header / Banner (2660×1140 or 3990×1710), Avatar (750×750 or 1500×1500), and Cover Art (1600×1600 or 3000×3000).</p></details>
-      <details><summary>Why does my Canvas upload keep failing on Spotify?</summary><p>The three most common reasons: wrong aspect ratio (must be exactly 9:16), wrong duration (must be 3–8 seconds), or wrong file format (must be MP4 H.264). This tool enforces all three — exports always pass Spotify's spec check.</p></details>
-      <details><summary>What is the Spotify profile picture / avatar size?</summary><p>Minimum 750×750, recommended 1500×1500 for retina. JPEG or PNG, sRGB, square. Spotify crops the avatar to a circle in the UI, so keep important detail centered.</p></details>
-      <details><summary>What is the Spotify Header / banner image size?</summary><p>2660×1140 minimum (≈2.33:1), JPEG or PNG. Artist name and avatar overlay the lower-left, so leave that area visually clean.</p></details>
-      <details><summary>What size should Spotify Cover Art be?</summary><p>1:1 square, 3000×3000 pixels ideal (1600×1600 minimum). JPEG, sRGB, under 10 MB. Distributors like DistroKid, Tunecore and Amuse enforce this at upload.</p></details>
-      <details><summary>Is my video uploaded to a server?</summary><p>No. All processing — cropping, rendering, H.264 encoding via WebCodecs — happens locally in your browser. Nothing is sent anywhere.</p></details>
-      <details><summary>Can I download someone else's Spotify Canvas with this tool?</summary><p>No. spotifyedits.com is a Canvas <i>maker</i>, not a downloader. Other artists' Canvases are their copyrighted material. You can re-download your own Canvas anytime from Spotify for Artists.</p></details>
-      <details><summary>Do I need DistroKid, Tunecore or Amuse to add a Canvas?</summary><p>No. Canvas is uploaded through Spotify for Artists, not through your distributor. As long as the track is live and you're on the Spotify for Artists team, you can add a Canvas yourself with this tool's MP4.</p></details>
-      <details><summary>What's the difference between Continuous, Hard Cut and Rebound loops?</summary><p>Continuous Loop — seamless, end blends into start (what this tool produces). Hard Cut — video restarts with a visible jump. Rebound — ping-pong forward/reverse. Continuous looks the most professional.</p></details>
-      <details><summary>Where does Spotify Canvas appear?</summary><p>In the Now Playing view on the Spotify mobile app (iOS and Android). It does not show on desktop, web player, or smart speakers.</p></details>
-      <details><summary>Which browsers does this tool work in?</summary><p>Any modern Chromium-based browser (Chrome 94+, Edge 94+, Brave, Opera, Arc) and Safari 16.4+. Firefox doesn't yet support WebCodecs MP4 encoding — JPEG export still works there, but MP4 won't.</p></details>
+    <div class="seo-block">
+      <h2 id="specs">Spotify Canvas — verified specs</h2>
+      <dl class="spec-list">
+        <div><dt>Canvas</dt><dd>9:16 vertical MP4 (H.264), <b>3–8 seconds</b>, min <b>720×1280</b>, rec <b>1080×1920</b>, sRGB.</dd></div>
+        <div><dt>Header</dt><dd><b>2660×1140</b> min (3990×1710 retina), JPEG or PNG, sRGB.</dd></div>
+        <div><dt>Avatar</dt><dd><b>750×750</b> min (1500×1500 retina), JPEG or PNG, square. Spotify crops to a circle.</dd></div>
+        <div><dt>Cover Art</dt><dd><b>3000×3000</b> ideal (1600×1600 min), 1:1 square JPEG, sRGB, &lt;10 MB.</dd></div>
+        <div><dt>File format</dt><dd>Canvas: MP4 only. Spotify rejects MOV / WEBM / GIF.</dd></div>
+        <div><dt>Audio</dt><dd>Canvas is muted on Spotify. Audio in your file is ignored.</dd></div>
+      </dl>
     </div>
+
+    <details class="seo-more">
+      <summary><span>Spotify Canvas — full guide</span></summary>
+      <div class="seo-more-body">
+        <div>
+          <h3 id="what-is">What is a Spotify Canvas?</h3>
+          <p>A <b>Spotify Canvas</b> is a 3–8 second vertical looping video that replaces a track's cover art in the Now Playing view on the Spotify mobile app. Spotify launched Canvas in 2019 and made it free for every artist. Tracks with a Canvas see a measurable lift in shares, saves, playlist adds and time spent. Canvas only plays on iOS and Android — not on desktop, web player, or smart speakers.</p>
+          <p>Canvas is uploaded through <a href="https://artists.spotify.com/canvas" target="_blank" rel="noopener">Spotify for Artists</a>, not through your distributor. You don't need <b>DistroKid</b>, Tunecore, Amuse or CD Baby to add it — only access to the Spotify for Artists team for the track.</p>
+        </div>
+
+        <div>
+          <h3 id="how-to">How to make a Spotify Canvas</h3>
+          <ol>
+            <li>Pick the <b>Canvas</b> format tab at the top.</li>
+            <li>Drop a photo (JPG/PNG/WEBP) or video (MP4/MOV/WEBM). For a still photo, pick an effect — Slow zoom, Pan, Breathe, or Static.</li>
+            <li>Adjust crop. For video, set Start/End — clip must be 3–8 seconds.</li>
+            <li>Tick <b>Seamless loop</b> and pick crossfade length (0.3s / 0.5s / 0.8s).</li>
+            <li>Click <b>Export MP4</b>. Encodes locally via WebCodecs H.264. Upload to Spotify for Artists → track → Canvas.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3 id="upload">How to upload to Spotify</h3>
+          <ol>
+            <li>Sign in at <a href="https://artists.spotify.com" target="_blank" rel="noopener">artists.spotify.com</a>.</li>
+            <li>Open Music → Releases, pick the track.</li>
+            <li>Click the <b>Canvas</b> tab.</li>
+            <li>Upload the 9:16 MP4. Save and publish.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3 id="loop">Loop styles</h3>
+          <p>Spotify's guidelines describe three: <b>Continuous Loop</b> — end blends into start (what this tool produces). <b>Hard Cut</b> — visible restart jitter. <b>Rebound</b> — ping-pong forward/reverse. Continuous looks the most professional.</p>
+        </div>
+
+        <div>
+          <h3 id="every-format">Header / Avatar / Cover Art</h3>
+          <p><b>Header</b> sits at the top of your artist page. Min 2660×1140. Artist name + avatar overlay the lower-left — keep that area visually clean.</p>
+          <p><b>Avatar</b> is the round profile picture. Min 750×750, rec 1500×1500. Center your subject.</p>
+          <p><b>Cover Art</b> is enforced at the distributor level: 3000×3000 ideal, sRGB JPEG, &lt;10 MB.</p>
+        </div>
+
+        <div>
+          <h3 id="why-different">Why spotifyedits.com is different</h3>
+          <ul>
+            <li><b>Truly free, no signup.</b> No email, no DistroKid account.</li>
+            <li><b>Files never leave your device.</b> Encoding runs in the browser via WebCodecs H.264.</li>
+            <li><b>All four formats in one tool.</b> Canvas, Header, Avatar, Cover Art — exact specs.</li>
+            <li><b>Real seamless-loop crossfade,</b> not a preview trick — math is in the encoded MP4.</li>
+            <li><b>No watermark, ever.</b></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 id="downloader">Note on "Canvas downloaders"</h3>
+          <p>spotifyedits.com is a Canvas <i>maker</i>, not a downloader. Other artists' Canvases are copyrighted. You can re-download your own Canvas from Spotify for Artists at any time.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="seo-more">
+      <summary><span id="faq">FAQ — 16 common questions</span></summary>
+      <div class="seo-more-body">
+        <div class="faq">
+          <details><summary>What are the exact Spotify Canvas dimensions?</summary><p>Vertical 9:16 MP4. Min 720×1280, rec 1080×1920. Duration 3–8 seconds.</p></details>
+          <details><summary>How long does a Spotify Canvas have to be?</summary><p>3 to 8 seconds. Outside that range is rejected at upload.</p></details>
+          <details><summary>What is the aspect ratio for Spotify Canvas?</summary><p>9:16 — same vertical ratio as TikTok / Reels. The crop frame is locked to 9:16.</p></details>
+          <details><summary>Is spotifyedits.com really free, with no watermark?</summary><p>Yes. No signup, no email, no watermark. Runs entirely in your browser via WebCodecs.</p></details>
+          <details><summary>How do I make a seamless looping Canvas?</summary><p>Tick "Seamless loop" before export and pick a crossfade length. The tool blends last frames into first frames using cosine easing.</p></details>
+          <details><summary>What Spotify formats does this tool support?</summary><p>Canvas (9:16 MP4), Header (2660×1140), Avatar (750×750 or 1500×1500), Cover Art (1600×1600 or 3000×3000).</p></details>
+          <details><summary>Why does my Canvas upload keep failing?</summary><p>Three common reasons: wrong aspect ratio (must be 9:16), wrong duration (3–8 sec), or wrong format (must be MP4). This tool enforces all three.</p></details>
+          <details><summary>What is the Spotify profile picture / avatar size?</summary><p>Min 750×750, rec 1500×1500 for retina. JPEG or PNG, sRGB, square.</p></details>
+          <details><summary>What is the Spotify Header size?</summary><p>2660×1140 min (≈2.33:1), JPEG or PNG. Artist name + avatar overlay the lower-left.</p></details>
+          <details><summary>What size should Spotify Cover Art be?</summary><p>1:1 square, 3000×3000 ideal. JPEG, sRGB, under 10 MB.</p></details>
+          <details><summary>Is my video uploaded to a server?</summary><p>No. All processing happens locally in your browser. Nothing is sent anywhere.</p></details>
+          <details><summary>Can I download someone else's Spotify Canvas?</summary><p>No, this is a maker not a downloader. Other artists' Canvases are copyrighted. You can re-download your own from Spotify for Artists.</p></details>
+          <details><summary>Do I need DistroKid, Tunecore or Amuse?</summary><p>No. Canvas is uploaded through Spotify for Artists, not through your distributor.</p></details>
+          <details><summary>What's Continuous vs Hard Cut vs Rebound?</summary><p>Continuous — seamless blend (what we produce). Hard Cut — visible jump. Rebound — ping-pong forward/reverse.</p></details>
+          <details><summary>Where does Spotify Canvas appear?</summary><p>Now Playing view on Spotify mobile (iOS / Android). Not on desktop, web player, or smart speakers.</p></details>
+          <details><summary>Which browsers work?</summary><p>Chrome 94+, Edge 94+, Brave, Opera, Arc, Safari 16.4+. Firefox doesn't support WebCodecs MP4 yet.</p></details>
+        </div>
+      </div>
+    </details>
 
   </div>
 </section>
@@ -798,6 +905,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 </div>
 
 <video id="srcVid" style="display:none" muted playsinline></video>
+<video id="srcVid2" style="display:none" muted playsinline></video>
 
 <script type="module">
 const $=s=>document.querySelector(s);
@@ -808,20 +916,46 @@ let zoom=1,panX=0,panY=0,drag=false,lastX,lastY;
 let cropX,cropY,cropW,cropH;
 let outW=1080,outH=1920;
 let vidDur=0,vidAnim=null;
-let pvStartFrames=[],pvCfDurCached=0;
-function resetPvFrames(){pvStartFrames=[];pvCfDurCached=0}
+// Trim-change handler: keep both videos in sync; dual-video RAF picks up rest
+function resyncVids(){
+  if(mode!=='video')return;
+  const ts=parseFloat($('#ts').value)||0;
+  // Reset secondary to trim start, keep primary near trim start
+  if(typeof srcVid2!=='undefined'){srcVid2.pause();srcVid2.currentTime=ts}
+  if(typeof vidPhase!=='undefined')vidPhase='solo';
+}
 let R=9/16;
 let curFmt='canvas';
 
 const FMTS={
   canvas:{r:9/16,sizes:[[720,1280],[1080,1920]],labels:['720×1280','1080×1920'],mp4:true,accept:'image/*,video/*,.mp4,.mov,.webm',
-    specs:['9:16 ratio','1080 × 1920','JPEG or MP4','3-8 seconds']},
+    specs:['9:16 ratio','1080 × 1920','JPEG or MP4','3-8 seconds'],
+    rule:'A 3–8 second vertical loop that replaces cover art in the Now Playing view on the Spotify mobile app.',
+    dropHint:'Photo or video — any size, we crop & encode',
+    dropExt:'JPG · PNG · WEBP · MP4 · MOV · WEBM',
+    stockLabel:'Browse free stock videos',
+    stockKind:'video',stockOrient:'portrait'},
   header:{r:2660/1140,sizes:[[2660,1140],[3990,1710]],labels:['2660×1140','3990×1710'],mp4:false,accept:'image/*',
-    specs:['2660 × 1140 min','Landscape','JPEG or PNG','< 20 MB']},
+    specs:['2660 × 1140 min','Landscape','JPEG or PNG','< 20 MB'],
+    rule:'The horizontal banner at the top of your artist page. Artist name + avatar overlay the lower-left — keep it clean.',
+    dropHint:'Drop a landscape photo — we crop to 2660×1140',
+    dropExt:'JPG · PNG · WEBP',
+    stockLabel:'Browse free stock photos',
+    stockKind:'photo',stockOrient:'landscape'},
   avatar:{r:1,sizes:[[750,750],[1500,1500]],labels:['750×750','1500×1500'],mp4:false,accept:'image/*',
-    specs:['Square 1:1','750px minimum','JPEG or PNG','Crops to circle']},
+    specs:['Square 1:1','750px minimum','JPEG or PNG','Crops to circle'],
+    rule:'Round profile picture. Spotify crops to a circle — keep your subject centered.',
+    dropHint:'Drop a photo — we crop to a 1:1 square',
+    dropExt:'JPG · PNG · WEBP',
+    stockLabel:'Browse free stock photos',
+    stockKind:'photo',stockOrient:'square'},
   cover:{r:1,sizes:[[1600,1600],[3000,3000]],labels:['1600×1600','3000×3000'],mp4:false,accept:'image/*',
-    specs:['Square 1:1','3000px ideal','JPEG or PNG','sRGB color']},
+    specs:['Square 1:1','3000px ideal','JPEG or PNG','sRGB color'],
+    rule:'Album / single artwork. Distributors enforce 3000×3000 sRGB JPEG, under 10 MB.',
+    dropHint:'Drop a photo — we crop to a 1:1 square',
+    dropExt:'JPG · PNG · WEBP',
+    stockLabel:'Browse free stock photos',
+    stockKind:'photo',stockOrient:'square'},
 };
 
 function setFmt(f){
@@ -831,6 +965,19 @@ function setFmt(f){
   document.querySelectorAll('.fmt').forEach(b=>b.classList.toggle('on',b.dataset.fmt===f));
   // Update specs
   const strip=$('#specsStrip');strip.innerHTML=d.specs.map(s=>`<span class="ss">${s}</span>`).join('');
+  // Update rule line
+  const rl=$('#fmtRule');if(rl)rl.textContent=d.rule||'';
+  // Update drop zone text
+  const dh=$('#dropHint'),de=$('#dropExt');
+  if(dh)dh.textContent=d.dropHint||'Drop your file here';
+  if(de)de.textContent=d.dropExt||'';
+  // Update stock button label + icon
+  const sbl=$('#stockBtnLabel');if(sbl)sbl.textContent=d.stockLabel||'Browse free stock';
+  const iconV=$('#stockIconVideo'),iconP=$('#stockIconPhoto');
+  if(iconV&&iconP){
+    if(d.stockKind==='photo'){iconV.classList.add('hidden');iconP.classList.remove('hidden')}
+    else{iconV.classList.remove('hidden');iconP.classList.add('hidden')}
+  }
   // Update size buttons
   const sr=$('#sizeRow');
   sr.innerHTML=d.sizes.map((s,i)=>`<button class="sb${i===1?' on':''}" data-w="${s[0]}" data-h="${s[1]}">${d.labels[i]}</button>`).join('');
@@ -838,10 +985,11 @@ function setFmt(f){
   // Show/hide MP4 button
   if(!d.mp4){$('#exp').classList.add('hidden');$('#ej').classList.remove('hidden')}
   else{$('#exp').classList.remove('hidden')}
-  // Stock browser only for video-capable formats (Canvas)
+  // Stock browser shown for ALL formats (videos for Canvas, photos for image formats)
   const sb=$('#stockBtn'),so=$('#stockOr');
-  if(d.mp4){if(sb)sb.style.display='';if(so)so.style.display=''}
-  else{if(sb)sb.style.display='none';if(so)so.style.display='none'}
+  if(sb)sb.style.display='';
+  if(so)so.style.display='';
+  // Note: format-aware re-search happens automatically next time user opens Pexels modal
 }
 document.querySelectorAll('.fmt').forEach(b=>{b.onclick=()=>setFmt(b.dataset.fmt)});
 
@@ -932,16 +1080,51 @@ function initImage(f){
   };img.src=e.target.result};r.readAsDataURL(f);
 }
 
-// VIDEO
+// VIDEO — dual-video preview (eliminates seek-judder)
+const srcVid2=document.getElementById('srcVid2');
+let vidA=srcVid,vidB=srcVid2,vidPhase='solo';
+function drawDualVideo(vA,vB,alphaB){
+  const sw=vA.videoWidth,sh=vA.videoHeight;
+  ctx.clearRect(0,0,cv.width,cv.height);
+  ctx.fillStyle='#E6E3DC';ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.globalAlpha=1;
+  ctx.drawImage(vA,panX,panY,sw*zoom,sh*zoom);
+  if(alphaB>0.001&&vB){
+    ctx.globalAlpha=alphaB;
+    ctx.drawImage(vB,panX,panY,sw*zoom,sh*zoom);
+    ctx.globalAlpha=1;
+  }
+  // Dim outside crop
+  ctx.fillStyle='rgba(250,250,248,.6)';
+  ctx.fillRect(0,0,cv.width,cropY);
+  ctx.fillRect(0,cropY+cropH,cv.width,cv.height-cropY-cropH);
+  ctx.fillRect(0,cropY,cropX,cropH);
+  ctx.fillRect(cropX+cropW,cropY,cv.width-cropX-cropW,cropH);
+  ctx.strokeStyle='rgba(29,185,84,.5)';ctx.lineWidth=1.5;
+  ctx.strokeRect(cropX,cropY,cropW,cropH);
+  ctx.strokeStyle='rgba(29,185,84,.1)';ctx.lineWidth=.5;
+  for(let i=1;i<3;i++){
+    ctx.beginPath();ctx.moveTo(cropX,cropY+cropH/3*i);ctx.lineTo(cropX+cropW,cropY+cropH/3*i);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cropX+cropW/3*i,cropY);ctx.lineTo(cropX+cropW/3*i,cropY+cropH);ctx.stroke();
+  }
+  const m=10;ctx.strokeStyle='rgba(29,185,84,.7)';ctx.lineWidth=2;
+  [[cropX,cropY,1,1],[cropX+cropW,cropY,-1,1],[cropX,cropY+cropH,1,-1],[cropX+cropW,cropY+cropH,-1,-1]].forEach(([x,y,dx,dy])=>{
+    ctx.beginPath();ctx.moveTo(x,y+dy*m);ctx.lineTo(x,y);ctx.lineTo(x+dx*m,y);ctx.stroke();
+  });
+}
 function initVideo(f){
   mode='video';
-  // Cancel any previous RAF loop
   if(vidAnim){cancelAnimationFrame(vidAnim);vidAnim=null}
-  // Clean previous event handlers and reset crossfade snapshots
-  srcVid.ontimeupdate=null;srcVid.onended=null;
-  resetPvFrames();
-  srcVid.src=URL.createObjectURL(f);
-  srcVid.onloadedmetadata=()=>{
+  // Clean both videos
+  srcVid.ontimeupdate=null;srcVid.onended=null;srcVid2.ontimeupdate=null;srcVid2.onended=null;
+  srcVid.pause();srcVid2.pause();
+  vidA=srcVid;vidB=srcVid2;vidPhase='solo';
+  // Single blob URL — both elements share the same source
+  const url=URL.createObjectURL(f);
+  srcVid.src=url;srcVid2.src=url;
+  let loaded=0;
+  const onMeta=()=>{
+    loaded++;if(loaded<2)return;
     vidDur=srcVid.duration;
     $('#ts').max=vidDur;$('#ts').value=0;$('#te').max=vidDur;$('#te').value=Math.min(7.9,vidDur);
     updTrim();setupCrop(srcVid.videoWidth,srcVid.videoHeight);
@@ -949,95 +1132,63 @@ function initVideo(f){
     $('#badge').textContent='VIDEO → CANVAS';
     $('#imgCtl').classList.add('hidden');$('#vidCtl').classList.remove('hidden');
     $('#ej').classList.add('hidden');$('#exp').classList.remove('hidden');
-
-    // Helper: jump to trim start and force play
-    const jumpToStart=()=>{
-      const ts=parseFloat($('#ts').value)||0;
-      srcVid.currentTime=ts;
-      const p=srcVid.play();
-      if(p&&p.catch)p.catch(()=>{setTimeout(()=>srcVid.play().catch(()=>{}),50)})
-    };
-
-    // Trim-end watcher via timeupdate (fires ~4x/sec during playback)
-    srcVid.ontimeupdate=()=>{
-      if(mode!=='video')return;
-      const ts=parseFloat($('#ts').value)||0;
-      const te=parseFloat($('#te').value)||vidDur;
-      if(srcVid.currentTime>=te-0.05){jumpToStart()}
-    };
-
-    // If video reaches end of file before trim-end catches it
-    srcVid.onended=()=>{if(mode==='video')jumpToStart()};
-
+    const ts0=parseFloat($('#ts').value)||0;
+    srcVid.currentTime=ts0;srcVid2.currentTime=ts0;
     srcVid.play().catch(()=>{});
-
-    // RAF: canvas redraw + paused-guard + crossfade preview
+    // RAF — dual-video state machine
     (function loop(){
       if(mode!=='video'){vidAnim=null;return}
       const ts=parseFloat($('#ts').value)||0;
       const te=parseFloat($('#te').value)||vidDur;
-      // Paused-guard: if video stopped but we want it playing, restart it
-      if(srcVid.paused&&srcVid.readyState>=2){
-        if(srcVid.currentTime<ts-0.05||srcVid.currentTime>=te-0.05){srcVid.currentTime=ts}
-        srcVid.play().catch(()=>{})
+      const cfOn=$('#cf')&&$('#cf').checked;
+      const trimLen=te-ts;
+      const cfDur=cfOn?Math.min(+$('#cfDur').value||0.5,Math.max(0.05,trimLen/2-0.05)):0;
+      // Paused-guard: keep primary playing inside trim range
+      if(vidA.paused&&vidA.readyState>=2){
+        if(vidA.currentTime<ts-0.1||vidA.currentTime>te+0.1){vidA.currentTime=ts}
+        vidA.play().catch(()=>{});
       }
-      redraw();
-      // Crossfade preview overlay
-      const useCf=$('#cf')&&$('#cf').checked;
-      if(useCf){
-        const trimLen=te-ts;
-        if(trimLen>0.2){
-          const cfDur=Math.min(+$('#cfDur').value||0.5,trimLen/2-0.05);
-          // Reset snapshots if settings changed
-          if(pvCfDurCached!==cfDur){resetPvFrames();pvCfDurCached=cfDur}
-          const nSlots=15;
-          const tInTrim=Math.max(0,srcVid.currentTime-ts);
-          // CAPTURE zone: first cfDur seconds of trim range
-          if(tInTrim<cfDur){
-            const slotIdx=Math.floor((tInTrim/cfDur)*nSlots);
-            if(slotIdx>=0&&slotIdx<nSlots&&!pvStartFrames[slotIdx]){
-              try{
-                const cc=document.createElement('canvas');cc.width=cv.width;cc.height=cv.height;
-                cc.getContext('2d').drawImage(cv,0,0);
-                pvStartFrames[slotIdx]=cc
-              }catch(e){}
-            }
-          }
-          // BLEND zone: last cfDur seconds of trim range
-          const tFromEnd=te-srcVid.currentTime;
-          if(tFromEnd>=0&&tFromEnd<cfDur){
-            const progress=1-(tFromEnd/cfDur);
-            // Cosine easing for smoother perceived transition
-            const alpha=0.5-0.5*Math.cos(progress*Math.PI);
-            // CRITICAL: reversed buffer index — at end of blend zone we want FIRST frame (slot 0)
-            const slotIdx=Math.max(0,nSlots-1-Math.floor(progress*nSlots));
-            const snap=pvStartFrames[slotIdx];
-            if(snap){
-              ctx.globalAlpha=alpha;
-              ctx.drawImage(snap,0,0);
-              ctx.globalAlpha=1
-            }
-          }
-        }
+      // Dual-video preview with crossfade alpha blend (smooth seamless loop look)
+      // Slow-mo toggle independently sets 0.5× playbackRate
+      const sloOn=$('#slo')&&$('#slo').checked;
+      const targetRate=sloOn?0.5:1;
+      if(vidA.playbackRate!==targetRate)vidA.playbackRate=targetRate;
+      if(vidB.playbackRate!==targetRate)vidB.playbackRate=targetRate;
+      const remaining=te-vidA.currentTime;
+      const visibleBlend=cfDur>0;
+      const triggerLead=visibleBlend?cfDur+0.25:0.2;
+      if(vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
+        if(Math.abs(vidB.currentTime-ts)>0.05)vidB.currentTime=ts;
+        vidB.play().catch(()=>{});
+        vidPhase='cf';
       }
-      vidAnim=requestAnimationFrame(loop)
+      let alphaB=0;
+      if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDur){
+        const linT=Math.max(0,Math.min(1,(cfDur-remaining)/cfDur));
+        alphaB=0.5-0.5*Math.cos(linT*Math.PI);
+      }
+      drawDualVideo(vidA,vidB,alphaB);
+      // Swap when primary reaches trim end (or video file ends)
+      if(vidA.currentTime>=te-0.02||vidA.ended){
+        vidA.pause();vidA.currentTime=ts;
+        const tmp=vidA;vidA=vidB;vidB=tmp;
+        vidPhase='solo';
+        if(vidA.paused&&vidA.readyState>=2)vidA.play().catch(()=>{});
+      }
+      vidAnim=requestAnimationFrame(loop);
     })();
   };
+  srcVid.onloadedmetadata=onMeta;
+  srcVid2.onloadedmetadata=onMeta;
 }
 function updTrim(){const s=parseFloat($('#ts').value),e=parseFloat($('#te').value),l=Math.max(0,e-s);$('#tsD').textContent=fmt(s);$('#teD').textContent=fmt(e);const cd=$('#clD');cd.textContent=l.toFixed(1)+'s';cd.className=(l<3||l>8)?'cv bad':'cv'}
 function fmt(t){return Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0')}
-$('#ts').oninput=function(){if(+this.value>=+$('#te').value)this.value=Math.max(0,+$('#te').value-3);if(srcVid.src)srcVid.currentTime=+this.value;updTrim();resetPvFrames()};
-$('#te').oninput=function(){if(+this.value<=+$('#ts').value)this.value=+$('#ts').value+3;updTrim();resetPvFrames()};
-// Reset preview snapshots when crossfade toggled or duration changed
-document.addEventListener('DOMContentLoaded',()=>{
-  const cfEl=document.getElementById('cf'),cfDurEl=document.getElementById('cfDur');
-  if(cfEl)cfEl.addEventListener('change',resetPvFrames);
-  if(cfDurEl)cfDurEl.addEventListener('change',resetPvFrames);
-});
-// Also bind immediately in case DOMContentLoaded already fired
+$('#ts').oninput=function(){if(+this.value>=+$('#te').value)this.value=Math.max(0,+$('#te').value-3);if(srcVid.src){srcVid.currentTime=+this.value}updTrim();resyncVids()};
+$('#te').oninput=function(){if(+this.value<=+$('#ts').value)this.value=+$('#ts').value+3;updTrim();resyncVids()};
+// Crossfade settings change: resync videos so dual-video state restarts cleanly
 {const cfEl=document.getElementById('cf'),cfDurEl=document.getElementById('cfDur');
- if(cfEl)cfEl.addEventListener('change',resetPvFrames);
- if(cfDurEl)cfDurEl.addEventListener('change',resetPvFrames)}
+ if(cfEl)cfEl.addEventListener('change',resyncVids);
+ if(cfDurEl)cfDurEl.addEventListener('change',resyncVids)}
 
 // DOWNLOAD
 function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(a.href),10000)}
@@ -1085,29 +1236,83 @@ $('#exp').onclick=async()=>{
         ox.drawImage(img,crop.sx+(crop.sw-csw)/2+offX,crop.sy+(crop.sh-csh)/2+offY,csw,csh,0,0,outW,outH);
         // Capture first cfFrames as start-frame snapshots
         if(useCf&&i<cfFrames){const cc=new OffscreenCanvas(outW,outH);cc.getContext('2d').drawImage(oc,0,0);startFrames[i]=cc}
-        // Crossfade render: blend current with corresponding start frame (REVERSED index for seamless loop)
-        if(useCf&&i>=xStart){const j=i-xStart;const linT=(j+1)/cfFrames;const a=0.5-0.5*Math.cos(linT*Math.PI);const bufIdx=cfFrames-1-j;ox.globalAlpha=a;ox.drawImage(startFrames[bufIdx],0,0);ox.globalAlpha=1}
+        // Crossfade: blend current with reversed-index start frame (seamless loop math)
+        // linT = j/cfFrames so alpha goes 0 → ~0.99 (avoids duplicate-frame stutter at loop boundary)
+        if(useCf&&i>=xStart){const j=i-xStart;const linT=j/cfFrames;const a=0.5-0.5*Math.cos(linT*Math.PI);const bufIdx=cfFrames-1-j;ox.globalAlpha=a;ox.drawImage(startFrames[bufIdx],0,0);ox.globalAlpha=1}
         const frame=new VideoFrame(oc,{timestamp:i*(1e6/fps),duration:Math.round(1e6/fps)});
         encoder.encode(frame,{keyFrame:i%fps===0});frame.close();
         if(i%5===0){showProg(8+(i/totalFrames)*80);await new Promise(r=>setTimeout(r,0))}
       }
     }else{
-      setStatus('Extracting frames...','busy');srcVid.pause();const startT=parseFloat($('#ts').value);
+      setStatus('Extracting frames...','busy');
+      // CRITICAL: stop RAF and pause both videos so they don't fight per-frame seeks
+      if(vidAnim){cancelAnimationFrame(vidAnim);vidAnim=null}
+      const wasMode=mode;mode='exporting';
+      srcVid.pause();srcVid2.pause();
+      const xv=srcVid; // single export source (always srcVid, deterministic)
+      const startT=parseFloat($('#ts').value);
       const useCf=$('#cf').checked;
       let cfFrames=useCf?Math.round((+$('#cfDur').value||0.5)*fps):0;
       cfFrames=Math.min(cfFrames,Math.floor(totalFrames/2));
       const xStart=totalFrames-cfFrames;const startFrames=[];
-      for(let i=0;i<totalFrames;i++){
-        srcVid.currentTime=startT+i/fps;await new Promise(r=>{srcVid.onseeked=r;setTimeout(r,200)});await new Promise(r=>setTimeout(r,30));
-        ox.fillStyle='#000';ox.fillRect(0,0,outW,outH);
-        ox.drawImage(srcVid,crop.sx,crop.sy,crop.sw,crop.sh,0,0,outW,outH);
-        if(useCf&&i<cfFrames){const cc=new OffscreenCanvas(outW,outH);cc.getContext('2d').drawImage(oc,0,0);startFrames[i]=cc}
-        if(useCf&&i>=xStart){const j=i-xStart;const linT=(j+1)/cfFrames;const a=0.5-0.5*Math.cos(linT*Math.PI);const bufIdx=cfFrames-1-j;ox.globalAlpha=a;ox.drawImage(startFrames[bufIdx],0,0);ox.globalAlpha=1}
-        const frame=new VideoFrame(oc,{timestamp:i*(1e6/fps),duration:Math.round(1e6/fps)});
-        encoder.encode(frame,{keyFrame:i%fps===0});frame.close();
-        if(i%3===0){showProg(8+(i/totalFrames)*80);setStatus(`Frame ${i+1}/${totalFrames}`,'busy');await new Promise(r=>setTimeout(r,0))}
+      try{
+        for(let i=0;i<totalFrames;i++){
+          xv.currentTime=startT+i/fps;
+          await new Promise(r=>{xv.onseeked=r;setTimeout(r,250)});
+          await new Promise(r=>setTimeout(r,30));
+          ox.fillStyle='#000';ox.fillRect(0,0,outW,outH);
+          ox.drawImage(xv,crop.sx,crop.sy,crop.sw,crop.sh,0,0,outW,outH);
+          if(useCf&&i<cfFrames){const cc=new OffscreenCanvas(outW,outH);cc.getContext('2d').drawImage(oc,0,0);startFrames[i]=cc}
+          if(useCf&&i>=xStart){const j=i-xStart;const linT=j/cfFrames;const a=0.5-0.5*Math.cos(linT*Math.PI);const bufIdx=cfFrames-1-j;ox.globalAlpha=a;ox.drawImage(startFrames[bufIdx],0,0);ox.globalAlpha=1}
+          const frame=new VideoFrame(oc,{timestamp:i*(1e6/fps),duration:Math.round(1e6/fps)});
+          encoder.encode(frame,{keyFrame:i%fps===0});frame.close();
+          if(i%3===0){showProg(8+(i/totalFrames)*80);setStatus(`Frame ${i+1}/${totalFrames}`,'busy');await new Promise(r=>setTimeout(r,0))}
+        }
+      } finally {
+        xv.onseeked=null;
+        // Resume preview RAF
+        mode=wasMode;
+        vidA=srcVid;vidB=srcVid2;vidPhase='solo';
+        srcVid.currentTime=startT;srcVid2.currentTime=startT;
+        srcVid.play().catch(()=>{});
+        // Restart RAF loop manually
+        (function restartLoop(){
+          if(mode!=='video'){vidAnim=null;return}
+          const ts=parseFloat($('#ts').value)||0;
+          const te=parseFloat($('#te').value)||vidDur;
+          const cfOn=$('#cf')&&$('#cf').checked;
+          const trimLen=te-ts;
+          const cfDurR=cfOn?Math.min(+$('#cfDur').value||0.5,Math.max(0.05,trimLen/2-0.05)):0;
+          if(vidA.paused&&vidA.readyState>=2){
+            if(vidA.currentTime<ts-0.1||vidA.currentTime>te+0.1)vidA.currentTime=ts;
+            vidA.play().catch(()=>{});
+          }
+          const sloOn=$('#slo')&&$('#slo').checked;
+          const targetRate=sloOn?0.5:1;
+          if(vidA.playbackRate!==targetRate)vidA.playbackRate=targetRate;
+          if(vidB.playbackRate!==targetRate)vidB.playbackRate=targetRate;
+          const remaining=te-vidA.currentTime;
+          const visibleBlend=cfDurR>0;
+          const triggerLead=visibleBlend?cfDurR+0.25:0.2;
+          if(vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
+            if(Math.abs(vidB.currentTime-ts)>0.05)vidB.currentTime=ts;
+            vidB.play().catch(()=>{});vidPhase='cf';
+          }
+          let alphaB=0;
+          if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDurR){
+            const linT=Math.max(0,Math.min(1,(cfDurR-remaining)/cfDurR));
+            alphaB=0.5-0.5*Math.cos(linT*Math.PI);
+          }
+          drawDualVideo(vidA,vidB,alphaB);
+          if(vidA.currentTime>=te-0.02||vidA.ended){
+            vidA.pause();vidA.currentTime=ts;
+            const tmp=vidA;vidA=vidB;vidB=tmp;
+            vidPhase='solo';
+            if(vidA.paused&&vidA.readyState>=2)vidA.play().catch(()=>{});
+          }
+          vidAnim=requestAnimationFrame(restartLoop);
+        })();
       }
-      srcVid.play().catch(()=>{});
     }
     setStatus('Finalizing...','busy');showProg(92);
     await encoder.flush();encoder.close();muxer.finalize();
@@ -1123,29 +1328,55 @@ function setStatus(t,c){$('#nfo').textContent=t;$('#nfo').className='status '+c}
 function showProg(p){$('#prog').classList.add('on');$('#pf').style.width=p+'%'}
 function hideProg(){setTimeout(()=>{$('#prog').classList.remove('on');$('#pf').style.width='0%'},800)}
 
-// RESET
+// RESET — clear workspace and go back to drop zone
 $('#rst').onclick=()=>{
   ws.classList.remove('on');$('#dropArea').style.display='';fi.value='';
-  img=null;mode=null;srcVid.src='';
+  img=null;mode=null;srcVid.pause();srcVid2.pause();srcVid.src='';srcVid2.src='';vidA=srcVid;vidB=srcVid2;vidPhase='solo';
   if(vidAnim)cancelAnimationFrame(vidAnim);
   const sc=$('#wsSource');if(sc)sc.classList.add('hidden');
   setStatus('','');hideProg();
+};
+// REPLACE / X — both trigger reset; replace also opens file picker
+const _rep=document.getElementById('rep');
+if(_rep)_rep.onclick=()=>fi.click();
+const _cropX=document.getElementById('cropX');
+if(_cropX)_cropX.onclick=()=>$('#rst').click();
+
+// LAZY Spotify embed — load iframe only when user explicitly asks
+const _ph=document.getElementById('creatorEmbedPh');
+if(_ph)_ph.onclick=()=>{
+  const slot=_ph.parentElement;
+  const f=document.createElement('iframe');
+  f.className='creator-embed';
+  f.src='https://open.spotify.com/embed/artist/22Y35XRBlb4LwoI3QrJQBt?utm_source=spotifyedits&theme=0';
+  f.setAttribute('loading','lazy');
+  f.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture');
+  f.title='Anton Zinoviev on Spotify';
+  slot.innerHTML='';slot.appendChild(f);
 };
 
 // ============ PEXELS STOCK BROWSER ============
 const PEXELS_KEY='rnUwVdkZ9AZk79hIoTaIT7SKxc5nT2AJPttRG4HQI2cAlZ4eWJ6IlUS0';
 const stockModal=$('#stockModal'),stockGrid=$('#stockGrid'),stockSearch=$('#stockSearch'),stockStatus=$('#stockStatus');
-let stockTimer=null,stockReq=0;
+let stockTimer=null,stockReq=0,stockPage=1,stockQuery='aesthetic',stockHasMore=false,stockLoading=false;
+// Init format binding now that stockGrid exists
+setFmt(curFmt);
 
 function openStock(){
+  if(!stockModal){console.warn('stockModal missing');return}
   stockModal.classList.add('on');
-  stockSearch.focus();
-  if(!stockGrid.children.length){searchStock('aesthetic')}
+  closeStockPreview();
+  if(stockSearch)stockSearch.focus();
+  searchStock((stockSearch&&stockSearch.value.trim())||'aesthetic',true);
 }
-function closeStock(){stockModal.classList.remove('on')}
-$('#stockBtn').onclick=openStock;
-$('#stockClose').onclick=closeStock;
-$('#stockOverlay').onclick=closeStock;
+function closeStock(){if(stockModal)stockModal.classList.remove('on');closeStockPreview()}
+// Robust binding: addEventListener + onclick, both
+const _stockBtn=document.getElementById('stockBtn');
+if(_stockBtn){_stockBtn.onclick=openStock;_stockBtn.addEventListener('click',openStock)}
+const _stockClose=document.getElementById('stockClose');
+if(_stockClose){_stockClose.onclick=closeStock;_stockClose.addEventListener('click',closeStock)}
+const _stockOverlay=document.getElementById('stockOverlay');
+if(_stockOverlay){_stockOverlay.onclick=closeStock;_stockOverlay.addEventListener('click',closeStock)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&stockModal.classList.contains('on'))closeStock()});
 
 document.querySelectorAll('#stockTags button').forEach(b=>{
@@ -1167,24 +1398,60 @@ stockSearch.onkeydown=e=>{
   if(e.key==='Enter'){clearTimeout(stockTimer);const q=stockSearch.value.trim();if(q)searchStock(q)}
 };
 
-async function searchStock(q){
+async function searchStock(q,resetPage=true){
   const reqId=++stockReq;
-  stockStatus.textContent='Loading…';stockStatus.className='stock-status';
+  stockLoading=true;
+  if(resetPage){stockPage=1;stockQuery=q}
   stockGrid.innerHTML='';
+  removePager();
+  stockStatus.textContent='Loading…';stockStatus.className='stock-status';
+  const fmt=FMTS[curFmt];
+  const isVideo=fmt.stockKind==='video';
+  const orient=fmt.stockOrient||'portrait';
+  // Adjust grid aspect via data attr so cards match format
+  stockGrid.dataset.kind=isVideo?'video':'photo';
+  stockGrid.dataset.orient=orient;
   try{
-    const url=`https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=portrait&size=medium&per_page=24`;
-    const r=await fetch(url,{headers:{Authorization:PEXELS_KEY}});
+    const endpoint=isVideo
+      ?`https://api.pexels.com/videos/search?query=${encodeURIComponent(stockQuery)}&orientation=${orient}&size=medium&per_page=24&page=${stockPage}`
+      :`https://api.pexels.com/v1/search?query=${encodeURIComponent(stockQuery)}&orientation=${orient}&per_page=24&page=${stockPage}`;
+    const r=await fetch(endpoint,{headers:{Authorization:PEXELS_KEY}});
     if(!r.ok)throw new Error('HTTP '+r.status);
     const data=await r.json();
-    if(reqId!==stockReq)return; // newer request started
-    if(!data.videos||!data.videos.length){stockStatus.textContent='No videos found for "'+q+'"';return}
+    if(reqId!==stockReq)return;
+    const items=isVideo?data.videos:data.photos;
+    if(!items||!items.length){
+      stockStatus.textContent='No '+(isVideo?'videos':'photos')+' found for "'+stockQuery+'"';
+      return;
+    }
     stockStatus.textContent='';
-    renderStock(data.videos);
+    renderStock(items,isVideo);
+    stockHasMore=!!data.next_page;
+    renderPager();
+    stockGrid.parentElement.scrollTo({top:0,behavior:'smooth'});
   }catch(e){
     if(reqId!==stockReq)return;
     stockStatus.textContent='Error: '+e.message;stockStatus.className='stock-status err';
+  }finally{
+    stockLoading=false;
   }
 }
+
+function renderPager(){
+  removePager();
+  if(stockPage<=1&&!stockHasMore)return;
+  const wrap=document.createElement('div');
+  wrap.id='stockPager';wrap.className='stock-pager';
+  wrap.innerHTML=`
+    <button class="stock-pg-btn" id="stockPrev" ${stockPage<=1?'disabled':''}>← Prev</button>
+    <span class="stock-pg-info">Page ${stockPage}</span>
+    <button class="stock-pg-btn" id="stockNext" ${!stockHasMore?'disabled':''}>Next →</button>
+  `;
+  stockGrid.parentElement.insertBefore(wrap,stockStatus);
+  document.getElementById('stockPrev').onclick=()=>{if(stockPage>1&&!stockLoading){stockPage--;searchStock(stockQuery,false)}};
+  document.getElementById('stockNext').onclick=()=>{if(stockHasMore&&!stockLoading){stockPage++;searchStock(stockQuery,false)}};
+}
+function removePager(){const p=document.getElementById('stockPager');if(p)p.remove()}
 
 function pickFile(v){
   // Prefer 1080×1920, then 720×1280, then any vertical, then any
@@ -1194,31 +1461,144 @@ function pickFile(v){
       || v.video_files[0];
 }
 
-function renderStock(videos){
-  stockGrid.innerHTML=videos.map(v=>{
-    const f=pickFile(v);
-    const dur=Math.floor(v.duration||0);
-    const safeName=(v.user&&v.user.name||'Pexels').replace(/[<>"']/g,'');
-    return `<div class="stock-card" data-url="${f.link}" data-photog="${safeName}" data-purl="${v.user&&v.user.url||'https://pexels.com'}" data-dur="${dur}">
-      <img src="${v.image}" alt="" loading="lazy">
-      <span class="dur">${dur}s</span>
-      <span class="phot">${safeName}</span>
-      <div class="pick"><span class="pick-btn">Use this</span></div>
-    </div>`;
-  }).join('');
-  stockGrid.querySelectorAll('.stock-card').forEach(c=>{
-    c.onclick=()=>selectStock(c.dataset.url,c.dataset.photog,c.dataset.purl,+c.dataset.dur);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+// Module-level state for preview navigation
+let stockItems=[],stockItemsKind='video',stockPvIdx=0;
+
+function renderStock(items,isVideo){
+  stockItems=items;stockItemsKind=isVideo?'video':'photo';
+  stockGrid.innerHTML='';
+  items.forEach((v,i)=>{
+    const safeName=(v.photographer||(v.user&&v.user.name)||'Pexels');
+    const purl=v.photographer_url||(v.user&&v.user.url)||'https://pexels.com';
+    const card=document.createElement('div');
+    card.className='stock-card';
+    if(isVideo){
+      const f=pickFile(v);
+      const dur=Math.floor(v.duration||0);
+      card.dataset.kind='video';card.dataset.url=f.link;card.dataset.dur=dur;
+      card.innerHTML=`<img src="${esc(v.image)}" alt="" loading="lazy">
+        <span class="dur">${dur}s</span>
+        <span class="phot">${esc(safeName)}</span>
+        <div class="pick"><span class="pick-btn">Use this</span></div>`;
+    } else {
+      // Photo: full original for max quality (Header 2660+, Cover 3000+ need it)
+      const url=(v.src&&(v.src.original||v.src.large2x||v.src.large))||'';
+      const thumb=(v.src&&(v.src.medium||v.src.small))||url;
+      card.dataset.kind='photo';card.dataset.url=url;
+      card.innerHTML=`<img src="${esc(thumb)}" alt="" loading="lazy">
+        <span class="phot">${esc(safeName)}</span>
+        <div class="pick"><span class="pick-btn">Use this</span></div>`;
+    }
+    card.dataset.photog=safeName;card.dataset.purl=purl;
+    card.dataset.idx=i;
+    card.onclick=()=>showStockPreviewByIdx(+card.dataset.idx);
+    stockGrid.appendChild(card);
   });
 }
 
-async function selectStock(url,photog,purl,dur){
-  stockStatus.textContent=`Loading ${photog}'s clip…`;stockStatus.className='stock-status';
+function showStockPreviewByIdx(idx){
+  if(idx<0||idx>=stockItems.length)return;
+  stockPvIdx=idx;
+  const v=stockItems[idx];
+  const isVideo=stockItemsKind==='video';
+  const safeName=(v.photographer||(v.user&&v.user.name)||'Pexels');
+  const purl=v.photographer_url||(v.user&&v.user.url)||'https://pexels.com';
+  let url,dur=0;
+  if(isVideo){const f=pickFile(v);url=f.link;dur=Math.floor(v.duration||0)}
+  else url=(v.src&&(v.src.original||v.src.large2x||v.src.large))||'';
+  showStockPreview(url,safeName,purl,dur,isVideo?'video':'photo');
+  // Update counter + nav button states
+  const counter=document.getElementById('stockPreviewCounter');
+  if(counter)counter.textContent=(idx+1)+' / '+stockItems.length;
+  const prev=document.getElementById('stockPreviewPrev'),next=document.getElementById('stockPreviewNext');
+  if(prev)prev.disabled=idx<=0;
+  if(next)next.disabled=idx>=stockItems.length-1;
+}
+
+// Preview overlay: lets user see big version before committing
+function showStockPreview(url,photog,purl,dur,kind){
+  const pv=document.getElementById('stockPreview');
+  const media=document.getElementById('stockPreviewMedia');
+  const credit=document.getElementById('stockPreviewCredit');
+  const useBtn=document.getElementById('stockPreviewUse');
+  media.innerHTML='';
+  if(kind==='photo'){
+    const img=document.createElement('img');img.src=url;img.alt='';media.appendChild(img);
+  }else{
+    const v=document.createElement('video');v.src=url;v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;v.controls=false;
+    media.appendChild(v);
+  }
+  credit.textContent='Photo / video by '+photog+' on Pexels';
+  credit.href=purl||'https://pexels.com';
+  useBtn.disabled=false;useBtn.textContent='Use this →';
+  pv.removeAttribute('hidden');
+  // Save params for confirm action
+  useBtn.onclick=async()=>{
+    useBtn.disabled=true;useBtn.textContent='Loading…';
+    // stop preview video so it stops fetching
+    const vEl=media.querySelector('video');if(vEl){vEl.pause();vEl.src=''}
+    await selectStock(url,photog,purl,dur,kind);
+  };
+  // Download original button — fetch and save without entering the editor
+  const dlBtn=document.getElementById('stockPreviewDl');
+  if(dlBtn){
+    dlBtn.disabled=false;dlBtn.textContent='↓ Download original';
+    dlBtn.onclick=async()=>{
+      dlBtn.disabled=true;dlBtn.textContent='Downloading…';
+      try{
+        const r=await fetch(url);
+        if(!r.ok)throw new Error('HTTP '+r.status);
+        const blob=await r.blob();
+        const ext=kind==='photo'?'.jpg':'.mp4';
+        const safeFn=String(photog).replace(/[^a-z0-9-_ ]/gi,'').slice(0,40)||'pexels';
+        dl(blob,`pexels-${safeFn}${ext}`);
+        dlBtn.textContent='✓ Downloaded';
+        setTimeout(()=>{dlBtn.textContent='↓ Download original';dlBtn.disabled=false},1800);
+      }catch(e){
+        dlBtn.textContent='Error';
+        setTimeout(()=>{dlBtn.textContent='↓ Download original';dlBtn.disabled=false},1500);
+      }
+    };
+  }
+}
+function closeStockPreview(){
+  const pv=document.getElementById('stockPreview');
+  const media=document.getElementById('stockPreviewMedia');
+  const v=media.querySelector('video');if(v){v.pause();v.src=''}
+  media.innerHTML='';
+  pv.setAttribute('hidden','');
+}
+{
+  const back=document.getElementById('stockPreviewBack');
+  if(back)back.onclick=closeStockPreview;
+  const prev=document.getElementById('stockPreviewPrev');
+  if(prev)prev.onclick=()=>showStockPreviewByIdx(stockPvIdx-1);
+  const next=document.getElementById('stockPreviewNext');
+  if(next)next.onclick=()=>showStockPreviewByIdx(stockPvIdx+1);
+}
+// Keyboard arrows when preview open
+document.addEventListener('keydown',e=>{
+  const pv=document.getElementById('stockPreview');
+  if(!pv||pv.hasAttribute('hidden'))return;
+  if(e.key==='ArrowLeft'){e.preventDefault();showStockPreviewByIdx(stockPvIdx-1)}
+  else if(e.key==='ArrowRight'){e.preventDefault();showStockPreviewByIdx(stockPvIdx+1)}
+});
+
+async function selectStock(url,photog,purl,dur,kind){
+  stockStatus.textContent=`Loading ${photog}'s ${kind==='photo'?'photo':'clip'}…`;stockStatus.className='stock-status';
   try{
     const r=await fetch(url);
     if(!r.ok)throw new Error('Download failed');
     const blob=await r.blob();
     closeStock();
-    initVideo(blob);
+    if(kind==='photo'){
+      // Wrap blob as a File so initImage's FileReader works
+      const file=new File([blob],'pexels-photo.jpg',{type:blob.type||'image/jpeg'});
+      initImage(file);
+    } else {
+      initVideo(blob);
+    }
     setStatus(`Stock: ${photog} (Pexels${dur?' · '+dur+'s':''})`,'ok');
     // Show source chip with photog name + reset/replace button
     const ws=$('#wsSource'),wt=$('#wsSourceText');
@@ -1231,12 +1611,17 @@ async function selectStock(url,photog,purl,dur){
 // Hide source chip when not from stock (called on file drop / reset)
 function hideStockChip(){const ws=$('#wsSource');if(ws)ws.classList.add('hidden')}
 
-// X button: reset workspace and reopen stock modal
+// X button: reset workspace only
 $('#wsSourceX').onclick=(e)=>{
   e.stopPropagation();
-  $('#rst').click(); // run reset
-  setTimeout(openStock,50); // reopen modal
+  $('#rst').click();
 };
+// Click on the chip itself (anywhere except ×) — reopen Pexels picker
+const _wsSrc=document.getElementById('wsSource');
+if(_wsSrc){
+  _wsSrc.onclick=()=>openStock();
+  _wsSrc.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openStock()}};
+}
 </script>
 </body>
 </html>
