@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Primary SEO — primary keyword: "spotify canvas" (1.5K/mo, KD 12) + cluster -->
-<title>Spotify Canvas Maker — Free 9:16 MP4 Generator, No Signup | spotifyedits.com</title>
-<meta name="description" content="Free Spotify Canvas maker. Create a seamless 9:16 looping MP4 (1080×1920, 3–8 sec) in your browser — no signup, no watermark, no upload. Plus Spotify Header (2660×1140), Avatar (750×750) and Cover Art (3000×3000) tools. Verified Spotify specs.">
+<title>Free Canvas Maker for Spotify Artists — No Signup, No Watermark</title>
+<meta name="description" content="Free browser tool for Spotify artists: 9:16 Canvas MP4, Header, Avatar, Cover Art. No signup, no watermark, files stay on your device.">
 <meta name="keywords" content="spotify canvas, spotify canvas maker, spotify canvas generator, spotify canvas creator, spotify canvas dimensions, spotify canvas size, spotify canvas length, spotify canvas specs, spotify canvas template, free spotify canvas maker, spotify canvas video maker, how to make spotify canvas, spotify header maker, spotify profile picture size, spotify cover art maker, spotify banner maker, spotify for artists canvas, distrokid spotify canvas">
 <meta name="author" content="Anton Zinoviev">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -16,8 +16,8 @@
 <link rel="alternate" hreflang="x-default" href="https://spotifyedits.com/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Spotify Canvas Maker — Free 9:16 MP4 Generator, No Signup">
-<meta property="og:description" content="Make a seamless 9:16 looping Spotify Canvas MP4 in your browser. Exact 1080×1920 specs, 3–8 sec, no watermark, no upload. Plus Header, Avatar, Cover Art tools.">
+<meta property="og:title" content="Free Canvas Maker for Spotify Artists — No Signup, No Watermark">
+<meta property="og:description" content="Free browser tool for Spotify artists: 9:16 Canvas MP4, Header, Avatar, Cover Art. No signup, no watermark, files stay on your device.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://spotifyedits.com/">
 <meta property="og:site_name" content="spotifyedits.com">
@@ -28,8 +28,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Spotify Canvas Maker — Free 9:16 MP4 Generator">
-<meta name="twitter:description" content="Free Spotify Canvas maker. 9:16 MP4 with seamless loop. No signup, no watermark, no upload. Plus Header, Avatar, Cover Art.">
+<meta name="twitter:title" content="Free Canvas Maker for Spotify Artists">
+<meta name="twitter:description" content="Free browser tool for Spotify artists. No signup, no watermark.">
 <meta name="twitter:image" content="https://spotifyedits.com/og.jpg">
 
 <!-- Favicon -->
@@ -44,7 +44,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "spotifyedits.com",
-  "alternateName": "Spotify Canvas Maker",
+  "alternateName": "Canvas Maker for Spotify Artists",
   "url": "https://spotifyedits.com/",
   "description": "Free Spotify Canvas maker, plus Header, Avatar and Cover Art tools. Browser-only, no signup, no watermark.",
   "inLanguage": "en"
@@ -58,7 +58,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://spotifyedits.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Spotify Canvas Maker", "item": "https://spotifyedits.com/" }
+    { "@type": "ListItem", "position": 2, "name": "Canvas Maker for Spotify Artists", "item": "https://spotifyedits.com/" }
   ]
 }
 </script>
@@ -68,8 +68,8 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Spotify Canvas Maker",
-  "alternateName": ["Spotify Canvas Generator", "Spotify Canvas Creator", "Spotify Canvas Tool"],
+  "name": "Canvas Maker for Spotify Artists",
+  "alternateName": ["Canvas Generator for Spotify", "Canvas Creator for Spotify", "Canvas Tool for Spotify Artists"],
   "description": "Free browser-based Spotify Canvas maker for artists. Generates a 9:16 MP4 (1080×1920, 3–8 sec) with seamless loop crossfade. Also exports Spotify Header (2660×1140), Avatar (750×750), and Cover Art (3000×3000) at exact Spotify specs. No signup, no watermark, runs locally.",
   "url": "https://spotifyedits.com/",
   "applicationCategory": "MultimediaApplication",
@@ -476,6 +476,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .crop-wrap canvas{display:block}
 .crop-x{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s,transform .15s;z-index:5;font-family:var(--sans);padding:0}
 .crop-x:hover{background:rgba(217,64,64,.85);transform:scale(1.05)}
+.crop-hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.05em;border-radius:14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;animation:hintPulse 2.4s ease-out forwards;z-index:4}
+.crop-hint[hidden]{display:none}
+@keyframes hintPulse{0%,8%{opacity:0;transform:translate(-50%,8px)}15%{opacity:1;transform:translate(-50%,0)}80%{opacity:1}100%{opacity:0}}
 
 /* Controls */
 .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
@@ -492,6 +495,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 .cv.bad{color:var(--red)}
 
 .cf-note{font-size:10px;color:var(--text3);font-style:italic;line-height:1.4;padding-left:54px}
+.quality-note{font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;letter-spacing:.03em;padding:2px 0}
 .size-row{display:flex;gap:6px;flex:1}
 .sb{flex:1;padding:7px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--card);color:var(--text3);font-family:var(--mono);font-size:10px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s}
 .sb:hover{border-color:var(--border2)}
@@ -608,7 +612,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
 <!-- HERO -->
 <div class="hero">
   <div class="hero-badge"><div class="dot"></div>Free · No signup · No watermark</div>
-  <h1>Free <em>Spotify Canvas</em> Maker</h1>
+  <h1>Free <em>Canvas Maker</em> for Spotify Artists</h1>
   <p class="sub">Make a seamless 9:16 looping Canvas MP4 in your browser — exact 1080×1920 specs, 3–8 seconds, with real crossfade. Plus Header, Avatar and Cover Art tools, all in one. Files never leave your device.</p>
   <div class="formats" id="formatBar">
     <button class="fmt on" data-fmt="canvas">Canvas<small>9:16 · MP4/JPG</small></button>
@@ -709,7 +713,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
       <button class="ws-source-x" id="wsSourceX" type="button" title="Remove file">×</button>
     </span>
   </div>
-  <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas><button class="crop-x" id="cropX" type="button" aria-label="Remove file and start over" title="Remove file">×</button></div></div>
+  <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas><button class="crop-x" id="cropX" type="button" aria-label="Remove file and start over" title="Remove file">×</button><div class="crop-hint" id="cropHint" hidden>↔ Drag to choose crop · ⊕ Zoom</div></div></div>
 
   <div class="panel">
     <div class="cr"><span class="cl">Zoom</span><input type="range" id="zm" min="10" max="500" value="100"></div>
@@ -760,6 +764,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
       <button class="sb" data-w="720" data-h="1280">720×1280</button>
       <button class="sb on" data-w="1080" data-h="1920">1080×1920</button>
     </div></div>
+    <div class="quality-note" id="qualityNote">High quality · H.264 · ~12 Mbps · 30 fps</div>
     <div class="sep"></div>
 
     <div class="btn-row">
@@ -783,7 +788,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font
       <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
       <span>BUILT BY AN ARTIST, FOR ARTISTS</span>
     </div>
-    <p class="creator-line">I made this tool because every existing Canvas maker wanted my email and added a watermark on my exports. Made by <a class="creator-name" href="https://open.spotify.com/artist/22Y35XRBlb4LwoI3QrJQBt" target="_blank" rel="noopener"><b>Anton Zinoviev</b> ↗</a> — listen to my music while you are here</p>
+    <p class="creator-line">I made this tool because every existing Canvas maker wanted my email and added a watermark on my exports. Made by <a class="creator-name" href="https://open.spotify.com/artist/22Y35XRBlb4LwoI3QrJQBt" target="_blank" rel="noopener"><b>Anton Zinoviev</b> ↗</a> — if you want, you can listen to my music while you're here.</p>
   </div>
   <div class="creator-embed-slot">
     <button class="creator-embed-ph" id="creatorEmbedPh" type="button" aria-label="Load Spotify player">
@@ -958,6 +963,18 @@ const FMTS={
     stockKind:'photo',stockOrient:'square'},
 };
 
+function updQualityNote(){
+  const el=$('#qualityNote');if(!el)return;
+  const d=FMTS[curFmt];
+  if(d.mp4){
+    const fps=30;const mbps=Math.round(outW*outH*fps*0.20/1e6*10)/10;
+    el.textContent=`High quality · H.264 · ~${mbps} Mbps · ${fps} fps`;
+    el.style.display='';
+  } else {
+    el.textContent='High quality · JPEG 98% · sRGB';
+    el.style.display='';
+  }
+}
 function setFmt(f){
   curFmt=f;const d=FMTS[f];R=d.r;
   outW=d.sizes[1][0];outH=d.sizes[1][1];
@@ -981,14 +998,38 @@ function setFmt(f){
   // Update size buttons
   const sr=$('#sizeRow');
   sr.innerHTML=d.sizes.map((s,i)=>`<button class="sb${i===1?' on':''}" data-w="${s[0]}" data-h="${s[1]}">${d.labels[i]}</button>`).join('');
-  sr.querySelectorAll('.sb').forEach(b=>{b.onclick=()=>{sr.querySelectorAll('.sb').forEach(x=>x.classList.remove('on'));b.classList.add('on');outW=+b.dataset.w;outH=+b.dataset.h}});
-  // Show/hide MP4 button
-  if(!d.mp4){$('#exp').classList.add('hidden');$('#ej').classList.remove('hidden')}
-  else{$('#exp').classList.remove('hidden')}
+  sr.querySelectorAll('.sb').forEach(b=>{b.onclick=()=>{sr.querySelectorAll('.sb').forEach(x=>x.classList.remove('on'));b.classList.add('on');outW=+b.dataset.w;outH=+b.dataset.h;updQualityNote()}});
+  updQualityNote();
+  // Show/hide MP4 button + video-only controls (loop, slow-mo)
+  const fadeCtl=$('#fadeCtl'),sloCtl=$('#sloCtl');
+  if(!d.mp4){
+    $('#exp').classList.add('hidden');$('#ej').classList.remove('hidden');
+    if(fadeCtl)fadeCtl.style.display='none';
+    if(sloCtl)sloCtl.style.display='none';
+  } else {
+    $('#exp').classList.remove('hidden');
+    if(fadeCtl)fadeCtl.style.display='';
+    if(sloCtl)sloCtl.style.display='';
+  }
   // Stock browser shown for ALL formats (videos for Canvas, photos for image formats)
   const sb=$('#stockBtn'),so=$('#stockOr');
   if(sb)sb.style.display='';
   if(so)so.style.display='';
+
+  // Workspace adapt — if user has file loaded and switches format
+  if(mode==='video'&&!d.mp4){
+    // Switching from canvas (video loaded) to image-only format → must reset (video can't be used as image)
+    setStatus('Format changed — drop a photo for '+f.toUpperCase(),'busy');
+    if($('#rst'))$('#rst').click();
+  } else if(mode==='image'&&img){
+    // Re-setup crop with new aspect ratio. Image stays.
+    setupCrop(img.width,img.height);
+    redraw();
+    const label=f.toUpperCase();$('#badge').textContent=`IMAGE → ${label}`;
+  } else if(mode==='video'&&d.mp4&&srcVid.videoWidth){
+    // Already in canvas video mode, format still canvas → just re-setup crop (no-op effectively)
+    setupCrop(srcVid.videoWidth,srcVid.videoHeight);
+  }
   // Note: format-aware re-search happens automatically next time user opens Pexels modal
 }
 document.querySelectorAll('.fmt').forEach(b=>{b.onclick=()=>setFmt(b.dataset.fmt)});
@@ -1023,6 +1064,16 @@ function setupCrop(sw,sh){
   zoom=Math.max(sx,sy);
   zm.value=Math.round(zoom*100);zm.min=Math.round(zoom*100);
   panX=cropX+cropW/2-(sw*zoom)/2;panY=cropY+cropH/2-(sh*zoom)/2;
+  // Show drag hint if source extends beyond crop in either axis
+  const ch_=$('#cropHint');if(ch_){
+    const dragX=Math.abs(sw*zoom-cropW)>1,dragY=Math.abs(sh*zoom-cropH)>1;
+    if(dragX||dragY){
+      ch_.removeAttribute('hidden');
+      // Re-trigger animation by removing/adding
+      ch_.style.animation='none';void ch_.offsetWidth;ch_.style.animation='';
+      setTimeout(()=>ch_.setAttribute('hidden',''),2400);
+    } else ch_.setAttribute('hidden','');
+  }
 }
 
 function drawCrop(source,sw,sh){
@@ -1148,8 +1199,9 @@ function initVideo(f){
         if(vidA.currentTime<ts-0.1||vidA.currentTime>te+0.1){vidA.currentTime=ts}
         vidA.play().catch(()=>{});
       }
-      // Dual-video preview with crossfade alpha blend (smooth seamless loop look)
-      // Slow-mo toggle independently sets 0.5× playbackRate
+      // Dual-video preview. Two independent overlays:
+      //   1) crossfade alpha blend at trim end (always, if cfOn)
+      //   2) slow-mo: BOTH videos play offset, constant blend = motion-blur look across whole preview
       const sloOn=$('#slo')&&$('#slo').checked;
       const targetRate=sloOn?0.5:1;
       if(vidA.playbackRate!==targetRate)vidA.playbackRate=targetRate;
@@ -1157,13 +1209,24 @@ function initVideo(f){
       const remaining=te-vidA.currentTime;
       const visibleBlend=cfDur>0;
       const triggerLead=visibleBlend?cfDur+0.25:0.2;
-      if(vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
+      // SLO mode: kick vidB at offset and keep both running for constant blend
+      if(sloOn&&vidB.paused&&vidB.readyState>=2){
+        const offset=0.12; // 120ms time-offset between layers
+        const targetT=Math.max(ts,Math.min(te-0.1,vidA.currentTime+offset));
+        if(Math.abs(vidB.currentTime-targetT)>0.5)vidB.currentTime=targetT;
+        vidB.play().catch(()=>{});
+      }
+      // Crossfade trigger (end-of-trim transition). For SLO this still applies but vidB is already playing.
+      if(!sloOn&&vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
         if(Math.abs(vidB.currentTime-ts)>0.05)vidB.currentTime=ts;
         vidB.play().catch(()=>{});
         vidPhase='cf';
       }
       let alphaB=0;
-      if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDur){
+      if(sloOn){
+        // Constant 0.5 blend creates motion-blur effect across the whole video
+        alphaB=0.5;
+      } else if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDur){
         const linT=Math.max(0,Math.min(1,(cfDur-remaining)/cfDur));
         alphaB=0.5-0.5*Math.cos(linT*Math.PI);
       }
@@ -1198,7 +1261,7 @@ $('#ej').onclick=()=>{
   const c=getSrcCrop();const oc=document.createElement('canvas');oc.width=outW;oc.height=outH;
   const ox=oc.getContext('2d');ox.fillStyle='#000';ox.fillRect(0,0,outW,outH);
   ox.drawImage(img,c.sx,c.sy,c.sw,c.sh,0,0,outW,outH);
-  oc.toBlob(b=>{dl(b,`spotify_${curFmt}_${outW}x${outH}.jpg`);setStatus(`JPEG saved · ${outW}×${outH}`,'ok')},'image/jpeg',.95);
+  oc.toBlob(b=>{dl(b,`spotify_${curFmt}_${outW}x${outH}.jpg`);setStatus(`JPEG saved · ${outW}×${outH}`,'ok')},'image/jpeg',.98);
 };
 
 // MP4
@@ -1214,10 +1277,13 @@ $('#exp').onclick=async()=>{
     else{const s=parseFloat($('#ts').value),e=parseFloat($('#te').value),cl=e-s;if(cl<3||cl>8)throw new Error(`Clip must be 3–8s (${cl.toFixed(1)}s)`);totalFrames=Math.round(cl*fps)}
     const muxer=new Mp4Muxer.Muxer({target:new Mp4Muxer.ArrayBufferTarget(),video:{codec:'avc',width:outW,height:outH},fastStart:'in-memory'});
     const encoder=new VideoEncoder({output:(chunk,meta)=>muxer.addVideoChunk(chunk,meta),error:e=>{throw e}});
+    // Bitrate scales with output resolution. Targets ~0.2 bits-per-pixel-per-second for "high quality" H.264.
+    // 1080×1920@30 → ~12 Mbps. 720×1280@30 → ~5.5 Mbps. Cover Art video would scale up too.
+    const targetBitrate=Math.round(outW*outH*fps*0.20);
     let ok=false;
     for(const codec of['avc1.640028','avc1.4d0028','avc1.42001f']){
-      try{const s=await VideoEncoder.isConfigSupported({codec,width:outW,height:outH,bitrate:5e6,framerate:fps});
-      if(s.supported){encoder.configure({codec,width:outW,height:outH,bitrate:5e6,framerate:fps,latencyMode:'quality'});ok=true;break}}catch(e){}}
+      try{const s=await VideoEncoder.isConfigSupported({codec,width:outW,height:outH,bitrate:targetBitrate,framerate:fps});
+      if(s.supported){encoder.configure({codec,width:outW,height:outH,bitrate:targetBitrate,framerate:fps,latencyMode:'quality',bitrateMode:'variable'});ok=true;break}}catch(e){}}
     if(!ok)throw new Error('No H.264 support');
     const oc=document.createElement('canvas');oc.width=outW;oc.height=outH;const ox=oc.getContext('2d');
     showProg(8);
@@ -1294,12 +1360,20 @@ $('#exp').onclick=async()=>{
           const remaining=te-vidA.currentTime;
           const visibleBlend=cfDurR>0;
           const triggerLead=visibleBlend?cfDurR+0.25:0.2;
-          if(vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
+          if(sloOn&&vidB.paused&&vidB.readyState>=2){
+            const offset=0.12;
+            const targetT=Math.max(ts,Math.min(te-0.1,vidA.currentTime+offset));
+            if(Math.abs(vidB.currentTime-targetT)>0.5)vidB.currentTime=targetT;
+            vidB.play().catch(()=>{});
+          }
+          if(!sloOn&&vidPhase==='solo'&&remaining<=triggerLead&&remaining>0){
             if(Math.abs(vidB.currentTime-ts)>0.05)vidB.currentTime=ts;
             vidB.play().catch(()=>{});vidPhase='cf';
           }
           let alphaB=0;
-          if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDurR){
+          if(sloOn){
+            alphaB=0.5;
+          } else if(vidPhase==='cf'&&visibleBlend&&remaining<=cfDurR){
             const linT=Math.max(0,Math.min(1,(cfDurR-remaining)/cfDurR));
             alphaB=0.5-0.5*Math.cos(linT*Math.PI);
           }
@@ -1334,6 +1408,8 @@ $('#rst').onclick=()=>{
   img=null;mode=null;srcVid.pause();srcVid2.pause();srcVid.src='';srcVid2.src='';vidA=srcVid;vidB=srcVid2;vidPhase='solo';
   if(vidAnim)cancelAnimationFrame(vidAnim);
   const sc=$('#wsSource');if(sc)sc.classList.add('hidden');
+  // Clear last-picked memory so next openStock starts fresh
+  lastPickedQuery=null;lastPickedPage=null;lastPickedIdx=null;
   setStatus('','');hideProg();
 };
 // REPLACE / X — both trigger reset; replace also opens file picker
@@ -1359,14 +1435,26 @@ if(_ph)_ph.onclick=()=>{
 const PEXELS_KEY='rnUwVdkZ9AZk79hIoTaIT7SKxc5nT2AJPttRG4HQI2cAlZ4eWJ6IlUS0';
 const stockModal=$('#stockModal'),stockGrid=$('#stockGrid'),stockSearch=$('#stockSearch'),stockStatus=$('#stockStatus');
 let stockTimer=null,stockReq=0,stockPage=1,stockQuery='aesthetic',stockHasMore=false,stockLoading=false;
+// Memory of last successful pick — used to re-open right at that item when chip clicked
+let lastPickedQuery=null,lastPickedPage=null,lastPickedIdx=null;
 // Init format binding now that stockGrid exists
 setFmt(curFmt);
 
-function openStock(){
+async function openStock(){
   if(!stockModal){console.warn('stockModal missing');return}
   stockModal.classList.add('on');
   closeStockPreview();
   if(stockSearch)stockSearch.focus();
+  // If we have a last-picked memory and it's still valid for current format, restore it
+  if(lastPickedQuery!=null&&lastPickedPage!=null&&lastPickedIdx!=null){
+    if(stockSearch)stockSearch.value=lastPickedQuery;
+    stockPage=lastPickedPage;stockQuery=lastPickedQuery;
+    await searchStock(lastPickedQuery,false);
+    if(stockItems&&stockItems[lastPickedIdx]){
+      showStockPreviewByIdx(lastPickedIdx);
+    }
+    return;
+  }
   searchStock((stockSearch&&stockSearch.value.trim())||'aesthetic',true);
 }
 function closeStock(){if(stockModal)stockModal.classList.remove('on');closeStockPreview()}
@@ -1603,6 +1691,8 @@ async function selectStock(url,photog,purl,dur,kind){
     // Show source chip with photog name + reset/replace button
     const ws=$('#wsSource'),wt=$('#wsSourceText');
     if(ws&&wt){wt.textContent=`Pexels: ${photog}`;ws.classList.remove('hidden')}
+    // Remember exactly what was picked, so chip-click reopens at this preview
+    lastPickedQuery=stockQuery;lastPickedPage=stockPage;lastPickedIdx=stockPvIdx;
   }catch(e){
     stockStatus.textContent='Error: '+e.message;stockStatus.className='stock-status err';
   }
