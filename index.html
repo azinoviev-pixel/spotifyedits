@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Primary SEO — primary keyword: "spotify canvas" (1.5K/mo, KD 12) + cluster -->
-<title>Free Canvas Maker for Spotify Artists — No Signup, No Watermark</title>
+<title>Free Canvas Maker for Spotify Artists — No Watermark</title>
 <meta name="description" content="Free browser tool for Spotify artists: 9:16 Canvas MP4, Header, Avatar, Cover Art. No signup, no watermark, files stay on your device.">
 <meta name="keywords" content="spotify canvas, spotify canvas maker, spotify canvas generator, spotify canvas creator, spotify canvas dimensions, spotify canvas size, spotify canvas length, spotify canvas specs, spotify canvas template, free spotify canvas maker, spotify canvas video maker, how to make spotify canvas, spotify header maker, spotify profile picture size, spotify cover art maker, spotify banner maker, spotify for artists canvas, distrokid spotify canvas">
 <meta name="author" content="Anton Zinoviev">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#1DB954">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://spotifyedits.com/">
 <link rel="alternate" hreflang="en" href="https://spotifyedits.com/">
 <link rel="alternate" hreflang="x-default" href="https://spotifyedits.com/">
@@ -36,7 +38,6 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%231DB954'/></svg>">
 
 <!-- System fonts only — zero external font requests, instant load anywhere -->
-<style>:root{--fs-system:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;--fs-serif:Georgia,"Times New Roman",serif;--fs-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,"Cascadia Mono","Roboto Mono",Consolas,monospace}</style>
 
 <!-- Structured data: WebSite (potential sitelinks search box) -->
 <script type="application/ld+json">
@@ -47,7 +48,15 @@
   "alternateName": "Canvas Maker for Spotify Artists",
   "url": "https://spotifyedits.com/",
   "description": "Free Spotify Canvas maker, plus Header, Avatar and Cover Art tools. Browser-only, no signup, no watermark.",
-  "inLanguage": "en"
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://spotifyedits.com/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>
 
@@ -291,626 +300,715 @@
   ]
 }
 </script>
+<!-- Manrope display + body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#FAFAF8;--card:#fff;--card2:#F5F4F0;
-  --border:#E6E3DC;--border2:#D4D0C8;
-  --text:#1C1B18;--text2:#4A4842;--text3:#6E6C66;--text4:#9C9A92;
-  --green:#1DB954;--green2:#1AA64B;--green-text:#0E7A36;--green-bg:#EEFBF2;--green-border:#C8F0D4;
-  --red:#D94040;--red-bg:#FFF5F5;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.04);
-  --shadow:0 1px 3px rgba(0,0,0,.04),0 8px 20px rgba(0,0,0,.03);
-  --shadow-lg:0 4px 16px rgba(0,0,0,.06),0 20px 50px rgba(0,0,0,.05);
-  --r:12px;--r-sm:8px;--r-lg:16px;
-  --sans:var(--fs-system);
-  --serif:var(--fs-serif);
-  --mono:var(--fs-mono);
-}
+:root{--radius:.9rem;--warm:oklch(.982 .009 86);--warm-panel:oklch(.997 .004 86);--warm-soft:oklch(.956 .014 86);--warm-line:oklch(.855 .012 86);--graphite:oklch(.205 .018 105);--graphite-soft:oklch(.49 .018 105);--graphite-faint:oklch(.55 .018 105);--green:oklch(.64 .18 145);--green-deep:oklch(.36 .12 145);--green-soft:oklch(.91 .048 145);--green-line:oklch(.75 .12 145);--shadow-soft:0 24px 70px oklch(.28 .024 86 / .10);--shadow-small:0 12px 34px oklch(.28 .024 86 / .08);--red:#D94040}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{min-height:100vh;font-family:'Manrope',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-feature-settings:"ss01","ss02";color:var(--graphite);background:linear-gradient(180deg,oklch(1 .003 86 / .9),transparent 28rem),radial-gradient(circle at 84% 10%,oklch(.91 .048 145 / .34),transparent 26rem),radial-gradient(circle at 8% 36%,oklch(.94 .075 78 / .24),transparent 24rem),var(--warm)}
+button{font:inherit;border:0;background:transparent;color:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.hidden{display:none!important}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:6px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 
-/* ============ HERO ============ */
-.hero{max-width:800px;margin:0 auto;padding:48px 24px 0;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid var(--green-border);color:var(--green-text);font-family:var(--mono);font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.3px}
-.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s ease infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:var(--serif);font-size:clamp(32px,6vw,52px);font-weight:700;line-height:1.1;letter-spacing:-.5px;margin-bottom:14px;font-optical-sizing:auto}
-.hero h1 em{font-style:italic;color:var(--green-text)}
-.hero .sub{font-size:16px;color:var(--text2);line-height:1.5;max-width:500px;margin:0 auto 12px}
-.by-link{display:inline-block;font-size:12px;color:var(--text3);text-decoration:none;margin-bottom:24px;transition:color .15s}
-.by-link b{font-weight:500;color:var(--text2)}
-.by-link:hover{color:var(--green)}
-.by-link:hover b{color:var(--green)}
+.site-shell{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 
-/* Format tabs */
-.formats{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;background:var(--card2);padding:4px;border-radius:var(--r);display:inline-flex}
-.fmt{
-  padding:10px 18px;border:none;border-radius:var(--r-sm);
-  background:transparent;color:var(--text2);font-family:var(--sans);font-size:13px;font-weight:600;
-  cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:2px;
-}
-.fmt:hover{color:var(--text)}
-.fmt.on{background:var(--card);color:var(--text);box-shadow:var(--shadow-sm)}
-.fmt small{font-family:var(--mono);font-size:9px;font-weight:400;color:var(--text3);letter-spacing:.3px}
-.fmt.on small{color:var(--green-text)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:22px 0 16px}
+.brand{display:inline-flex;align-items:center;gap:.62rem;color:var(--graphite);font-weight:850;letter-spacing:-.035em;font-size:18px}
+.brand-mark{width:34px;height:34px;background:var(--green-deep);color:#fff;border-radius:12px;display:grid;place-items:center}
+.nav-links{display:flex;align-items:center;gap:.1rem;padding:.28rem;border:1px solid var(--warm-line);border-radius:999px;background:oklch(1 .003 86 / .76);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.nav-links a{font-size:.85rem;font-weight:780;color:var(--graphite-soft);padding:.54rem .86rem;border-radius:999px;transition:all .18s}
+.nav-links a:hover{background:var(--warm-soft);color:var(--graphite)}
+.nav-cta{padding:.72rem 1rem;background:var(--graphite);color:oklch(.99 .005 86);border-radius:999px;font-size:.85rem;font-weight:830;transition:transform .18s}
+.nav-cta:hover{transform:translateY(-2px)}
+@media(max-width:780px){.nav-links{display:none}}
 
-/* Specs strip */
-.specs-strip{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
-.fmt-rule{font-size:13px;line-height:1.5;color:var(--text2);max-width:560px;margin:0 auto 24px;text-align:center}
+.intro-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);gap:clamp(1.5rem,5vw,4rem);align-items:end;padding:clamp(38px,7vw,72px) 0 24px}
+.intro-copy{max-width:860px}
+.eyebrow{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .85rem;color:var(--green-deep);font-size:.76rem;font-weight:820;letter-spacing:.08em;text-transform:uppercase}
+.intro-copy h1{margin:0;color:var(--graphite);letter-spacing:-.052em;line-height:.99;font-size:clamp(2.55rem,5.9vw,5.35rem);font-weight:860;max-width:940px}
+.intro-lede{max-width:780px;margin:1.35rem 0 0;color:var(--graphite-soft);font-weight:560;line-height:1.68;font-size:clamp(1.05rem,1.6vw,1.22rem)}
+.intro-notes{display:grid;gap:.6rem;width:100%;padding:1rem;border:1px solid var(--warm-line);border-radius:22px;background:oklch(1 .003 86 / .76);box-shadow:var(--shadow-small);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.intro-notes span{display:inline-flex;align-items:center;gap:.45rem;color:var(--graphite);font-size:.88rem;font-weight:760}
+.intro-notes svg{color:var(--green-deep);flex:0 0 14px}
+@media(max-width:860px){.intro-section{grid-template-columns:1fr}.intro-notes{grid-template-columns:repeat(2,1fr)}}
 
-/* Creator card with compact Spotify mini-bar */
-.creator-card{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:center;max-width:640px;margin:0 auto 28px;padding:14px 16px;background:linear-gradient(135deg,var(--card) 0%,var(--green-bg) 100%);border:1px solid var(--green-border);border-radius:var(--r);text-align:left;box-shadow:var(--shadow-sm)}
-.creator-text{display:flex;flex-direction:column;gap:6px}
-.creator-eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;font-weight:600;color:var(--green-text);letter-spacing:.08em}
-.creator-line{font-size:12px;line-height:1.5;color:var(--text2);margin:0}
-.creator-line b{color:var(--text);font-weight:600}
-.creator-name{color:var(--green-text);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
-.creator-name:hover{border-bottom-color:var(--green-text)}
-.creator-name b{color:var(--green-text)}
-.creator-embed-slot{width:100%;height:80px;display:block}
-.creator-embed{width:100%;height:80px;border:0;border-radius:10px;display:block;background:#191414}
-.creator-embed-ph{width:100%;height:80px;border:1px solid var(--green-border);background:#191414;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
-.creator-embed-ph svg{color:var(--green)}
-.creator-embed-ph:hover{background:#262420;border-color:var(--green)}
-@media(max-width:640px){
-  .creator-card{grid-template-columns:1fr;gap:10px;padding:12px}
-  .creator-embed,.creator-embed-slot,.creator-embed-ph{height:64px}
-}
-.ss{font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
-.ss::before{content:'';width:4px;height:4px;background:var(--border2);border-radius:50%}
+.workspace-shell{margin-top:clamp(1.4rem,3vw,2.4rem);padding:clamp(1rem,2vw,1.25rem);border:1px solid var(--warm-line);border-radius:34px;background:oklch(.997 .005 86);box-shadow:0 8px 24px oklch(.28 .024 86 / .07)}
+.workspace-head{display:flex;flex-direction:row;align-items:start;justify-content:space-between;gap:1rem;padding:.4rem .25rem 1rem}
+.workspace-head h2{margin:0;color:var(--graphite);letter-spacing:-.052em;line-height:.99;font-size:clamp(2rem,4vw,3.55rem);font-weight:850}
+.small-link{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--warm-line);background:oklch(1 .003 86 / .72);color:var(--graphite);padding:.62rem .9rem;border-radius:999px;font-size:.78rem;font-weight:780;transition:transform .18s}
+.small-link:hover{transform:translateY(-2px)}
 
-/* ============ DROP ZONE ============ */
-.drop-area{max-width:520px;margin:0 auto 40px}
-.drop{
-  width:100%;padding:48px 24px;
-  background:var(--card);border:2px dashed var(--border);border-radius:var(--r-lg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .25s ease;
-}
-.drop:hover{border-color:var(--green);background:var(--green-bg);transform:translateY(-1px);box-shadow:var(--shadow)}
-.drop.over{border-color:var(--green);background:var(--green-bg);transform:scale(1.01)}
-.drop-ring{width:56px;height:56px;border-radius:14px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .25s}
-.drop:hover .drop-ring{background:var(--green-bg);border-color:var(--green-border)}
-.drop-ring svg{width:24px;height:24px;stroke:var(--text3);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
-.drop:hover .drop-ring svg{stroke:var(--green)}
-.drop .drop-h{font-size:15px;font-weight:600;margin-bottom:4px;display:block;color:var(--text)}
-.drop p{font-size:12px;color:var(--text3)}
+.format-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.72rem;margin-bottom:.8rem}
+.format-tab{display:flex;align-items:center;gap:.72rem;padding:.9rem;border:1px solid var(--warm-line);border-radius:19px;background:var(--warm-panel);color:var(--graphite);text-align:left;transition:transform .18s,border-color .18s,background .18s}
+.format-tab:hover{transform:translateY(-2px);border-color:var(--green-line)}
+.format-tab.on{border-color:var(--green-line);background:linear-gradient(135deg,var(--green-soft),oklch(1 .003 86));box-shadow:inset 0 0 0 1px oklch(1 0 0 / .55),var(--shadow-small)}
+.format-icon{width:34px;height:34px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--warm-line);background:var(--warm-panel);color:var(--green-deep);flex:0 0 auto}
+.format-tab strong{display:block;font-size:.95rem;font-weight:860}
+.format-tab small{display:block;margin-top:.15rem;color:var(--graphite-soft);font-size:.76rem;font-weight:720}
+@media(max-width:780px){.format-tabs{grid-template-columns:repeat(2,1fr)}}
 
-/* Stock browser */
-.stock-or{display:flex;align-items:center;gap:12px;margin:14px auto 12px;max-width:280px;color:var(--text3)}
-.stock-or-line{flex:1;height:1px;background:var(--border)}
-.stock-or-text{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
-.stock-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm)}
-.stock-btn:hover{border-color:var(--green);color:var(--text);background:var(--green-bg);transform:translateY(-1px);box-shadow:var(--shadow)}
-.stock-btn svg{color:var(--green)}
-.stock-btn-tag{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--text3);background:var(--card2);border:1px solid var(--border);padding:2px 7px;border-radius:10px;letter-spacing:.05em}
-.stock-btn:hover .stock-btn-tag{background:var(--card);border-color:var(--green-border);color:var(--green-text)}
+.spec-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--warm-line);border-radius:18px;background:linear-gradient(180deg,oklch(1 .003 86 / .65),oklch(.986 .006 86));overflow:hidden;box-shadow:inset 0 1px 0 oklch(1 0 0 / .6)}
+.spec-strip .ss{padding:.7rem 1rem;display:flex;flex-direction:column;gap:.18rem;text-align:left;border-right:1px solid var(--warm-line)}
+.spec-strip .ss:last-child{border-right:0}
+.spec-strip .ss-lbl{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.62rem;font-weight:700;color:var(--graphite-faint);letter-spacing:.12em;text-transform:uppercase}
+.spec-strip .ss-val{font-size:.92rem;font-weight:780;color:var(--graphite);letter-spacing:-.005em}
+@media(max-width:780px){.spec-strip{grid-template-columns:repeat(2,1fr)}.spec-strip .ss:nth-child(2){border-right:0}.spec-strip .ss:nth-child(1),.spec-strip .ss:nth-child(2){border-bottom:1px solid var(--warm-line)}}
+.fmt-rule{font-size:.95rem;color:var(--graphite-soft);margin:1rem 0;line-height:1.55;font-weight:560;text-wrap:pretty}
 
-.stock-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
-.stock-modal.on{display:flex}
-.stock-overlay{position:absolute;inset:0;background:rgba(20,18,15,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.stock-inner{position:relative;width:100%;max-width:920px;max-height:90vh;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;animation:modalIn .25s ease}
-@keyframes modalIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
-.stock-head{display:flex;gap:8px;padding:16px 20px;border-bottom:1px solid var(--border);background:var(--card)}
-.stock-head input{flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:var(--r-sm);font-family:var(--sans);font-size:14px;outline:none;transition:border .15s}
-.stock-head input:focus{border-color:var(--green);background:var(--card)}
-.stock-close{width:38px;height:38px;background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);font-size:22px;color:var(--text2);cursor:pointer;line-height:1;transition:all .15s}
-.stock-close:hover{background:var(--border);color:var(--text)}
-.stock-tags{display:flex;gap:6px;padding:12px 20px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--card)}
-.stock-tags button{padding:6px 12px;background:var(--card2);border:1px solid var(--border);border-radius:16px;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
-.stock-tags button:hover{border-color:var(--border2);color:var(--text)}
-.stock-tags button.on{background:var(--green-bg);border-color:var(--green-border);color:var(--green-text)}
-.stock-grid{flex:1;overflow-y:auto;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;background:var(--bg)}
-.stock-card{position:relative;aspect-ratio:9/16;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border);transition:all .15s}
-.stock-grid[data-orient="landscape"] .stock-card{aspect-ratio:2660/1140}
-.stock-grid[data-orient="square"] .stock-card{aspect-ratio:1/1}
-.stock-card:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:var(--shadow)}
-.stock-card img{width:100%;height:100%;object-fit:cover;display:block}
-.stock-card .dur{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.65);color:#fff;font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px)}
-.stock-card .phot{position:absolute;left:0;right:0;bottom:0;padding:6px 8px 5px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:10px;font-weight:500;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
-.stock-card .pick{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(29,185,84,.2);opacity:0;transition:opacity .15s}
-.stock-card:hover .pick{opacity:1}
-.stock-card .pick-btn{background:var(--green);color:#fff;font-size:11px;font-weight:600;padding:6px 12px;border-radius:14px;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase}
-/* Pexels full preview */
-.stock-preview{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:2;animation:bodyFade .2s ease}
-.stock-preview[hidden]{display:none}
-.stock-preview-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 0}
-.stock-preview-back{padding:8px 14px;background:transparent;border:1px solid var(--border);border-radius:14px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s}
-.stock-preview-back:hover{border-color:var(--text2);color:var(--text)}
-.stock-preview-counter{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.05em}
-.stock-preview-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:14px 60px;overflow:hidden;background:#0a0a0a;margin-top:12px}
-.stock-preview-media{flex:1;display:flex;align-items:center;justify-content:center;max-height:100%}
-.stock-preview-media video,.stock-preview-media img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;display:block}
-.stock-preview-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#fff;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:all .15s;font-family:var(--sans);padding:0 0 4px;z-index:3}
-.stock-preview-nav:hover:not(:disabled){background:rgba(255,255,255,.18);transform:translateY(-50%) scale(1.05)}
-.stock-preview-nav:disabled{opacity:.25;cursor:not-allowed}
-.stock-preview-prev{left:10px}
-.stock-preview-next{right:10px}
-.stock-preview-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--border);background:var(--card);gap:12px}
-.stock-preview-credit{font-size:12px;color:var(--text2);text-decoration:none}
-.stock-preview-credit:hover{color:var(--green-text);text-decoration:underline}
-.stock-preview-actions{display:flex;align-items:center;gap:8px}
-.stock-preview-use{padding:10px 18px;background:var(--green);color:#fff;border:0;border-radius:14px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
-.stock-preview-use:hover{background:var(--green2)}
-.stock-preview-use:disabled{opacity:.6;cursor:wait}
-.stock-preview-dl{padding:10px 14px;background:var(--card);color:var(--text2);border:1px solid var(--border);border-radius:14px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
-.stock-preview-dl:hover:not(:disabled){border-color:var(--green-text);color:var(--green-text);background:var(--green-bg)}
-.stock-preview-dl:disabled{opacity:.6;cursor:wait}
-.stock-pager{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 12px 8px}
-.stock-pg-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);color:var(--text2);font-family:var(--sans);font-size:12px;font-weight:600;border-radius:14px;cursor:pointer;transition:all .15s}
-.stock-pg-btn:hover:not(:disabled){border-color:var(--green);color:var(--green-text);background:var(--green-bg)}
-.stock-pg-btn:disabled{opacity:.4;cursor:not-allowed}
-.stock-pg-info{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:60px;text-align:center}
-.stock-status{padding:0 20px 8px;font-size:12px;color:var(--text3);text-align:center;min-height:18px}
-.stock-status.err{color:var(--red)}
-.stock-foot{padding:10px 20px;border-top:1px solid var(--border);background:var(--card);font-size:11px;color:var(--text3);text-align:center}
-.stock-foot a{color:var(--green-text);text-decoration:none}
-.stock-foot a:hover{text-decoration:underline}
-@media(max-width:540px){
-  .stock-inner{max-height:96vh;border-radius:var(--r)}
-  .stock-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
-  .stock-tags{padding:10px 14px}
-  .stock-head{padding:12px 14px}
-}
+.workspace-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(360px,1.05fr);gap:1rem;margin-top:1rem}
+@media(max-width:980px){.workspace-grid{grid-template-columns:1fr}}
 
-/* ============ WORKSPACE ============ */
-.ws{display:none;max-width:520px;margin:0 auto 40px;animation:fadeUp .35s ease}
-.ws.on{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.input-panel,.preview-panel{border:1px solid var(--warm-line);background:var(--warm-panel);box-shadow:var(--shadow-small);border-radius:28px;padding:clamp(1rem,2vw,1.2rem);min-height:540px}
+.input-panel{display:flex;flex-direction:column;gap:.9rem}
+.preview-panel{display:flex;flex-direction:column}
+@media(max-width:980px){.input-panel,.preview-panel{min-height:auto}}
+.input-panel .panel-label{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .35rem;color:var(--green-deep);font-size:.76rem;font-weight:820;letter-spacing:.08em;text-transform:uppercase}
 
-.ws-badge{display:inline-flex;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--green-text);background:var(--green-bg);border:1px solid var(--green-border);padding:3px 12px;border-radius:16px;margin-bottom:12px}
-.ws-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--card);border:1px solid var(--border);padding:3px 4px 3px 10px;border-radius:16px;margin:0 0 12px 6px;vertical-align:top;cursor:pointer;transition:all .15s}
-.ws-source:hover{border-color:var(--green);background:var(--green-bg);color:var(--green-text)}
-.ws-source:hover svg{color:var(--green)}
-.ws-source svg{color:var(--green-text);transition:color .15s}
-.ws-source-arrow{font-size:11px;color:var(--text3);transition:color .15s,transform .25s}
-.ws-source:hover .ws-source-arrow{color:var(--green-text);transform:rotate(90deg)}
-.ws-source-x{width:18px;height:18px;border:none;background:var(--card2);color:var(--text2);border-radius:50%;font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;padding:0}
-.ws-source-x:hover{background:var(--red-bg);color:var(--red)}
+.dropzone{display:grid;place-items:center;text-align:center;min-height:214px;padding:1.2rem;border:1.5px dashed var(--green-line);border-radius:26px;background:linear-gradient(135deg,oklch(.91 .048 145 / .34),transparent),var(--warm-panel);transition:transform .18s,border-color .18s,background .18s;cursor:pointer}
+.dropzone:hover,.dropzone.over{transform:translateY(-2px);border-color:var(--green-deep);background:linear-gradient(135deg,oklch(.91 .048 145 / .54),transparent),var(--warm-panel)}
+.upload-icon{width:38px;height:38px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--warm-line);background:var(--warm-panel);color:var(--green-deep)}
+.dropzone strong{margin-top:.8rem;color:var(--graphite);font-weight:860;font-size:1rem;display:block}
+.dropzone small{color:var(--graphite-soft);font-size:.78rem;font-weight:720;display:block}
 
-.crop-container{display:flex;justify-content:center;margin-bottom:16px}
-.crop-wrap{position:relative;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow-lg);touch-action:none;cursor:grab;background:#000}
+.source-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.6rem;align-items:center}
+.source-actions #stockOr{color:var(--graphite-faint);font-size:.78rem;font-weight:720}
+.secondary-action{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid var(--green-line);background:var(--green-soft);color:var(--green-deep);padding:.82rem 1.1rem;border-radius:999px;font-weight:820;font-size:.85rem;transition:transform .18s,border-color .18s}
+.secondary-action:hover{transform:translateY(-2px)}
+
+.surprise-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;margin-top:.65rem;padding:.92rem 1.1rem;border:1px solid oklch(.78 .12 152 / .55);border-radius:18px;background:linear-gradient(135deg,oklch(.96 .06 152 / .85) 0%,oklch(.97 .04 86 / .8) 50%,oklch(.95 .055 152 / .85) 100%);color:var(--graphite);font-weight:820;font-size:.92rem;letter-spacing:-.005em;cursor:pointer;overflow:hidden;transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,border-color .22s}
+.surprise-btn:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 12px 30px oklch(.78 .14 152 / .25)}
+.surprise-btn:active{transform:translateY(0)}
+.surprise-btn:disabled{opacity:.55;cursor:wait}
+.surprise-glow{position:absolute;inset:-50%;background:radial-gradient(circle at 30% 50%,oklch(.85 .15 152 / .35) 0%,transparent 55%);opacity:.6;pointer-events:none;animation:surpriseSwirl 7s linear infinite}
+.surprise-icon{position:relative;color:var(--green-deep);filter:drop-shadow(0 0 6px oklch(.85 .15 152 / .55))}
+.surprise-btn:hover .surprise-icon{animation:surpriseSpin .65s ease}
+.surprise-hint{position:relative;color:var(--graphite-soft);font-size:.74rem;font-weight:720;letter-spacing:.02em;margin-left:.35rem;opacity:.85}
+@keyframes surpriseSwirl{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes surpriseSpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.18)}100%{transform:rotate(360deg) scale(1)}}
+@media(prefers-reduced-motion:reduce){.surprise-glow,.surprise-btn:hover .surprise-icon{animation:none}}
+
+.panel-topline{display:flex;justify-content:space-between;align-items:start;gap:1rem}
+.preview-panel .panel-label{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .35rem;color:var(--green-deep);font-size:.76rem;font-weight:820;letter-spacing:.08em;text-transform:uppercase}
+.panel-topline h2{margin:0;color:var(--graphite);font-size:1.35rem;font-weight:850;letter-spacing:-.035em}
+.status-pill{display:inline-flex;align-items:center;gap:.42rem;padding:.5rem .66rem;border:1px solid var(--green-line);border-radius:999px;background:var(--green-soft);color:var(--green-deep);font-size:.78rem;font-weight:850}
+
+.device-stage{display:grid;place-items:center;min-height:430px;margin:1rem 0;border:1px solid var(--warm-line);border-radius:26px;background:linear-gradient(135deg,oklch(.205 .018 105 / .03),transparent),var(--warm-soft);position:relative}
+.preview-frame{position:relative;display:grid;place-items:center;overflow:hidden;border:1px solid oklch(.205 .018 105 / .16);background:linear-gradient(140deg,oklch(.28 .035 105),oklch(.18 .018 105)),var(--graphite);color:#fff;box-shadow:0 24px 70px oklch(.2 .02 105 / .22)}
+.preview-frame--canvas{width:190px;height:338px;border-radius:30px}
+.preview-frame--header{width:min(430px,92%);aspect-ratio:2660/1140;border-radius:24px}
+.preview-frame--avatar{width:260px;height:260px;border-radius:50%}
+.preview-frame--cover{width:280px;height:280px;border-radius:14px}
+.preview-grid{position:absolute;inset:0;opacity:.2;background-image:linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px);background-size:32px 32px}
+.preview-content{position:relative;z-index:2;display:grid;gap:.25rem;text-align:center;text-shadow:0 2px 18px oklch(0 0 0 / .28)}
+.preview-content span{font-size:.74rem;font-weight:780;opacity:.74;text-transform:uppercase;letter-spacing:.12em}
+.preview-content strong{font-size:1.45rem;font-weight:880;letter-spacing:-.055em}
+.phone-bar{position:absolute;top:12px;z-index:3;width:46px;height:5px;border-radius:999px;background:oklch(1 0 0 / .46)}
+
+.section{padding:clamp(68px,8vw,108px) 0 0}
+.section-heading{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
+.section-heading h2{margin:0;color:var(--graphite);letter-spacing:-.052em;line-height:.99;font-size:clamp(2rem,4vw,3.55rem);font-weight:850}
+.section-heading p{max-width:720px;margin:0;color:var(--graphite-soft);font-size:1rem;line-height:1.68;font-weight:560}
+
+.split-section,.creator-section{display:grid;grid-template-columns:minmax(0,.86fr) minmax(360px,1.14fr);gap:clamp(1rem,4vw,3rem);align-items:center}
+.creator-section{align-items:stretch}
+@media(max-width:980px){.split-section,.creator-section{grid-template-columns:1fr}}
+
+.pexels-card,.player-card{border:1px solid var(--warm-line);background:var(--warm-panel);box-shadow:var(--shadow-small);border-radius:30px;padding:clamp(1rem,2vw,1.25rem)}
+.pexels-card-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--graphite-soft);font-size:.82rem;font-weight:820}
+.pexels-card-top span,.pexels-card-top a{display:inline-flex;align-items:center;gap:.42rem}
+.mood-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;margin:1rem 0}
+.mood-grid button{min-height:78px;border:1px solid var(--warm-line);border-radius:18px;background:radial-gradient(circle at 80% 18%,oklch(.91 .048 145 / .5),transparent 34%),var(--warm-soft);color:var(--graphite);font-weight:850;font-size:.9rem;transition:transform .18s,border-color .18s}
+.mood-grid button:hover{transform:translateY(-2px);border-color:var(--green-line)}
+.pexels-flow{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;padding:.85rem;border:1px solid var(--warm-line);border-radius:18px;background:oklch(.986 .006 86);color:var(--graphite-soft);font-size:.85rem;font-weight:800}
+@media(max-width:640px){.mood-grid{grid-template-columns:repeat(2,1fr)}}
+
+.player-card{display:flex;flex-direction:column;background:radial-gradient(circle at 8% 12%,oklch(.91 .048 145 / .38),transparent 32%),var(--warm-panel)}
+.player-card>*{flex:1;min-height:152px}
+.player-head{display:flex;align-items:center;gap:.85rem}
+.player-cover{width:54px;height:54px;border-radius:18px;background:var(--graphite);color:#fff;display:grid;place-items:center;font-size:18px}
+.player-head strong{display:block;color:var(--graphite);font-weight:880;letter-spacing:-.025em}
+.player-head small{display:block;margin-top:.15rem;color:var(--graphite-soft);font-size:.82rem;font-weight:720}
+.player-card iframe,.player-card .creator-embed-ph{overflow:hidden;border:0;border-radius:18px;background:var(--graphite);color:#fff;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;cursor:pointer}
+.player-card iframe{display:block;height:152px}
+.player-card .creator-embed-ph{min-height:152px;flex:1}
+.player-card .creator-embed-ph svg{color:var(--green)}
+.player-card .creator-embed-ph:hover,.player-card .creator-embed-ph:focus-visible{background:oklch(.18 .018 105)}
+
+.specs-table{overflow:hidden;border-radius:24px;border:1px solid var(--warm-line);background:var(--warm-panel);box-shadow:var(--shadow-small)}
+.spec-row{display:grid;grid-template-columns:180px minmax(0,1fr);gap:1rem;padding:1rem 1.1rem;border-bottom:1px solid var(--warm-line);background:oklch(1 .003 86 / .72)}
+.spec-row:last-child{border-bottom:0}
+.spec-row strong{color:var(--graphite);font-size:.92rem;font-weight:850}
+.spec-row span{color:var(--graphite-soft);font-size:.92rem;line-height:1.55}
+@media(max-width:720px){.spec-row{grid-template-columns:1fr;gap:.35rem}}
+
+.guide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+.guide-card{border:1px solid var(--warm-line);background:var(--warm-panel);box-shadow:var(--shadow-small);border-radius:24px;padding:1rem;transition:transform .18s,border-color .18s}
+.guide-card:hover{transform:translateY(-2px);border-color:var(--green-line)}
+.guide-card h3{margin:.8rem 0 .45rem;color:var(--graphite);font-size:1rem;font-weight:870}
+.guide-card p{margin:0;color:var(--graphite-soft);font-size:.87rem;line-height:1.58}
+@media(max-width:980px){.guide-grid{grid-template-columns:repeat(2,1fr)}}
+
+.privacy-section{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);gap:clamp(1rem,4vw,3rem);align-items:center;margin-top:clamp(68px,8vw,108px);padding:clamp(1.2rem,3vw,2rem);border:1px solid var(--green-line);border-radius:34px;background:linear-gradient(135deg,var(--green-soft),oklch(1 .003 86 / .86));box-shadow:var(--shadow-soft)}
+.privacy-section h2{margin:0;color:var(--graphite);letter-spacing:-.052em;line-height:.99;font-size:clamp(2rem,4vw,3.55rem);font-weight:850}
+.privacy-list{display:grid;gap:.7rem}
+.privacy-list span{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem;border:1px solid oklch(.75 .12 145 / .42);border-radius:18px;background:oklch(1 .003 86 / .58);color:var(--graphite);font-size:.92rem;font-weight:780}
+@media(max-width:980px){.privacy-section{grid-template-columns:1fr}}
+
+.faq-list{display:grid;gap:.7rem}
+.faq-card{border:1px solid var(--warm-line);background:var(--warm-panel);box-shadow:var(--shadow-small);border-radius:20px;padding:.95rem 1.1rem;transition:transform .18s,border-color .18s}
+.faq-card:hover{transform:translateY(-2px);border-color:var(--green-line)}
+.faq-card summary{color:var(--graphite);font-weight:850;letter-spacing:-.015em;list-style:none;cursor:pointer;font-size:.96rem}
+.faq-card summary::-webkit-details-marker{display:none}
+.faq-card p{margin:.75rem 0 0;color:var(--graphite-soft);line-height:1.62;font-size:.92rem}
+
+.footer{display:flex;justify-content:space-between;gap:1rem;padding:56px 0 34px;color:var(--graphite-soft);font-size:.86rem;font-weight:720}
+.footer a{border-radius:999px;padding:.25rem .55rem;color:var(--graphite)}
+.footer a:hover{background:var(--warm-soft)}
+@media(max-width:720px){.footer{flex-direction:column}}
+
+/* ===== OUR EDITOR ELEMENTS WIRED INTO MANUS SHELL ===== */
+#ws{display:none}
+#ws.on{display:flex;flex-direction:column;justify-content:center;flex:1;min-height:430px}
+@media(max-width:980px){#ws.on{min-height:auto}}
+.workspace-grid .ws-ctl{display:none;flex-direction:column;gap:.65rem}
+.workspace-grid:has(#ws.on) .ws-ctl{display:flex}
+.workspace-grid:has(#ws.on) .device-stage{display:none}
+.workspace-grid:has(#ws.on) #dropArea{display:none}
+.workspace-grid:has(#ws.on) .source-actions,
+.workspace-grid:has(#ws.on) .surprise-btn{display:none}
+
+.crop-container{display:flex;justify-content:center;margin:0 0 .8rem 0}
+.crop-wrap{position:relative;overflow:hidden;border-radius:22px;box-shadow:0 6px 18px oklch(.2 .02 105 / .14);touch-action:none;cursor:grab;background:#000;will-change:transform;contain:layout paint}
 .crop-wrap:active{cursor:grabbing}
 .crop-wrap canvas{display:block}
-.crop-x{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s,transform .15s;z-index:5;font-family:var(--sans);padding:0}
-.crop-x:hover{background:rgba(217,64,64,.85);transform:scale(1.05)}
-.crop-hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.05em;border-radius:14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;animation:hintPulse 2.4s ease-out forwards;z-index:4}
-.crop-hint[hidden]{display:none}
-@keyframes hintPulse{0%,8%{opacity:0;transform:translate(-50%,8px)}15%{opacity:1;transform:translate(-50%,0)}80%{opacity:1}100%{opacity:0}}
+.crop-x{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:5}
+.crop-x:hover{background:rgba(217,64,64,.85)}
+.crop-hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.7);color:#fff;font-family:ui-monospace,monospace;font-size:10px;border-radius:14px;z-index:4;pointer-events:none}
 
-/* Controls */
-.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
-.cr{display:flex;align-items:center;gap:10px}
-.cl{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;min-width:44px}
-.cr input[type=range]{flex:1;-webkit-appearance:none;height:3px;background:var(--border);border-radius:2px;outline:none}
-.cr input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--green);border-radius:50%;cursor:pointer;box-shadow:0 1px 4px rgba(29,185,84,.3)}
-.cr select{flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:var(--r-sm);font-family:var(--sans);font-size:12px;cursor:pointer;outline:none;transition:border .15s}
-.cr select:focus{border-color:var(--green)}
-.cr input[type=number]{width:52px;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:var(--r-sm);font-family:var(--mono);font-size:12px;text-align:center;outline:none}
-.cr input[type=number]:focus{border-color:var(--green)}
-.tv{font-family:var(--mono);font-size:11px;color:var(--text2);min-width:40px;text-align:right}
-.cv{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--green)}
+.ws-badge{display:inline-flex;font-family:ui-monospace,monospace;font-size:10px;font-weight:700;color:var(--green-deep);background:var(--green-soft);border:1px solid var(--green-line);padding:3px 12px;border-radius:16px;margin-bottom:10px;letter-spacing:.06em}
+.ws-source{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--graphite-soft);background:var(--warm-panel);border:1px solid var(--warm-line);padding:3px 4px 3px 10px;border-radius:16px;cursor:pointer;align-self:start}
+.ws-source:hover{border-color:var(--green-line);background:var(--green-soft);color:var(--green-deep)}
+.ws-source-arrow{font-size:11px}
+.ws-source-x{width:28px;height:28px;border:0;background:var(--warm-soft);color:var(--graphite-soft);border-radius:50%;font-size:16px;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 28px}
+
+.cr{display:flex;align-items:center;gap:10px;padding:4px 0;flex-wrap:wrap}
+.cl{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;color:var(--graphite-soft);text-transform:uppercase;letter-spacing:.08em;min-width:64px;flex:0 0 64px}
+.cr input[type=range]{flex:1;-webkit-appearance:none;height:3px;background:var(--warm-line);border-radius:2px;outline:none}
+.cr input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--green);border-radius:50%;cursor:pointer}
+.cr select,.cr input[type=number]{background:var(--warm-soft);border:1px solid var(--warm-line);color:var(--graphite);padding:7px 11px;border-radius:10px;font-family:'Manrope',sans-serif;font-size:13px;outline:none;flex:1}
+.cr input[type=number]{flex:0 0 70px}
+.cr input[type=checkbox]{accent-color:var(--green)}
+.tv{font-family:ui-monospace,monospace;font-size:11px;color:var(--graphite-soft);min-width:40px;text-align:right}
+.cv{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:var(--green-deep)}
 .cv.bad{color:var(--red)}
-
-.cf-note{font-size:10px;color:var(--text3);font-style:italic;line-height:1.4;padding-left:54px}
-.quality-note{font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;letter-spacing:.03em;padding:2px 0}
-.size-row{display:flex;gap:6px;flex:1}
-.sb{flex:1;padding:7px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--card);color:var(--text3);font-family:var(--mono);font-size:10px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s}
-.sb:hover{border-color:var(--border2)}
-.sb.on{border-color:var(--green-text);color:var(--green-text);background:var(--green-bg)}
-
-.sep{height:1px;background:var(--border);margin:2px 0}
-
-.btn-row{display:flex;gap:8px}
-.btn{
-  flex:1;padding:12px 16px;border:none;border-radius:var(--r-sm);
-  font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
-  transition:all .15s;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.btn:disabled{opacity:.35;cursor:not-allowed}
-.btn:active:not(:disabled){transform:scale(.97)}
-.btn-ghost{background:var(--card2);color:var(--text3);border:1px solid var(--border);flex:0 0 42px}
-.btn-ghost:hover:not(:disabled){background:var(--border);color:var(--text2)}
-.btn-dark{background:var(--text);color:#fff}
-.btn-dark:hover:not(:disabled){background:#333}
-.btn-green{background:var(--green);color:#fff}
-.btn-green:hover:not(:disabled){background:var(--green2)}
-
-.progress{width:100%;height:3px;background:var(--card2);border-radius:2px;overflow:hidden;display:none}
+.size-row{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+.sb{flex:1;padding:8px;border:1px solid var(--warm-line);background:var(--warm-panel);color:var(--graphite-soft);font-family:ui-monospace,monospace;font-size:11px;font-weight:700;border-radius:10px;cursor:pointer;text-align:center;min-width:0}
+.sb.on{border-color:var(--green-line);color:var(--green-deep);background:var(--green-soft)}
+.btn-row{display:flex;gap:8px;margin-top:10px}
+.btn{flex:1;padding:11px 14px;border:0;border-radius:14px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:830;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-ghost{background:var(--warm-soft);color:var(--graphite-soft);border:1px solid var(--warm-line);flex:0 0 44px}
+.btn-ghost:hover{background:var(--warm-panel);color:var(--graphite)}
+.btn-dark{background:var(--graphite);color:#fff}
+.btn-green{background:var(--green-deep);color:#fff}
+.btn-green:hover:not(:disabled){filter:brightness(1.1)}
+.progress{width:100%;height:4px;background:var(--warm-soft);border-radius:2px;overflow:hidden;display:none;margin-top:8px}
 .progress.on{display:block}
-.progress div{height:100%;background:var(--green);border-radius:2px;transition:width .15s}
+.progress div{height:100%;background:var(--green);transition:width .15s}
+.status{font-size:12px;color:var(--graphite-soft);text-align:center;min-height:18px;margin-top:6px}
+.status.err{color:var(--red)}.status.ok{color:var(--green-deep)}
+.cf-note{font-size:10px;color:var(--graphite-faint);font-style:italic;line-height:1.4;margin:2px 0 0 74px}
+.quality-note{font-family:ui-monospace,monospace;font-size:10px;color:var(--graphite-faint);text-align:center;margin:4px 0;letter-spacing:.03em}
 
-.status{font-size:11px;color:var(--text3);text-align:center;min-height:16px;transition:color .2s}
-.status.err{color:var(--red)}.status.ok{color:var(--green)}.status.busy{color:var(--text2)}
+/* Stock modal */
+.stock-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.stock-modal.on{display:flex}
+.stock-overlay{position:absolute;inset:0;background:rgba(20,18,15,.5);backdrop-filter:blur(4px)}
+.stock-inner{position:relative;width:100%;max-width:920px;max-height:90vh;background:var(--warm);border:1px solid var(--warm-line);border-radius:24px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;overflow:hidden}
+.stock-head{display:flex;gap:8px;padding:16px 20px;border-bottom:1px solid var(--warm-line);background:var(--warm-panel)}
+.stock-head input{flex:1;background:var(--warm-soft);border:1px solid var(--warm-line);color:var(--graphite);padding:10px 14px;border-radius:10px;font-family:'Manrope',sans-serif;font-size:14px;outline:none}
+.stock-close{width:44px;height:44px;background:var(--warm-soft);border:1px solid var(--warm-line);border-radius:10px;font-size:22px;color:var(--graphite-soft);line-height:1;flex:0 0 44px}
+.stock-tags{display:flex;gap:6px;padding:12px 20px;flex-wrap:wrap;border-bottom:1px solid var(--warm-line);background:var(--warm-panel)}
+.stock-tags button{padding:10px 14px;background:var(--warm-soft);border:1px solid var(--warm-line);border-radius:16px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:var(--graphite-soft);min-height:40px}
+.stock-tags button.on{background:var(--green-soft);border-color:var(--green-line);color:var(--green-deep)}
+.stock-grid{flex:1;overflow-y:auto;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;background:var(--warm)}
+.stock-card{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--warm-soft);border:1px solid var(--warm-line)}
+.stock-grid[data-orient="landscape"] .stock-card{aspect-ratio:2660/1140}
+.stock-grid[data-orient="square"] .stock-card{aspect-ratio:1/1}
+.stock-card:hover{border-color:var(--green-line)}
+.stock-card img{width:100%;height:100%;object-fit:cover}
+.stock-card .dur{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.65);color:#fff;font-family:ui-monospace,monospace;font-size:10px;padding:2px 6px;border-radius:4px}
+.stock-card .phot{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:10px;font-weight:700;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.stock-card .pick{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(29,185,84,.2);opacity:0}
+.stock-card:hover .pick{opacity:1}
+.pick-btn{background:var(--green-deep);color:#fff;font-size:11px;font-weight:800;padding:6px 12px;border-radius:14px;font-family:'Manrope',sans-serif}
+.stock-pager{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 12px}
+.stock-pg-btn{padding:8px 16px;background:var(--warm-panel);border:1px solid var(--warm-line);color:var(--graphite-soft);font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;border-radius:14px;cursor:pointer}
+.stock-pg-btn:disabled{opacity:.4;cursor:not-allowed}
+.stock-pg-info{font-family:ui-monospace,monospace;font-size:11px;color:var(--graphite-faint);min-width:60px;text-align:center}
+.stock-status{padding:0 20px 8px;font-size:12px;color:var(--graphite-soft);text-align:center;min-height:18px}
+.stock-foot{padding:10px 20px;border-top:1px solid var(--warm-line);background:var(--warm-panel);font-size:11px;color:var(--graphite-soft);text-align:center}
+.stock-foot a{color:var(--green-deep);text-decoration:underline}
 
-.hidden{display:none!important}
+.stock-preview{position:absolute;inset:0;background:var(--warm);display:flex;flex-direction:column;z-index:2}
+.stock-preview[hidden]{display:none}
+.stock-preview-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 0}
+.stock-preview-back{padding:8px 14px;background:transparent;border:1px solid var(--warm-line);border-radius:14px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:var(--graphite-soft);cursor:pointer}
+.stock-preview-counter{font-family:ui-monospace,monospace;font-size:11px;color:var(--graphite-faint)}
+.stock-preview-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:14px 60px;overflow:hidden;background:#0a0a0a;margin-top:12px}
+.stock-preview-media video,.stock-preview-media img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;display:block}
+.stock-preview-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:3;font-family:'Manrope',sans-serif;padding:0 0 4px;cursor:pointer}
+.stock-preview-nav:disabled{opacity:.25}
+.stock-preview-prev{left:10px}.stock-preview-next{right:10px}
+.stock-preview-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--warm-line);background:var(--warm-panel);gap:12px}
+.stock-preview-credit{font-size:12px;color:var(--graphite-soft)}
+.stock-preview-actions{display:flex;align-items:center;gap:8px}
+.stock-preview-use{padding:10px 18px;background:var(--green-deep);color:#fff;border:0;border-radius:14px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;cursor:pointer}
+.stock-preview-dl{padding:10px 14px;background:var(--warm-panel);color:var(--graphite-soft);border:1px solid var(--warm-line);border-radius:14px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;cursor:pointer}
 
-/* ============ FOOTER ============ */
-.footer{max-width:800px;margin:0 auto;padding:40px 24px 32px;text-align:center;border-top:1px solid var(--border)}
-.footer p{font-size:11px;color:var(--text3);line-height:1.6}
-.footer a{color:var(--text2);text-decoration:underline;transition:color .15s}
-
-/* ============ SEO CONTENT — single consistent style ============ */
-.seo{max-width:680px;margin:48px auto 0;padding:32px 24px 24px;font-family:var(--sans)}
-.seo-inner{display:flex;flex-direction:column;gap:24px}
-.seo h2,.seo h3{font-family:var(--sans);font-weight:600;color:var(--text);margin:0;letter-spacing:-.005em}
-.seo h2{font-size:15px;line-height:1.4}
-.seo h3{font-size:14px;margin-top:18px}
-.seo p{font-size:14px;line-height:1.65;color:var(--text2);margin:0}
-.seo a{color:var(--green-text);text-decoration:underline;text-underline-offset:2px}
-.seo a:hover{color:var(--text)}
-.seo b{color:var(--text);font-weight:600}
-.seo ol,.seo ul{padding-left:18px;display:flex;flex-direction:column;gap:8px}
-.seo li{font-size:14px;line-height:1.6;color:var(--text2)}
-.seo-block{border-top:1px solid var(--border);padding-top:20px}
-.seo-block:first-child{border-top:none;padding-top:0}
-.seo-more{display:block;border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden}
-.seo-more[open]{border-color:var(--border2)}
-.seo-more summary{list-style:none;padding:14px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;color:var(--text);gap:12px;transition:background .15s}
-.seo-more summary::-webkit-details-marker{display:none}
-.seo-more summary:hover{background:var(--card2)}
-.seo-more summary::after{content:"";flex:0 0 12px;width:12px;height:12px;background:var(--text3);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") center/contain no-repeat;transition:transform .2s ease}
-.seo-more[open] summary::after{transform:rotate(180deg)}
-.seo-more-body{padding:0 18px 20px;display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--border)}
-.seo-more-body>*:first-child{margin-top:18px}
-.seo p{font-size:15px;line-height:1.65;color:var(--text2);margin-bottom:0}
-.seo a{color:var(--green-text);text-decoration:underline;text-underline-offset:2px}
-.seo a:hover{color:var(--text)}
-.seo b{color:var(--text);font-weight:600}
-.spec-list{display:grid;grid-template-columns:110px 1fr;gap:0;font-size:13px;margin-top:14px}
-.spec-list>div{display:contents}
-.spec-list dt{font-size:12px;font-weight:600;color:var(--text);padding:8px 0;border-top:1px solid var(--border)}
-.spec-list dd{color:var(--text2);line-height:1.55;padding:8px 0;border-top:1px solid var(--border)}
-.spec-list>div:first-child dt,.spec-list>div:first-child dd{border-top:none}
-.guide{list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:14px}
-.guide li{counter-increment:step;display:flex;gap:16px;font-size:15px;line-height:1.55;color:var(--text2)}
-.guide li::before{content:counter(step);flex:0 0 28px;width:28px;height:28px;background:var(--green-bg);color:var(--green2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;margin-top:1px}
-.diff{list-style:none;display:flex;flex-direction:column;gap:12px;padding:0}
-.diff li{font-size:15px;line-height:1.6;color:var(--text2);padding-left:22px;position:relative}
-.diff li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green2);font-weight:700}
-/* FAQ list inside seo-more — same minimal style as everything else */
-.faq{display:flex;flex-direction:column;gap:0}
-.faq details{border-top:1px solid var(--border);background:transparent}
-.faq details:first-child{border-top:none}
-.faq summary{padding:12px 0;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:0 0 auto;font-family:var(--sans);font-size:18px;font-weight:300;color:var(--text3);transition:transform .2s ease;line-height:1}
-.faq details[open] summary::after{transform:rotate(45deg);color:var(--text2)}
-.faq summary:hover{color:var(--green-text)}
-.faq details p{padding:0 0 14px;font-size:13.5px;line-height:1.65;color:var(--text2)}
-@media (max-width:640px){
-  .seo h2{font-size:22px}
-  .spec-list{grid-template-columns:1fr;gap:4px}
-  .spec-list dt{padding-top:12px}
-  .spec-list dd{padding-bottom:12px}
+/* ===== Mobile pass ===== */
+@media(max-width:780px){
+  .topbar{padding:18px 0 12px}
+  .brand{font-size:16px}
+  .brand-mark{width:30px;height:30px}
+  .nav-cta{padding:.55rem .85rem;font-size:.78rem}
+  .intro-section{padding:30px 0 18px;gap:1.2rem}
+  .panel-topline{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .panel-topline h2{font-size:1.15rem}
+  .workspace-head h2{font-size:1.85rem}
+  .format-tab{padding:.75rem;gap:.55rem}
+  .format-tab strong{font-size:.88rem}
+  .format-tab small{font-size:.7rem}
+  .format-icon{width:30px;height:30px}
+  .small-link{padding:.5rem .75rem;font-size:.72rem}
+  .device-stage{min-height:340px;margin:.7rem 0}
+  .preview-frame--canvas{width:170px;height:302px}
+  .preview-frame--header{width:min(310px,92%)}
+  .preview-frame--avatar{width:220px;height:220px}
+  .preview-frame--cover{width:240px;height:240px}
+  .player-card iframe{height:128px}
+  .player-card .creator-embed-ph{min-height:128px}
+  .pexels-flow{font-size:.78rem;gap:.4rem}
+  .section-heading h2{font-size:clamp(1.7rem,7vw,2.4rem)}
+  .privacy-section h2{font-size:clamp(1.7rem,7vw,2.4rem)}
 }
-.footer a:hover{color:var(--green)}
-.footer .by{margin-top:8px;font-size:12px;color:var(--text3)}
-.footer .by a{color:var(--green-text);font-weight:600}
-
-/* ============ FEATURES ============ */
-.features{max-width:700px;margin:0 auto;padding:0 24px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;transition:all .2s}
-.feat:hover{border-color:var(--border2);box-shadow:var(--shadow)}
-.feat strong{font-size:13px;font-weight:600;margin-bottom:4px}
-.feat p{font-size:11px;color:var(--text3);line-height:1.4}
-
-@media(max-width:500px){
-  .hero{padding:32px 16px 0}
-  .panel{padding:16px}
-  .formats{flex-wrap:wrap}
-  .fmt{padding:8px 12px;font-size:12px}
-  .features{grid-template-columns:1fr}
+@media(max-width:640px){
+  body>main{padding:0 16px}
+  .workspace-shell{border-radius:26px;padding:1.2rem}
+  .input-panel,.preview-panel{padding:1rem;border-radius:24px}
+  .ws-ctl .cl{flex:0 0 56px;font-size:9px}
+  .cf-note{margin-left:62px}
+  .stock-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .stock-modal{padding:10px}
+  .stock-inner{border-radius:20px}
+  .footer{padding:36px 0 24px;gap:.75rem}
+}
+@media(max-width:380px){
+  .format-tab small{display:none}
+  .nav-cta{padding:.5rem .7rem;font-size:.74rem}
+  .brand{font-size:15px}
 }
 </style>
 </head>
 <body>
+<div class="site-shell">
+
+<header class="topbar">
+  <a href="#" class="brand"><span class="brand-mark">▶</span> spotifyedits.com</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#workspace">Workspace</a>
+    <a href="#stock">Stock</a>
+    <a href="#specs">Specs</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a href="#workspace" class="nav-cta">Start free →</a>
+</header>
+
 <main>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge"><div class="dot"></div>Free · No signup · No watermark</div>
-  <h1>Free <em>Canvas Maker</em> for Spotify Artists</h1>
-  <p class="sub">Make a seamless 9:16 looping Canvas MP4 in your browser — exact 1080×1920 specs, 3–8 seconds, with real crossfade. Plus Header, Avatar and Cover Art tools, all in one. Files never leave your device.</p>
-  <div class="formats" id="formatBar">
-    <button class="fmt on" data-fmt="canvas">Canvas<small>9:16 · MP4/JPG</small></button>
-    <button class="fmt" data-fmt="header">Header<small>2660 × 1140</small></button>
-    <button class="fmt" data-fmt="avatar">Avatar<small>750 × 750</small></button>
-    <button class="fmt" data-fmt="cover">Cover Art<small>3000 × 3000</small></button>
+<section class="intro-section">
+  <div class="intro-copy">
+    <span class="eyebrow">Free · browser only · no signup</span>
+    <h1>Canvas Maker for Spotify Artists.</h1>
+    <p class="intro-lede">Make a 9:16 Canvas MP4, header, avatar or cover art in your browser. No watermark, no signup, files never leave your device. Encoded locally with WebCodecs H.264.</p>
+  </div>
+  <aside class="intro-notes" aria-label="Quick facts">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Files stay on device</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> No watermark, no signup</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Pexels stock built in</span>
+  </aside>
+</section>
+
+<section class="workspace-shell" id="workspace">
+  <div class="workspace-head">
+    <h2>Build for the algorithm</h2>
+    <a href="#specs" class="small-link">Specs ↓</a>
   </div>
 
-  <div class="specs-strip" id="specsStrip">
-    <span class="ss">9:16 ratio</span>
-    <span class="ss">1080 × 1920</span>
-    <span class="ss">JPEG or MP4</span>
-    <span class="ss">3-8 seconds</span>
-  </div>
-  <p class="fmt-rule" id="fmtRule">A 3–8 second vertical loop that replaces cover art in the Now Playing view on the Spotify mobile app.</p>
-
-</div>
-
-<!-- DROP ZONE -->
-<div class="drop-area" id="dropArea">
-  <div class="drop" id="drop">
-    <div class="drop-ring">
-      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-    </div>
-    <strong class="drop-h" id="dropHint">Photo or video — any size, we crop & encode</strong>
-    <p id="dropExt">JPG · PNG · WEBP · MP4 · MOV · WEBM</p>
-  </div>
-  <div class="stock-or" id="stockOr">
-    <span class="stock-or-line"></span>
-    <span class="stock-or-text">or</span>
-    <span class="stock-or-line"></span>
-  </div>
-  <button class="stock-btn" id="stockBtn">
-    <svg id="stockIconVideo" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-    <svg id="stockIconPhoto" class="hidden" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    <span id="stockBtnLabel">Browse free stock videos</span>
-    <span class="stock-btn-tag">Pexels</span>
-  </button>
-</div>
-<input type="file" id="fi" accept="image/*,video/*,.mp4,.mov,.webm" hidden>
-
-<!-- STOCK MODAL -->
-<div class="stock-modal" id="stockModal" role="dialog" aria-label="Browse stock videos">
-  <div class="stock-overlay" id="stockOverlay"></div>
-  <div class="stock-inner">
-    <div class="stock-head">
-      <input type="search" id="stockSearch" placeholder="Search free stock videos…" autocomplete="off">
-      <button class="stock-close" id="stockClose" aria-label="Close">×</button>
-    </div>
-    <div class="stock-tags" id="stockTags">
-      <button data-q="aesthetic" class="on">Aesthetic</button>
-      <button data-q="neon">Neon</button>
-      <button data-q="abstract">Abstract</button>
-      <button data-q="city night">City night</button>
-      <button data-q="nature">Nature</button>
-      <button data-q="ocean">Ocean</button>
-      <button data-q="smoke">Smoke</button>
-      <button data-q="space">Space</button>
-      <button data-q="texture">Texture</button>
-      <button data-q="vintage">Vintage</button>
-      <button data-q="retro">Retro</button>
-      <button data-q="black and white">B&amp;W</button>
-    </div>
-    <div class="stock-grid" id="stockGrid"></div>
-    <div class="stock-status" id="stockStatus"></div>
-    <div class="stock-preview" id="stockPreview" hidden>
-      <div class="stock-preview-top">
-        <button class="stock-preview-back" id="stockPreviewBack" type="button">← Back to results</button>
-        <span class="stock-preview-counter" id="stockPreviewCounter"></span>
-      </div>
-      <div class="stock-preview-stage">
-        <button class="stock-preview-nav stock-preview-prev" id="stockPreviewPrev" type="button" aria-label="Previous">‹</button>
-        <div class="stock-preview-media" id="stockPreviewMedia"></div>
-        <button class="stock-preview-nav stock-preview-next" id="stockPreviewNext" type="button" aria-label="Next">›</button>
-      </div>
-      <div class="stock-preview-foot">
-        <a class="stock-preview-credit" id="stockPreviewCredit" target="_blank" rel="noopener"></a>
-        <div class="stock-preview-actions">
-          <button class="stock-preview-dl" id="stockPreviewDl" type="button" title="Download original from Pexels">↓ Download original</button>
-          <button class="stock-preview-use" id="stockPreviewUse" type="button">Use this →</button>
-        </div>
-      </div>
-    </div>
-    <div class="stock-foot">
-      Free for any use — no attribution required. <a href="https://www.pexels.com" target="_blank" rel="noopener">Powered by Pexels</a>.
-    </div>
-  </div>
-</div>
-
-<!-- WORKSPACE -->
-<div class="ws" id="ws">
-  <div style="text-align:center">
-    <span class="ws-badge" id="badge">IMAGE → CANVAS</span>
-    <span class="ws-source hidden" id="wsSource" role="button" tabindex="0" title="Pick another from Pexels">
-      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-      <span id="wsSourceText">Pexels</span>
-      <span class="ws-source-arrow" aria-hidden="true">↻</span>
-      <button class="ws-source-x" id="wsSourceX" type="button" title="Remove file">×</button>
-    </span>
-  </div>
-  <div class="crop-container"><div class="crop-wrap" id="wrap"><canvas id="cv"></canvas><button class="crop-x" id="cropX" type="button" aria-label="Remove file and start over" title="Remove file">×</button><div class="crop-hint" id="cropHint" hidden>↔ Drag to choose crop · ⊕ Zoom</div></div></div>
-
-  <div class="panel">
-    <div class="cr"><span class="cl">Zoom</span><input type="range" id="zm" min="10" max="500" value="100"></div>
-
-    <div id="imgCtl">
-      <div class="cr">
-        <span class="cl">Effect</span>
-        <select id="fx">
-          <option value="zoom_in">Slow zoom in</option>
-          <option value="zoom_out">Slow zoom out</option>
-          <option value="pan_up">Pan up</option>
-          <option value="pan_down">Pan down</option>
-          <option value="breathe">Breathe</option>
-          <option value="static">Static</option>
-        </select>
-        <input type="number" id="dur" value="6" min="3" max="8">
-      </div>
-    </div>
-
-    <div id="vidCtl" class="hidden">
-      <div class="cr"><span class="cl">Start</span><input type="range" id="ts" min="0" max="100" value="0" step="0.01"><span class="tv" id="tsD">0:00</span></div>
-      <div class="cr"><span class="cl">End</span><input type="range" id="te" min="0" max="100" value="8" step="0.01"><span class="tv" id="teD">0:08</span></div>
-      <div class="cr"><span class="cl">Clip</span><span class="cv" id="clD">8.0s</span></div>
-    </div>
-
-    <div class="sep"></div>
-    <div class="cr" id="fadeCtl">
-      <span class="cl">Seamless loop</span>
-      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px">
-        <input type="checkbox" id="cf" style="width:16px;height:16px;cursor:pointer">
-        <span>Crossfade end → start</span>
-      </label>
-      <select id="cfDur" style="margin-left:8px">
-        <option value="0.3">0.3s</option>
-        <option value="0.5" selected>0.5s</option>
-        <option value="0.8">0.8s</option>
-      </select>
-    </div>
-    <div class="cr" id="sloCtl">
-      <span class="cl">Slow-mo</span>
-      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px">
-        <input type="checkbox" id="slo" style="width:16px;height:16px;cursor:pointer">
-        <span>Play 0.5× with motion blur</span>
-      </label>
-    </div>
-    <div class="sep"></div>
-    <div class="cr"><span class="cl">Size</span><div class="size-row" id="sizeRow">
-      <button class="sb" data-w="720" data-h="1280">720×1280</button>
-      <button class="sb on" data-w="1080" data-h="1920">1080×1920</button>
-    </div></div>
-    <div class="quality-note" id="qualityNote">High quality · H.264 · ~12 Mbps · 30 fps</div>
-    <div class="sep"></div>
-
-    <div class="btn-row">
-      <button class="btn btn-ghost" id="rst" type="button" title="Start over">↺</button>
-      <button class="btn btn-ghost" id="rep" type="button" title="Replace file">⇆</button>
-      <button class="btn btn-dark hidden" id="ej">Save JPEG</button>
-      <button class="btn btn-green" id="exp">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        Export MP4
-      </button>
-    </div>
-    <div class="progress" id="prog"><div id="pf" style="width:0%"></div></div>
-    <div class="status" id="nfo"></div>
-  </div>
-</div>
-
-<!-- Creator card -->
-<aside class="creator-card" aria-label="About the creator">
-  <div class="creator-text">
-    <div class="creator-eyebrow">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
-      <span>BUILT BY AN ARTIST, FOR ARTISTS</span>
-    </div>
-    <p class="creator-line">I made this tool because every existing Canvas maker wanted my email and added a watermark on my exports. Made by <a class="creator-name" href="https://open.spotify.com/artist/22Y35XRBlb4LwoI3QrJQBt" target="_blank" rel="noopener"><b>Anton Zinoviev</b> ↗</a> — if you want, you can listen to my music while you're here.</p>
-  </div>
-  <div class="creator-embed-slot">
-    <button class="creator-embed-ph" id="creatorEmbedPh" type="button" aria-label="Load Spotify player">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 11-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02zm1.5-3.3a.94.94 0 01-1.3.3c-3.2-2-8.1-2.5-11.9-1.4a.94.94 0 11-.5-1.8c4.4-1.2 9.8-.7 13.5 1.6.45.27.6.84.2 1.3zm.1-3.5c-3.8-2.3-10.2-2.5-13.8-1.4a1.13 1.13 0 11-.65-2.16c4.2-1.3 11.2-1 15.6 1.6a1.13 1.13 0 01-1.16 1.95z"/></svg>
-      <span>▶ Load Spotify player</span>
+  <div class="format-tabs" role="tablist" aria-label="Format">
+    <button class="format-tab fmt on" data-fmt="canvas" role="tab">
+      <span class="format-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="3" width="10" height="18" rx="2"/></svg></span>
+      <span><strong>Canvas</strong><small>9:16 MP4 · 3–8s</small></span>
+    </button>
+    <button class="format-tab fmt" data-fmt="header" role="tab">
+      <span class="format-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="2"/></svg></span>
+      <span><strong>Header</strong><small>2660 × 1140 JPG</small></span>
+    </button>
+    <button class="format-tab fmt" data-fmt="avatar" role="tab">
+      <span class="format-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></span>
+      <span><strong>Avatar</strong><small>750 × 750 JPG</small></span>
+    </button>
+    <button class="format-tab fmt" data-fmt="cover" role="tab">
+      <span class="format-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></span>
+      <span><strong>Cover Art</strong><small>3000 × 3000 JPG</small></span>
     </button>
   </div>
-</aside>
 
-<!-- SEO CONTENT: clean, single-style -->
-<section class="seo">
-  <div class="seo-inner">
+  <div id="specsStrip" class="spec-strip"></div>
+  <p id="fmtRule" class="fmt-rule"></p>
 
-    <div class="seo-block">
-      <h2 id="specs">Spotify Canvas — verified specs</h2>
-      <dl class="spec-list">
-        <div><dt>Canvas</dt><dd>9:16 vertical MP4 (H.264), <b>3–8 seconds</b>, min <b>720×1280</b>, rec <b>1080×1920</b>, sRGB.</dd></div>
-        <div><dt>Header</dt><dd><b>2660×1140</b> min (3990×1710 retina), JPEG or PNG, sRGB.</dd></div>
-        <div><dt>Avatar</dt><dd><b>750×750</b> min (1500×1500 retina), JPEG or PNG, square. Spotify crops to a circle.</dd></div>
-        <div><dt>Cover Art</dt><dd><b>3000×3000</b> ideal (1600×1600 min), 1:1 square JPEG, sRGB, &lt;10 MB.</dd></div>
-        <div><dt>File format</dt><dd>Canvas: MP4 only. Spotify rejects MOV / WEBM / GIF.</dd></div>
-        <div><dt>Audio</dt><dd>Canvas is muted on Spotify. Audio in your file is ignored.</dd></div>
-      </dl>
+  <div class="workspace-grid">
+
+    <div class="input-panel">
+      <div class="panel-topline">
+        <div>
+          <span class="panel-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Source</span>
+          <h2>What you'll start with</h2>
+        </div>
+      </div>
+
+      <div id="dropArea">
+        <label for="fi" id="drop" class="dropzone" tabindex="0" aria-label="Upload file">
+          <span class="upload-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+          <strong id="dropHint">Drop your video here</strong>
+          <small id="dropExt">MP4 / MOV / WEBM · 3–8 seconds</small>
+        </label>
+        <input id="fi" type="file" hidden>
+        <div class="source-actions">
+          <button id="stockBtn" class="secondary-action" type="button">
+            <svg id="stockIconVideo" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <svg id="stockIconPhoto" class="hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span id="stockBtnLabel">Browse free stock videos</span>
+          </button>
+          <span id="stockOr">or upload from device</span>
+        </div>
+        <button id="useExample" class="surprise-btn" type="button" aria-label="Load a random Pexels preview">
+          <span class="surprise-glow"></span>
+          <svg class="surprise-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l1.6 4.8L18.4 8l-4.8 1.6L12 14l-1.6-4.8L5.6 8l4.8-1.2zM19 14l1.1 2.6L22.7 18l-2.6 1.1L19 21l-1.1-2.6L15.3 18l2.6-1.1z"/></svg>
+          <span id="useExampleLabel">Surprise me</span>
+          <span class="surprise-hint">random Pexels pick</span>
+        </button>
+      </div>
+
+
+      <div class="ws-ctl">
+        <div id="wsSource" class="ws-source hidden" tabindex="0" role="button" aria-label="Reopen Pexels picker">
+          <span class="ws-source-arrow">↗</span>
+          <span id="wsSourceText"></span>
+          <button id="wsSourceX" class="ws-source-x" type="button" aria-label="Remove Pexels source">×</button>
+        </div>
+
+        <div class="cr">
+          <span class="cl">Output</span>
+          <div class="size-row" id="sizeRow"></div>
+        </div>
+
+        <div id="imgCtl" class="hidden">
+          <div class="cr">
+            <span class="cl">Effect</span>
+            <select id="fx">
+              <option value="zoom_in">Zoom in</option>
+              <option value="zoom_out">Zoom out</option>
+              <option value="pan_up">Pan up</option>
+              <option value="pan_down">Pan down</option>
+              <option value="breathe">Breathe</option>
+              <option value="static">Static</option>
+            </select>
+          </div>
+          <div class="cr">
+            <span class="cl">Duration</span>
+            <input id="dur" type="range" min="3" max="8" step="0.5" value="6" aria-label="Duration in seconds">
+            <span class="tv" id="durD">6s</span>
+          </div>
+        </div>
+
+        <div id="vidCtl" class="hidden">
+          <div class="cr">
+            <span class="cl">Trim start</span>
+            <input id="ts" type="range" min="0" max="10" step="0.1" value="0" aria-label="Trim start time in seconds">
+            <span class="tv" id="tsD">0:00</span>
+          </div>
+          <div class="cr">
+            <span class="cl">Trim end</span>
+            <input id="te" type="range" min="0" max="10" step="0.1" value="6" aria-label="Trim end time in seconds">
+            <span class="tv" id="teD">0:06</span>
+          </div>
+          <div class="cr">
+            <span class="cl">Length</span>
+            <span class="cv" id="clD">6.0s</span>
+          </div>
+        </div>
+
+        <div id="fadeCtl">
+          <div class="cr">
+            <span class="cl">Loop fade</span>
+            <input type="checkbox" id="cf" checked aria-label="Enable seamless loop fade">
+            <input id="cfDur" type="number" min="0.1" max="2" step="0.1" value="0.5" style="width:64px" aria-label="Loop fade duration in seconds">
+            <span class="tv">sec</span>
+          </div>
+          <div class="cf-note">Crossfades end into start so the loop is seamless on Spotify.</div>
+        </div>
+
+        <div id="sloCtl">
+          <div class="cr">
+            <span class="cl">Slow-mo</span>
+            <input type="checkbox" id="slo" aria-label="Slow motion preview at 0.5x speed">
+            <span class="tv" style="text-align:left">0.5× preview blur</span>
+          </div>
+        </div>
+
+        <div class="cr">
+          <span class="cl">Zoom</span>
+          <input id="zm" type="range" min="50" max="300" step="1" value="100" aria-label="Zoom level percentage">
+        </div>
+
+        <div id="qCtl" class="cr">
+          <span class="cl">Quality</span>
+          <div class="size-row">
+            <button class="sb qb on" type="button" data-bpp="0.20">Standard · ~12 Mbps</button>
+            <button class="sb qb" type="button" data-bpp="0.30">High · ~18 Mbps</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button id="exp" class="btn btn-green" type="button">↓ Export MP4</button>
+          <button id="ej" class="btn btn-green hidden" type="button">↓ Save JPEG</button>
+          <button id="rep" class="btn btn-ghost" type="button" title="Replace file" aria-label="Replace file">⇆</button>
+          <button id="rst" class="btn btn-ghost" type="button" title="Start over" aria-label="Start over">↺</button>
+        </div>
+        <div class="progress" id="prog"><div id="pf" style="width:0"></div></div>
+        <div class="status" id="nfo"></div>
+        <div id="qualityNote" class="quality-note"></div>
+      </div>
     </div>
 
-    <details class="seo-more">
-      <summary><span>Spotify Canvas — full guide</span></summary>
-      <div class="seo-more-body">
+    <div class="preview-panel">
+      <div class="panel-topline">
         <div>
-          <h3 id="what-is">What is a Spotify Canvas?</h3>
-          <p>A <b>Spotify Canvas</b> is a 3–8 second vertical looping video that replaces a track's cover art in the Now Playing view on the Spotify mobile app. Spotify launched Canvas in 2019 and made it free for every artist. Tracks with a Canvas see a measurable lift in shares, saves, playlist adds and time spent. Canvas only plays on iOS and Android — not on desktop, web player, or smart speakers.</p>
-          <p>Canvas is uploaded through <a href="https://artists.spotify.com/canvas" target="_blank" rel="noopener">Spotify for Artists</a>, not through your distributor. You don't need <b>DistroKid</b>, Tunecore, Amuse or CD Baby to add it — only access to the Spotify for Artists team for the track.</p>
+          <span class="panel-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Live preview</span>
+          <h2>How it will appear</h2>
         </div>
+        <span class="status-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> No upload</span>
+      </div>
 
-        <div>
-          <h3 id="how-to">How to make a Spotify Canvas</h3>
-          <ol>
-            <li>Pick the <b>Canvas</b> format tab at the top.</li>
-            <li>Drop a photo (JPG/PNG/WEBP) or video (MP4/MOV/WEBM). For a still photo, pick an effect — Slow zoom, Pan, Breathe, or Static.</li>
-            <li>Adjust crop. For video, set Start/End — clip must be 3–8 seconds.</li>
-            <li>Tick <b>Seamless loop</b> and pick crossfade length (0.3s / 0.5s / 0.8s).</li>
-            <li>Click <b>Export MP4</b>. Encodes locally via WebCodecs H.264. Upload to Spotify for Artists → track → Canvas.</li>
-          </ol>
-        </div>
-
-        <div>
-          <h3 id="upload">How to upload to Spotify</h3>
-          <ol>
-            <li>Sign in at <a href="https://artists.spotify.com" target="_blank" rel="noopener">artists.spotify.com</a>.</li>
-            <li>Open Music → Releases, pick the track.</li>
-            <li>Click the <b>Canvas</b> tab.</li>
-            <li>Upload the 9:16 MP4. Save and publish.</li>
-          </ol>
-        </div>
-
-        <div>
-          <h3 id="loop">Loop styles</h3>
-          <p>Spotify's guidelines describe three: <b>Continuous Loop</b> — end blends into start (what this tool produces). <b>Hard Cut</b> — visible restart jitter. <b>Rebound</b> — ping-pong forward/reverse. Continuous looks the most professional.</p>
-        </div>
-
-        <div>
-          <h3 id="every-format">Header / Avatar / Cover Art</h3>
-          <p><b>Header</b> sits at the top of your artist page. Min 2660×1140. Artist name + avatar overlay the lower-left — keep that area visually clean.</p>
-          <p><b>Avatar</b> is the round profile picture. Min 750×750, rec 1500×1500. Center your subject.</p>
-          <p><b>Cover Art</b> is enforced at the distributor level: 3000×3000 ideal, sRGB JPEG, &lt;10 MB.</p>
-        </div>
-
-        <div>
-          <h3 id="why-different">Why spotifyedits.com is different</h3>
-          <ul>
-            <li><b>Truly free, no signup.</b> No email, no DistroKid account.</li>
-            <li><b>Files never leave your device.</b> Encoding runs in the browser via WebCodecs H.264.</li>
-            <li><b>All four formats in one tool.</b> Canvas, Header, Avatar, Cover Art — exact specs.</li>
-            <li><b>Real seamless-loop crossfade,</b> not a preview trick — math is in the encoded MP4.</li>
-            <li><b>No watermark, ever.</b></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 id="downloader">Note on "Canvas downloaders"</h3>
-          <p>spotifyedits.com is a Canvas <i>maker</i>, not a downloader. Other artists' Canvases are copyrighted. You can re-download your own Canvas from Spotify for Artists at any time.</p>
+      <div class="device-stage">
+        <div id="previewFrame" class="preview-frame preview-frame--canvas">
+          <div class="preview-grid"></div>
+          <div id="previewPhoneBar" class="phone-bar"></div>
+          <div class="preview-content"><span id="previewEyebrow">9 : 16</span><strong id="previewTitle">Canvas</strong></div>
         </div>
       </div>
-    </details>
 
-    <details class="seo-more">
-      <summary><span id="faq">FAQ — 16 common questions</span></summary>
-      <div class="seo-more-body">
-        <div class="faq">
-          <details><summary>What are the exact Spotify Canvas dimensions?</summary><p>Vertical 9:16 MP4. Min 720×1280, rec 1080×1920. Duration 3–8 seconds.</p></details>
-          <details><summary>How long does a Spotify Canvas have to be?</summary><p>3 to 8 seconds. Outside that range is rejected at upload.</p></details>
-          <details><summary>What is the aspect ratio for Spotify Canvas?</summary><p>9:16 — same vertical ratio as TikTok / Reels. The crop frame is locked to 9:16.</p></details>
-          <details><summary>Is spotifyedits.com really free, with no watermark?</summary><p>Yes. No signup, no email, no watermark. Runs entirely in your browser via WebCodecs.</p></details>
-          <details><summary>How do I make a seamless looping Canvas?</summary><p>Tick "Seamless loop" before export and pick a crossfade length. The tool blends last frames into first frames using cosine easing.</p></details>
-          <details><summary>What Spotify formats does this tool support?</summary><p>Canvas (9:16 MP4), Header (2660×1140), Avatar (750×750 or 1500×1500), Cover Art (1600×1600 or 3000×3000).</p></details>
-          <details><summary>Why does my Canvas upload keep failing?</summary><p>Three common reasons: wrong aspect ratio (must be 9:16), wrong duration (3–8 sec), or wrong format (must be MP4). This tool enforces all three.</p></details>
-          <details><summary>What is the Spotify profile picture / avatar size?</summary><p>Min 750×750, rec 1500×1500 for retina. JPEG or PNG, sRGB, square.</p></details>
-          <details><summary>What is the Spotify Header size?</summary><p>2660×1140 min (≈2.33:1), JPEG or PNG. Artist name + avatar overlay the lower-left.</p></details>
-          <details><summary>What size should Spotify Cover Art be?</summary><p>1:1 square, 3000×3000 ideal. JPEG, sRGB, under 10 MB.</p></details>
-          <details><summary>Is my video uploaded to a server?</summary><p>No. All processing happens locally in your browser. Nothing is sent anywhere.</p></details>
-          <details><summary>Can I download someone else's Spotify Canvas?</summary><p>No, this is a maker not a downloader. Other artists' Canvases are copyrighted. You can re-download your own from Spotify for Artists.</p></details>
-          <details><summary>Do I need DistroKid, Tunecore or Amuse?</summary><p>No. Canvas is uploaded through Spotify for Artists, not through your distributor.</p></details>
-          <details><summary>What's Continuous vs Hard Cut vs Rebound?</summary><p>Continuous — seamless blend (what we produce). Hard Cut — visible jump. Rebound — ping-pong forward/reverse.</p></details>
-          <details><summary>Where does Spotify Canvas appear?</summary><p>Now Playing view on Spotify mobile (iOS / Android). Not on desktop, web player, or smart speakers.</p></details>
-          <details><summary>Which browsers work?</summary><p>Chrome 94+, Edge 94+, Brave, Opera, Arc, Safari 16.4+. Firefox doesn't support WebCodecs MP4 yet.</p></details>
+      <div id="ws">
+        <div id="badge" class="ws-badge">VIDEO → CANVAS</div>
+        <div class="crop-container">
+          <div id="wrap" class="crop-wrap">
+            <canvas id="cv"></canvas>
+            <button id="cropX" class="crop-x" type="button" aria-label="Remove file">×</button>
+            <div id="cropHint" class="crop-hint" hidden>Drag to reposition · scroll to zoom</div>
+          </div>
         </div>
       </div>
-    </details>
+
+    </div>
 
   </div>
 </section>
 
-</main>
+<section class="section split-section" id="stock">
+  <div class="section-heading">
+    <span class="eyebrow">Pexels · free</span>
+    <h2>Stock for artists who don't film yet.</h2>
+    <p>Use Pexels videos and photos right inside the workspace. No watermarks, no attribution required, free for commercial use. Click a mood, preview, drop it into your Canvas.</p>
+  </div>
+  <div class="pexels-card">
+    <div class="pexels-card-top">
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Built-in stock browser</span>
+      <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels.com →</a>
+    </div>
+    <div class="mood-grid">
+      <button type="button" class="mood-btn" data-q="aesthetic">Aesthetic</button>
+      <button type="button" class="mood-btn" data-q="city night">City night</button>
+      <button type="button" class="mood-btn" data-q="nature">Nature</button>
+      <button type="button" class="mood-btn" data-q="ocean">Ocean</button>
+      <button type="button" class="mood-btn" data-q="smoke">Smoke</button>
+      <button type="button" class="mood-btn" data-q="texture">Texture</button>
+      <button type="button" class="mood-btn" data-q="vintage">Vintage</button>
+      <button type="button" class="mood-btn" data-q="bw">B&W</button>
+    </div>
+    <div class="pexels-flow">
+      <span>1 · Pick mood</span>
+      <span>→</span>
+      <span>2 · Preview</span>
+      <span>→</span>
+      <span>3 · Use this</span>
+      <span>→</span>
+      <span>4 · Export MP4</span>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
-<div class="footer">
-  <p>Built for <a href="https://artists.spotify.com" target="_blank" rel="noopener">Spotify for Artists</a> · WebCodecs H.264 · All processing runs locally</p>
-  <p class="by">Made by <a href="https://open.spotify.com/artist/22Y35XRBlb4LwoI3QrJQBt" target="_blank" rel="noopener">Anton Zinoviev</a></p>
+<section class="section creator-section">
+  <div class="creator-copy">
+    <span class="eyebrow">Built by an artist</span>
+    <h2>For artists, not for SaaS.</h2>
+    <p>I'm Anton — independent artist. I built this because the existing Canvas tools were either paywalled, watermarked, or just bad. Listen to my latest release while you work — it's why this tool exists in the first place.</p>
+  </div>
+  <div class="player-card">
+    <div id="creatorEmbedPh" class="creator-embed-ph" tabindex="0" role="button" aria-label="Load Spotify player for Anton Zinoviev">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="0"/><polygon points="10,8 16,12 10,16" fill="white"/></svg>
+      <span>Load Spotify player</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="specs">
+  <div class="section-heading">
+    <span class="eyebrow">Specs</span>
+    <h2>What Spotify actually wants.</h2>
+    <p>The exact technical rules for each Spotify visual surface, mirrored straight from Spotify for Artists guidance.</p>
+  </div>
+  <div class="specs-table">
+    <div class="spec-row"><strong>Canvas</strong><span>9:16 vertical MP4, 3–8 seconds, recommended 1080×1920. H.264 codec, no audio.</span></div>
+    <div class="spec-row"><strong>Header</strong><span>2660 × 1140 minimum, JPG or PNG, keep lower-left visually calm — that's where artist name overlays.</span></div>
+    <div class="spec-row"><strong>Avatar</strong><span>750 × 750 minimum, square source with a circle-safe center — Spotify masks it round.</span></div>
+    <div class="spec-row"><strong>Cover Art</strong><span>3000 × 3000 ideal, square JPG/PNG, sRGB and clean edges — flagged if pixelated or text-heavy.</span></div>
+    <div class="spec-row"><strong>Privacy</strong><span>Files never leave your device. Encoding runs locally via WebCodecs — there's no server upload step.</span></div>
+  </div>
+  <div class="guide-grid">
+    <article class="guide-card">
+      <span class="format-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="7" y="3" width="10" height="18" rx="2"/></svg></span>
+      <h3>Loop seamlessly</h3>
+      <p>Toggle "loop fade" so your end blends into the start. Spotify users see Canvas loop forever — make it not jarring.</p>
+    </article>
+    <article class="guide-card">
+      <span class="format-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 7l3-3h12l3 3v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <h3>Use Pexels stock</h3>
+      <p>No filming gear yet? Pexels has thousands of vertical clips, free for commercial use. One click loads them.</p>
+    </article>
+    <article class="guide-card">
+      <span class="format-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      <h3>Keep it 3–8 s</h3>
+      <p>Spotify rejects clips outside this range. The trimmer locks you to that window automatically.</p>
+    </article>
+    <article class="guide-card">
+      <span class="format-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5v14"/></svg></span>
+      <h3>Match cover art</h3>
+      <p>Strongest Canvases extend the cover art's mood. Pull a frame from your music video for visual cohesion.</p>
+    </article>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div>
+    <span class="eyebrow">Privacy</span>
+    <h2>Your files never leave the browser.</h2>
+    <p style="margin-top:1rem;color:var(--graphite-soft);font-size:1rem;line-height:1.68;font-weight:560">No upload step, no server roundtrip, no analytics — verifiable. Open DevTools → Network: nothing posts when you export.</p>
+  </div>
+  <div class="privacy-list">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg> WebCodecs H.264 runs locally in the tab</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg> No tracking, no cookies, no signup</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg> Pexels API runs from your IP — not ours</span>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-heading">
+    <span class="eyebrow">FAQ</span>
+    <h2>Common questions.</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-card"><summary>What changes when I choose another format?</summary><p>The specs, upload copy, preview frame, export checklist and CTA all change inside the same workspace. That makes it clear what you are preparing.</p></details>
+    <details class="faq-card"><summary>Can I start from a Pexels video?</summary><p>Yes. Pick a mood, preview, click "Use this →", and the clip loads straight into the editor. Pexels content is free for commercial use, no attribution required.</p></details>
+    <details class="faq-card"><summary>Where does Spotify Canvas appear?</summary><p>Canvas appears in Spotify's mobile Now Playing view on iOS and Android. It does not replace the desktop cover art.</p></details>
+    <details class="faq-card"><summary>Do I need a distributor to upload Canvas?</summary><p>No. Canvas is managed in Spotify for Artists. You still need access to the artist profile or team for the track.</p></details>
+    <details class="faq-card"><summary>Will my video have a watermark?</summary><p>No. The encoded MP4 is exactly what you previewed — no overlay, no logo, no signature.</p></details>
+    <details class="faq-card"><summary>Why doesn't MP4 export work in Firefox?</summary><p>Firefox doesn't yet support WebCodecs MP4 encoding. Chrome 94+, Edge 94+, Brave, Opera and Safari 16.4+ work fine. JPEG export works everywhere.</p></details>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 spotifyedits.com · independent artist tool</span>
+  <div>
+    <a href="https://github.com/azinoviev-pixel/spotifyedits" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:a.zinoviev@me.com">Contact</a>
+  </div>
+</footer>
+
+</main>
 </div>
 
-<video id="srcVid" style="display:none" muted playsinline></video>
-<video id="srcVid2" style="display:none" muted playsinline></video>
+<!-- ===== Stock modal (Pexels) ===== -->
+<div id="stockModal" class="stock-modal" role="dialog" aria-modal="true" aria-label="Stock browser">
+  <div id="stockOverlay" class="stock-overlay"></div>
+  <div class="stock-inner">
+    <div class="stock-head">
+      <input id="stockSearch" type="text" placeholder="Search Pexels…" autocomplete="off" aria-label="Search Pexels stock library">
+      <button id="stockClose" class="stock-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="stockTags" class="stock-tags">
+      <button type="button" class="on" data-q="aesthetic">aesthetic</button>
+      <button type="button" data-q="neon">neon</button>
+      <button type="button" data-q="abstract">abstract</button>
+      <button type="button" data-q="city night">city night</button>
+      <button type="button" data-q="nature">nature</button>
+      <button type="button" data-q="ocean">ocean</button>
+      <button type="button" data-q="smoke">smoke</button>
+      <button type="button" data-q="space">space</button>
+      <button type="button" data-q="texture">texture</button>
+      <button type="button" data-q="vintage">vintage</button>
+      <button type="button" data-q="retro">retro</button>
+      <button type="button" data-q="bw">b&amp;w</button>
+    </div>
+    <div id="stockGrid" class="stock-grid" data-orient="portrait"></div>
+    <div id="stockStatus" class="stock-status"></div>
+    <div id="stockPager" class="stock-pager">
+      <button id="stockPrev" class="stock-pg-btn" type="button">← Prev</button>
+      <span id="stockPgInfo" class="stock-pg-info">page 1</span>
+      <button id="stockNext" class="stock-pg-btn" type="button">Next →</button>
+    </div>
+    <div class="stock-foot">Powered by <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> · free for commercial use, no attribution required</div>
+
+    <div id="stockPreview" class="stock-preview" hidden>
+      <div class="stock-preview-top">
+        <button id="stockPreviewBack" class="stock-preview-back" type="button">← Back to grid</button>
+        <span id="stockPreviewCounter" class="stock-preview-counter"></span>
+      </div>
+      <div class="stock-preview-stage">
+        <button id="stockPreviewPrev" class="stock-preview-nav stock-preview-prev" type="button" aria-label="Previous">‹</button>
+        <div id="stockPreviewMedia" class="stock-preview-media"></div>
+        <button id="stockPreviewNext" class="stock-preview-nav stock-preview-next" type="button" aria-label="Next">›</button>
+      </div>
+      <div class="stock-preview-foot">
+        <span id="stockPreviewCredit" class="stock-preview-credit"></span>
+        <div class="stock-preview-actions">
+          <button id="stockPreviewDl" class="stock-preview-dl" type="button">↓ Download original</button>
+          <button id="stockPreviewUse" class="stock-preview-use" type="button">Use this →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden videos used by dual-video preview architecture -->
+<video id="srcVid" hidden muted playsinline crossorigin="anonymous" aria-hidden="true"></video>
+<video id="srcVid2" hidden muted playsinline crossorigin="anonymous" aria-hidden="true"></video>
 
 <script type="module">
 const $=s=>document.querySelector(s);
@@ -920,6 +1018,7 @@ let mode=null,img=null;
 let zoom=1,panX=0,panY=0,drag=false,lastX,lastY;
 let cropX,cropY,cropW,cropH;
 let outW=1080,outH=1920;
+let bppCoef=0.20;
 let vidDur=0,vidAnim=null;
 // Trim-change handler: keep both videos in sync; dual-video RAF picks up rest
 function resyncVids(){
@@ -934,41 +1033,50 @@ let curFmt='canvas';
 
 const FMTS={
   canvas:{r:9/16,sizes:[[720,1280],[1080,1920]],labels:['720×1280','1080×1920'],mp4:true,accept:'image/*,video/*,.mp4,.mov,.webm',
-    specs:['9:16 ratio','1080 × 1920','JPEG or MP4','3-8 seconds'],
+    specs:['9:16','1080 × 1920','JPEG · MP4','3 – 8 s'],
+    specsLbl:['Ratio','Pixels','Formats','Length'],
     rule:'A 3–8 second vertical loop that replaces cover art in the Now Playing view on the Spotify mobile app.',
     dropHint:'Photo or video — any size, we crop & encode',
     dropExt:'JPG · PNG · WEBP · MP4 · MOV · WEBM',
     stockLabel:'Browse free stock videos',
-    stockKind:'video',stockOrient:'portrait'},
+    stockKind:'video',stockOrient:'portrait',
+    examplePool:['aesthetic','smoke','neon','city night','ocean','space']},
   header:{r:2660/1140,sizes:[[2660,1140],[3990,1710]],labels:['2660×1140','3990×1710'],mp4:false,accept:'image/*',
-    specs:['2660 × 1140 min','Landscape','JPEG or PNG','< 20 MB'],
+    specs:['2660 × 1140','Landscape','JPEG · PNG','< 20 MB'],
+    specsLbl:['Min size','Orient','Formats','Max file'],
     rule:'The horizontal banner at the top of your artist page. Artist name + avatar overlay the lower-left — keep it clean.',
     dropHint:'Drop a landscape photo — we crop to 2660×1140',
     dropExt:'JPG · PNG · WEBP',
     stockLabel:'Browse free stock photos',
-    stockKind:'photo',stockOrient:'landscape'},
+    stockKind:'photo',stockOrient:'landscape',
+    examplePool:['city skyline','aesthetic landscape','nature mountains','studio lights','minimal pattern','concert stage']},
   avatar:{r:1,sizes:[[750,750],[1500,1500]],labels:['750×750','1500×1500'],mp4:false,accept:'image/*',
-    specs:['Square 1:1','750px minimum','JPEG or PNG','Crops to circle'],
+    specs:['1 : 1','750 × 750','JPEG · PNG','Round crop'],
+    specsLbl:['Shape','Min size','Formats','Display'],
     rule:'Round profile picture. Spotify crops to a circle — keep your subject centered.',
     dropHint:'Drop a photo — we crop to a 1:1 square',
     dropExt:'JPG · PNG · WEBP',
     stockLabel:'Browse free stock photos',
-    stockKind:'photo',stockOrient:'square'},
+    stockKind:'photo',stockOrient:'square',
+    examplePool:['portrait studio','minimal portrait','artist headshot','aesthetic profile','abstract square','neon portrait']},
   cover:{r:1,sizes:[[1600,1600],[3000,3000]],labels:['1600×1600','3000×3000'],mp4:false,accept:'image/*',
-    specs:['Square 1:1','3000px ideal','JPEG or PNG','sRGB color'],
+    specs:['1 : 1','3000 × 3000','JPEG · PNG','sRGB'],
+    specsLbl:['Shape','Ideal','Formats','Color space'],
     rule:'Album / single artwork. Distributors enforce 3000×3000 sRGB JPEG, under 10 MB.',
     dropHint:'Drop a photo — we crop to a 1:1 square',
     dropExt:'JPG · PNG · WEBP',
     stockLabel:'Browse free stock photos',
-    stockKind:'photo',stockOrient:'square'},
+    stockKind:'photo',stockOrient:'square',
+    examplePool:['aesthetic abstract','minimal artwork','vintage texture','geometric pattern','neon abstract','cosmic']},
 };
 
 function updQualityNote(){
   const el=$('#qualityNote');if(!el)return;
   const d=FMTS[curFmt];
   if(d.mp4){
-    const fps=30;const mbps=Math.round(outW*outH*fps*0.20/1e6*10)/10;
-    el.textContent=`High quality · H.264 · ~${mbps} Mbps · ${fps} fps`;
+    const fps=30;const mbps=Math.round(outW*outH*fps*bppCoef/1e6*10)/10;
+    const tier=bppCoef>=0.28?'High':'Standard';
+    el.textContent=`${tier} · H.264 · ~${mbps} Mbps · ${fps} fps · ${bppCoef.toFixed(2)} bpp`;
     el.style.display='';
   } else {
     el.textContent='High quality · JPEG 98% · sRGB';
@@ -981,7 +1089,9 @@ function setFmt(f){
   fi.accept=d.accept;
   document.querySelectorAll('.fmt').forEach(b=>b.classList.toggle('on',b.dataset.fmt===f));
   // Update specs
-  const strip=$('#specsStrip');strip.innerHTML=d.specs.map(s=>`<span class="ss">${s}</span>`).join('');
+  const strip=$('#specsStrip');
+  const lbls=d.specsLbl||['','','',''];
+  strip.innerHTML=d.specs.map((v,i)=>`<span class="ss"><em class="ss-lbl">${lbls[i]||''}</em><strong class="ss-val">${v}</strong></span>`).join('');
   // Update rule line
   const rl=$('#fmtRule');if(rl)rl.textContent=d.rule||'';
   // Update drop zone text
@@ -1000,16 +1110,18 @@ function setFmt(f){
   sr.innerHTML=d.sizes.map((s,i)=>`<button class="sb${i===1?' on':''}" data-w="${s[0]}" data-h="${s[1]}">${d.labels[i]}</button>`).join('');
   sr.querySelectorAll('.sb').forEach(b=>{b.onclick=()=>{sr.querySelectorAll('.sb').forEach(x=>x.classList.remove('on'));b.classList.add('on');outW=+b.dataset.w;outH=+b.dataset.h;updQualityNote()}});
   updQualityNote();
-  // Show/hide MP4 button + video-only controls (loop, slow-mo)
-  const fadeCtl=$('#fadeCtl'),sloCtl=$('#sloCtl');
+  // Show/hide MP4 button + video-only controls (loop, slow-mo, quality)
+  const fadeCtl=$('#fadeCtl'),sloCtl=$('#sloCtl'),qCtl=$('#qCtl');
   if(!d.mp4){
     $('#exp').classList.add('hidden');$('#ej').classList.remove('hidden');
     if(fadeCtl)fadeCtl.style.display='none';
     if(sloCtl)sloCtl.style.display='none';
+    if(qCtl)qCtl.style.display='none';
   } else {
     $('#exp').classList.remove('hidden');
     if(fadeCtl)fadeCtl.style.display='';
     if(sloCtl)sloCtl.style.display='';
+    if(qCtl)qCtl.style.display='';
   }
   // Stock browser shown for ALL formats (videos for Canvas, photos for image formats)
   const sb=$('#stockBtn'),so=$('#stockOr');
@@ -1031,11 +1143,28 @@ function setFmt(f){
     setupCrop(srcVid.videoWidth,srcVid.videoHeight);
   }
   // Note: format-aware re-search happens automatically next time user opens Pexels modal
+  updPreviewPanel(f);
+}
+
+const PREV_CFG={
+  canvas:{cls:'preview-frame--canvas',eyebrow:'9 : 16',title:'Canvas',phoneBar:true},
+  header:{cls:'preview-frame--header',eyebrow:'2660 × 1140',title:'Header',phoneBar:false},
+  avatar:{cls:'preview-frame--avatar',eyebrow:'1 : 1',title:'Avatar',phoneBar:false},
+  cover:{cls:'preview-frame--cover',eyebrow:'1 : 1',title:'Cover Art',phoneBar:false}
+};
+function updPreviewPanel(f){
+  const c=PREV_CFG[f];if(!c)return;
+  const fr=$('#previewFrame');if(fr)fr.className='preview-frame '+c.cls;
+  const pb=$('#previewPhoneBar');if(pb)pb.style.display=c.phoneBar?'':'none';
+  const eb=$('#previewEyebrow');if(eb)eb.textContent=c.eyebrow;
+  const tt=$('#previewTitle');if(tt)tt.textContent=c.title;
 }
 document.querySelectorAll('.fmt').forEach(b=>{b.onclick=()=>setFmt(b.dataset.fmt)});
 
 // FILE INPUT
-drop.onclick=()=>fi.click();
+// #drop is a <label for="fi"> — clicking the label natively opens the file picker.
+// Do NOT call fi.click() here; the synthetic second click cancels the native dialog
+// in Safari/Chromium and the picker briefly opens then closes (no file selected).
 drop.ondragover=e=>{e.preventDefault();drop.classList.add('over')};
 drop.ondragleave=()=>drop.classList.remove('over');
 drop.ondrop=e=>{e.preventDefault();drop.classList.remove('over');handle(e.dataTransfer.files[0])};
@@ -1279,7 +1408,7 @@ $('#exp').onclick=async()=>{
     const encoder=new VideoEncoder({output:(chunk,meta)=>muxer.addVideoChunk(chunk,meta),error:e=>{throw e}});
     // Bitrate scales with output resolution. Targets ~0.2 bits-per-pixel-per-second for "high quality" H.264.
     // 1080×1920@30 → ~12 Mbps. 720×1280@30 → ~5.5 Mbps. Cover Art video would scale up too.
-    const targetBitrate=Math.round(outW*outH*fps*0.20);
+    const targetBitrate=Math.round(outW*outH*fps*bppCoef);
     let ok=false;
     for(const codec of['avc1.640028','avc1.4d0028','avc1.42001f']){
       try{const s=await VideoEncoder.isConfigSupported({codec,width:outW,height:outH,bitrate:targetBitrate,framerate:fps});
@@ -1418,9 +1547,13 @@ if(_rep)_rep.onclick=()=>fi.click();
 const _cropX=document.getElementById('cropX');
 if(_cropX)_cropX.onclick=()=>$('#rst').click();
 
-// LAZY Spotify embed — load iframe only when user explicitly asks
+
+// LAZY Spotify embed — load iframe only when user explicitly clicks.
+// Click on placeholder replaces the entire .player-card content with just
+// the iframe — the .player-head also disappears, leaving only the compact player.
 const _ph=document.getElementById('creatorEmbedPh');
-if(_ph)_ph.onclick=()=>{
+function _loadCreatorEmbed(){
+  if(!_ph||!_ph.parentElement)return;
   const slot=_ph.parentElement;
   const f=document.createElement('iframe');
   f.className='creator-embed';
@@ -1429,7 +1562,11 @@ if(_ph)_ph.onclick=()=>{
   f.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture');
   f.title='Anton Zinoviev on Spotify';
   slot.innerHTML='';slot.appendChild(f);
-};
+}
+if(_ph){
+  _ph.onclick=_loadCreatorEmbed;
+  _ph.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();_loadCreatorEmbed()}};
+}
 
 // ============ PEXELS STOCK BROWSER ============
 const PEXELS_KEY='rnUwVdkZ9AZk79hIoTaIT7SKxc5nT2AJPttRG4HQI2cAlZ4eWJ6IlUS0';
@@ -1712,6 +1849,83 @@ if(_wsSrc){
   _wsSrc.onclick=()=>openStock();
   _wsSrc.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openStock()}};
 }
+
+// Mood buttons on the homepage Pexels card → open modal pre-filtered to that mood
+document.querySelectorAll('.mood-btn').forEach(b=>{
+  b.onclick=()=>{
+    const q=b.dataset.q;
+    // clear last-picked memory so the new mood query takes effect (not the restored one)
+    lastPickedQuery=null;lastPickedPage=null;lastPickedIdx=null;
+    if(stockSearch)stockSearch.value=q;
+    document.querySelectorAll('#stockTags button').forEach(x=>x.classList.toggle('on',x.dataset.q===q));
+    openStock();
+  };
+});
+
+// Quality (bpp) toggle — actually changes the encoder bitrate target
+document.querySelectorAll('.qb').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.qb').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    bppCoef=parseFloat(b.dataset.bpp)||0.20;
+    updQualityNote();
+  };
+});
+
+// "Surprise me" — picks a random query from the format's examplePool,
+// fetches Pexels page 1 (random order), grabs the first item, loads it directly.
+const _useEx=document.getElementById('useExample');
+if(_useEx){
+  _useEx.onclick=async()=>{
+    const d=FMTS[curFmt];
+    const pool=d.examplePool||['aesthetic'];
+    const q=pool[Math.floor(Math.random()*pool.length)];
+    const orient=d.stockOrient||'portrait';
+    const isVideo=d.stockKind==='video';
+    const lbl=$('#useExampleLabel'),orig=lbl?lbl.textContent:'';
+    if(lbl)lbl.textContent='Loading…';
+    _useEx.disabled=true;
+    try{
+      const url=isVideo
+        ?`https://api.pexels.com/videos/search?query=${encodeURIComponent(q)}&orientation=${orient}&size=medium&per_page=20&page=${Math.floor(Math.random()*3)+1}`
+        :`https://api.pexels.com/v1/search?query=${encodeURIComponent(q)}&orientation=${orient}&per_page=20&page=${Math.floor(Math.random()*3)+1}`;
+      const r=await fetch(url,{headers:{Authorization:PEXELS_KEY}});
+      if(!r.ok)throw new Error('Pexels '+r.status);
+      const j=await r.json();
+      const items=isVideo?(j.videos||[]):(j.photos||[]);
+      if(!items.length)throw new Error('no results');
+      const pick=items[Math.floor(Math.random()*items.length)];
+      // Use the same path as Pexels modal "Use this →"
+      let mediaUrl,photog;
+      if(isVideo){
+        // Find the largest H.264 mp4 file
+        const files=(pick.video_files||[]).filter(f=>f.file_type==='video/mp4').sort((a,b)=>(b.width||0)-(a.width||0));
+        const best=files[0];if(!best)throw new Error('no mp4');
+        mediaUrl=best.link;photog=pick.user&&pick.user.name;
+      } else {
+        mediaUrl=pick.src&&(pick.src.large2x||pick.src.large||pick.src.original);
+        photog=pick.photographer;
+      }
+      if(!mediaUrl)throw new Error('no media url');
+      const blob=await(await fetch(mediaUrl)).blob();
+      const ext=isVideo?'mp4':'jpg';
+      const file=new File([blob],`pexels-example.${ext}`,{type:blob.type||(isVideo?'video/mp4':'image/jpeg')});
+      // Display chip with photographer credit (matches Pexels-modal flow)
+      const ws=$('#wsSource'),wt=$('#wsSourceText');
+      if(ws&&wt&&photog){wt.textContent=`Pexels: ${photog}`;ws.classList.remove('hidden')}
+      // Hand to existing handler
+      handle(file);
+    }catch(e){
+      console.warn('useExample failed:',e);
+      if(lbl)lbl.textContent='Try again';
+      setTimeout(()=>{if(lbl)lbl.textContent=orig},1600);
+    }finally{
+      _useEx.disabled=false;
+      if(lbl&&lbl.textContent==='Loading…')lbl.textContent=orig;
+    }
+  };
+}
 </script>
+
 </body>
 </html>
